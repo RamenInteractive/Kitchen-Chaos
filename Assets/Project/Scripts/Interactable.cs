@@ -4,18 +4,11 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    string text;
-
-    public string Text
-    {
-        get { return text; }
-        set { text = value; }
-    }
+    public GameObject HoverHUD;
 
     // Use this for initialization
     void Start ()
     {
-		
 	}
 	
 	// Update is called once per frame

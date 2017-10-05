@@ -6,22 +6,25 @@ public abstract class Minigame : MonoBehaviour {
     private bool inUse = false;
 
     protected List<Ingredient>[] ingredients; // Ingredient Storage
-    protected Player player; // Player currently using minigame
+    protected GameObject player; // Player currently using minigame
     protected Controller controller; // Control scheme for the minigame
 
     public Camera viewpoint;
     public GameObject HUD;
 
     // Use this for initialization
-    void Start () {
-        HUD.SetActive(false);
+    protected void Start () {
         viewpoint.GetComponent<Camera>().enabled = false;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	protected void Update () {
+        if(inUse) {
+            if (Input.GetKeyDown(KeyCode.X)) {
+                exit();
+            }
+        }
+    }
 
     /**
      * Enter
@@ -31,13 +34,15 @@ public abstract class Minigame : MonoBehaviour {
      * 
      * @param: p - Player wanting to enter this minigame
      */
-    public void enter(Player p) {
+    public void enter(GameObject p) {
         if(!inUse) {
             inUse = true;
             player = p;
-            player.GetComponent<Camera>().enabled = false;
+            player.transform.Find("FirstPersonCharacter").gameObject.GetComponent<Camera>().enabled = false;
             viewpoint.GetComponent<Camera>().enabled = true;
-            HUD.SetActive(true);
+            gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 0f;
+            HUD.GetComponent<CanvasGroup>().alpha = 1f;
+            player.SetActive(false);
         }
     }
 
@@ -70,9 +75,11 @@ public abstract class Minigame : MonoBehaviour {
      * 
      */ 
     public void exit() {
-        player.GetComponent<Camera>().enabled = true;
+        player.SetActive(true);
+        player.transform.Find("FirstPersonCharacter").gameObject.GetComponent<Camera>().enabled = true;
         viewpoint.GetComponent<Camera>().enabled = false;
-        HUD.SetActive(false);
+        HUD.GetComponent<CanvasGroup>().alpha = 0f;
+        gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 1f;
         player = null;
         inUse = false;
     }

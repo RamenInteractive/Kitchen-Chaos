@@ -9,3 +9,4 @@
 ==================
 #### New Features
 - Added abstract Minigame class
+- Connected InteractingRay, Interactable, and MiniGame classes
