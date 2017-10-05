@@ -41,6 +41,7 @@ public abstract class Minigame : MonoBehaviour {
             player.transform.Find("FirstPersonCharacter").gameObject.GetComponent<Camera>().enabled = false;
             viewpoint.GetComponent<Camera>().enabled = true;
             gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 0f;
+            GameObject.Find("CrossHair").GetComponent<CanvasGroup>().alpha = 0f;
             HUD.GetComponent<CanvasGroup>().alpha = 1f;
             player.SetActive(false);
         }
@@ -80,6 +81,7 @@ public abstract class Minigame : MonoBehaviour {
         viewpoint.GetComponent<Camera>().enabled = false;
         HUD.GetComponent<CanvasGroup>().alpha = 0f;
         gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 1f;
+        GameObject.Find("CrossHair").GetComponent<CanvasGroup>().alpha = 1f;
         player = null;
         inUse = false;
     }
