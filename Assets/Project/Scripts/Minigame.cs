@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Minigame : MonoBehaviour {
-    private bool inUse = false;
 
     protected List<Ingredient>[] ingredients; // Ingredient Storage
     protected GameObject player; // Player currently using minigame
@@ -11,6 +10,7 @@ public abstract class Minigame : MonoBehaviour {
 
     public Camera viewpoint;
     public GameObject HUD;
+    public static bool inUse = false;
 
     // Use this for initialization
     protected void Start () {
