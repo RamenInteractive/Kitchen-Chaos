@@ -7,10 +7,11 @@ public abstract class Minigame : MonoBehaviour {
     protected List<Ingredient>[] ingredients; // Ingredient Storage
     protected GameObject player; // Player currently using minigame
     protected Controller controller; // Control scheme for the minigame
+    protected bool inUse = false;
+
 
     public Camera viewpoint;
     public GameObject HUD;
-    public static bool inUse = false;
 
     // Use this for initialization
     protected void Start () {
