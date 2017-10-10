@@ -25,12 +25,12 @@ public class FridgeGame : Minigame
 
             // Check the horizontal axis direction
             if (Input.GetAxis("Horizontal") > 0.3) {
-                moveCursor(0);
+                MoveCursor(0);
                 dirsPressed[0] = true;
                 dirsPressed[1] = false;
             }
             else if (Input.GetAxis("Horizontal") < 0.3) {
-                moveCursor(Mathf.PI);
+                MoveCursor(Mathf.PI);
                 dirsPressed[1] = true;
                 dirsPressed[0] = false;
             }
@@ -42,12 +42,12 @@ public class FridgeGame : Minigame
 
             // Check the vertical axis direction
             if (Input.GetAxis("Vertical") > 0.3) {
-                moveCursor(Mathf.PI * 0.5f);
+                MoveCursor(Mathf.PI * 0.5f);
                 dirsPressed[2] = true;
                 dirsPressed[3] = false;
             }
             else if (Input.GetAxis("Vertical") < 0.3) {
-                moveCursor(Mathf.PI * 1.5f);
+                MoveCursor(Mathf.PI * 1.5f);
                 dirsPressed[3] = true;
                 dirsPressed[2] = false;
             }
@@ -62,7 +62,7 @@ public class FridgeGame : Minigame
     public override void complete() {
     }
 
-    private void moveCursor(float angle) {
+    private void MoveCursor(float angle) {
         if (ingredients.Length > 0) {
             List<Ingredient> ingList = ingredients[0];
             float squareDist = -1; // Start value is impossible
