@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class FridgeGame : Minigame
 {
-    // directions pressed. Order: up, down, left, right
+    // The container holding all of the fridge items
+    public GameObject fridgeContainer;
+
+    // directions pressed. Order: right, left, up, down
     private bool[] dirsPressed;
 
-    private Vector3 cursor;
-
     // The currently selected object within the object list
-    private int selectedIndex = 0;
+    private GameObject selectedObject;
 
     new protected void Start() {
         base.Start();
@@ -20,38 +21,40 @@ public class FridgeGame : Minigame
     new protected void Update() {
         base.Update();
         if (InUse) {
+            float hAxis = Input.GetAxis("Horizontal");
+            float vAxis = Input.GetAxis("Vertical");
             // Input checking: Check the stick/keyboard/d-pad for input
             // May later be replaced by a more robust input system
 
             // Check the horizontal axis direction
-            if (Input.GetAxis("Horizontal") > 0.3) {
+            if (hAxis > 0.3 && !dirsPressed[0]) {
                 MoveCursor(0);
                 dirsPressed[0] = true;
                 dirsPressed[1] = false;
             }
-            else if (Input.GetAxis("Horizontal") < 0.3) {
+            else if (hAxis < -0.3 && !dirsPressed[1]) {
                 MoveCursor(Mathf.PI);
-                dirsPressed[1] = true;
                 dirsPressed[0] = false;
+                dirsPressed[1] = true;
             }
-            else {
+            else if (hAxis < 0.3 && hAxis > -0.3) {
                 // Horizontal axis is inside of the deadzone
                 dirsPressed[0] = false;
-                dirsPressed[0] = false;
+                dirsPressed[1] = false;
             }
 
             // Check the vertical axis direction
-            if (Input.GetAxis("Vertical") > 0.3) {
+            if (vAxis > 0.3 && !dirsPressed[2]) {
                 MoveCursor(Mathf.PI * 0.5f);
                 dirsPressed[2] = true;
                 dirsPressed[3] = false;
             }
-            else if (Input.GetAxis("Vertical") < 0.3) {
+            else if (vAxis < -0.3 && !dirsPressed[3]) {
                 MoveCursor(Mathf.PI * 1.5f);
-                dirsPressed[3] = true;
                 dirsPressed[2] = false;
+                dirsPressed[3] = true;
             }
-            else {
+            else if (vAxis < 0.3 && vAxis > -0.3) {
                 // Vertical axis is inside of the deadzone
                 dirsPressed[2] = false;
                 dirsPressed[3] = false;
@@ -59,36 +62,73 @@ public class FridgeGame : Minigame
         }
     }
 
+    public new void enter(GameObject p) {
+        base.enter(p);
+        foreach (Transform i in fridgeContainer.transform) {
+            // just pick the first object in the list
+            SelectObject(i.gameObject);
+            break;
+        }
+    }
+
     public override void complete() {
+        foreach (Transform i in fridgeContainer.transform) {
+            // just pick the first object in the list
+            SelectObject(i.gameObject);
+            break;
+        }
     }
 
     private void MoveCursor(float angle) {
-        if (ingredients.Length > 0) {
-            List<Ingredient> ingList = ingredients[0];
-            float squareDist = -1; // Start value is impossible
-            int minIndex = -1; // The index of the object closest to the cursor
-
-            // The threshhold the dot product has to be above to be considered in the direction
-            // Set to the dot product for 2 unit vectors separated by a 45 degree angle
-            float threshhold = Vector2.Dot(new Vector2(1 / Mathf.Sqrt(2), 1 / Mathf.Sqrt(2)), new Vector2(0, 1));
-
-            Vector3 dirVec = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0); // The unit vector of the angle
-
-            foreach (Ingredient i in ingList) {
-                // Currently only considers x and y for deciding which object to go to
-                // A more flexible implementation might involve projecting the line to the camera's plane and using that angle
-                Vector3 ingPos = i.transform.position;
-                ingPos -= transform.position;
-                ingPos.z = 0;
-
-                if (Vector3.Dot(dirVec, ingPos.normalized) >= threshhold) {
-                    if (squareDist < 0 || squareDist > ingPos.sqrMagnitude) {
-                        squareDist = ingPos.sqrMagnitude;
-                        minIndex = ingList.IndexOf(i);
-                    }
-                }
-
+        if (selectedObject == null) {
+            foreach (Transform i in fridgeContainer.transform) {
+                // just pick the first object in the list
+                SelectObject(i.gameObject);
+                return;
             }
         }
+        float squareDist = -1; // Start value is impossible
+        GameObject min = null; // The index of the object closest to the cursor
+
+        // The threshhold the dot product has to be above to be considered in the direction
+        // Set to the dot product for 2 unit vectors separated by a 45 degree angle
+        float threshhold = Vector2.Dot(new Vector2(1 / Mathf.Sqrt(2), 1 / Mathf.Sqrt(2)), new Vector2(1, 0));
+
+        Vector3 dirVec = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0); // The unit vector of the angle
+
+        foreach (Transform i in fridgeContainer.transform) {
+            // Currently only considers x and y for deciding which object to go to
+            // A more flexible implementation might involve projecting the line to the camera's plane and using that angle
+            Vector3 ingPos = i.transform.position;
+            ingPos -= selectedObject.transform.position;
+            ingPos.z = 0;
+
+            Debug.Log("Checking object " + i.gameObject.name + " in vector " + dirVec
+                + "\nVector of difference: " + ingPos
+                + "\nDot Product: " + Vector3.Dot(dirVec, ingPos.normalized)
+                + "\nDifference Between Threshhold: " + (Vector3.Dot(dirVec, ingPos.normalized) - threshhold));
+
+            if (Vector3.Dot(dirVec, ingPos.normalized) >= threshhold) {
+                if (squareDist < 0 || ingPos.sqrMagnitude < squareDist) {
+                    squareDist = ingPos.sqrMagnitude;
+                    min = i.gameObject;
+                }
+            }
+        }
+        if (min != null) {
+            SelectObject(min);
+        }
+    }
+
+    private void SelectObject(GameObject obj) {
+        if (selectedObject == obj) {
+            return;
+        }
+        if (selectedObject != null) {
+            selectedObject.transform.position += new Vector3(0, 0, 0.4f);
+        }
+        obj.transform.position -= new Vector3(0, 0, 0.4f);
+
+        selectedObject = obj;
     }
 }
