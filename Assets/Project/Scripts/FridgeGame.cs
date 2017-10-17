@@ -62,15 +62,6 @@ public class FridgeGame : Minigame
         }
     }
 
-    public new void enter(GameObject p) {
-        base.enter(p);
-        foreach (Transform i in fridgeContainer.transform) {
-            // just pick the first object in the list
-            SelectObject(i.gameObject);
-            break;
-        }
-    }
-
     public override void complete() {
         foreach (Transform i in fridgeContainer.transform) {
             // just pick the first object in the list
@@ -91,22 +82,18 @@ public class FridgeGame : Minigame
         GameObject min = null; // The index of the object closest to the cursor
 
         // The threshhold the dot product has to be above to be considered in the direction
-        // Set to the dot product for 2 unit vectors separated by a 45 degree angle
-        float threshhold = Vector2.Dot(new Vector2(1 / Mathf.Sqrt(2), 1 / Mathf.Sqrt(2)), new Vector2(1, 0));
+        // Set to 1 / sqrt(2), or cos(45)
 
-        Vector3 dirVec = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0); // The unit vector of the angle
+        float threshhold = 0.70710678118f;
+
+        Vector3 dirVec = new Vector3(0, Mathf.Sin(angle), Mathf.Cos(angle)); // The unit vector of the angle
 
         foreach (Transform i in fridgeContainer.transform) {
             // Currently only considers x and y for deciding which object to go to
             // A more flexible implementation might involve projecting the line to the camera's plane and using that angle
-            Vector3 ingPos = i.transform.position;
-            ingPos -= selectedObject.transform.position;
-            ingPos.z = 0;
-
-            Debug.Log("Checking object " + i.gameObject.name + " in vector " + dirVec
-                + "\nVector of difference: " + ingPos
-                + "\nDot Product: " + Vector3.Dot(dirVec, ingPos.normalized)
-                + "\nDifference Between Threshhold: " + (Vector3.Dot(dirVec, ingPos.normalized) - threshhold));
+            Vector3 ingPos = i.transform.localPosition;
+            ingPos -= selectedObject.transform.localPosition;
+            ingPos.x = 0;
 
             if (Vector3.Dot(dirVec, ingPos.normalized) >= threshhold) {
                 if (squareDist < 0 || ingPos.sqrMagnitude < squareDist) {
@@ -125,9 +112,9 @@ public class FridgeGame : Minigame
             return;
         }
         if (selectedObject != null) {
-            selectedObject.transform.position += new Vector3(0, 0, 0.4f);
+            selectedObject.transform.localPosition -= new Vector3(0.4f, 0, 0);
         }
-        obj.transform.position -= new Vector3(0, 0, 0.4f);
+        obj.transform.localPosition += new Vector3(0.4f, 0, 0);
 
         selectedObject = obj;
     }
