@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Minigame : MonoBehaviour {
     private bool inUse = false;
 
-    protected List<Ingredient>[] ingredients; // Ingredient Storage
+    protected List<Ingredient> ingredients; // Ingredient Storage
     protected GameObject player; // Player currently using minigame
     protected Controller controller; // Control scheme for the minigame
 
@@ -15,6 +15,7 @@ public abstract class Minigame : MonoBehaviour {
     // Use this for initialization
     protected void Start () {
         viewpoint.GetComponent<Camera>().enabled = false;
+        ingredients = new List<Ingredient>();
 	}
 	
 	// Update is called once per frame
@@ -23,8 +24,11 @@ public abstract class Minigame : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.X)) {
                 exit();
             }
+            activeUpdate();
         }
     }
+
+    protected abstract void activeUpdate();
 
     /**
      * Enter
