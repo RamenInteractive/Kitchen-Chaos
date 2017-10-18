@@ -14,7 +14,7 @@ public class TicketGen : MonoBehaviour
         new Vector3(0.105f, -0.8f, -0.4f), new Vector3(0.105f, -0.8f, 0.4f), //bottom mid left, bottom mid right
         new Vector3(0.105f, -0.8f, 1.2f)};                                   //bottom far right
 
-    public float diffModifier = 0;
+    public float diffModifier = 1;
     public GameObject ticket;
     public List<TicketOrder> tickets;
 
