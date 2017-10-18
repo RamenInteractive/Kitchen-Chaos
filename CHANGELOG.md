@@ -7,6 +7,8 @@
 # Developer Changelog
 ### [0.0.9] 2017/10/18
 ==================
+#### New Features
+- Updated Ticket class to draw text
 #### Changed Features
 - Cleaned up Burger class
 
