@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
         {
             rHand.transform.parent = GameObject.Find("GameController").transform;
             rHand.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            rHand.GetComponent<Rigidbody>().detectCollisions = true;
             rHand.GetComponent<Rigidbody>().useGravity = true;
             rHand = null;
         }
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour {
             item.transform.parent = GameObject.Find("HandPosition").transform;
             item.transform.localPosition = Vector3.zero;
             this.GetComponent<Rigidbody>().useGravity = false;
+            item.GetComponent<Rigidbody>().detectCollisions = false;
             item.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             rHand = item;
         }

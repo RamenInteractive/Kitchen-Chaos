@@ -68,6 +68,7 @@ public class FlippingGame : Minigame {
                 timer1.GetComponent<TextMesh>().text = "Open";
                 flipped1 = false;
                 slot1 = false;
+                burger1.GetComponent<MeshRenderer>().enabled = false;
                 cooked++;
             }
 
@@ -93,6 +94,7 @@ public class FlippingGame : Minigame {
                 timer2.GetComponent<TextMesh>().text = "Open";
                 flipped2 = false;
                 slot2 = false;
+                burger2.GetComponent<MeshRenderer>().enabled = false;
                 cooked++;
             }
 
@@ -111,6 +113,7 @@ public class FlippingGame : Minigame {
             if (time1 < 0)
             {
                 timer1.GetComponent<TextMesh>().text = "Burnt";
+                burger1.GetComponent<MeshRenderer>().enabled = false;
                 flipped1 = false;
                 slot1 = false;
             }
@@ -129,6 +132,7 @@ public class FlippingGame : Minigame {
             if (time2 < 0f)
             {
                 timer2.GetComponent<TextMesh>().text = "Burnt";
+                burger2.GetComponent<MeshRenderer>().enabled = false;
                 flipped2 = false;
                 slot2 = false;
             }
