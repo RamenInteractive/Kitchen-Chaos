@@ -15,3 +15,11 @@
 ==================
 #### New Features
 - Added TicketGen class
+
+### [0.0.3] 2017/10/17
+==================
+#### New Features
+- Ticket Orders now create an example food object to compare to the player's completed food object
+- Created Food interface
+- Created method to compare 2 burgers
+- Created random burger generation
