@@ -145,4 +145,9 @@ public class FlippingGame : Minigame {
     {
 
     }
+
+    protected override void activeUpdate()
+    {
+
+    }
 }

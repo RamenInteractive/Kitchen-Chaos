@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -61,8 +62,12 @@ public class CuttingGame : Minigame {
         }
 
     }
-
+    
     public override void complete() {
+
+    }
+
+    protected override void activeUpdate() {
 
     }
 }
