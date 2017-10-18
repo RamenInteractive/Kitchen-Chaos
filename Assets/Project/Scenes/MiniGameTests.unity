@@ -155,12 +155,12 @@ Prefab:
     - target: {fileID: 224062678292761944, guid: 4c06ce31e51751047a920545157e5dfe,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224062678292761944, guid: 4c06ce31e51751047a920545157e5dfe,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4686035363766778, guid: 4c06ce31e51751047a920545157e5dfe, type: 2}
       propertyPath: m_RootOrder
@@ -748,7 +748,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 95be4df36eca6eb4b821dcab4acd4a1e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1341,12 +1341,12 @@ Prefab:
     - target: {fileID: 224140266646876950, guid: 760a9fecb67ed2d4390b9875be8bf3cf,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224140266646876950, guid: 760a9fecb67ed2d4390b9875be8bf3cf,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 760a9fecb67ed2d4390b9875be8bf3cf, type: 2}
