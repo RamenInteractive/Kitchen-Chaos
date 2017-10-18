@@ -14,31 +14,31 @@ public class AssemblyGame : Minigame {
     public Transform cheesePrefab;
     public Text buildText;
 
-    private string[] ingredientSlot;
-    private string[] selectedSlots;
-    private List<string> currentBuild;
+    private Burger.Ingredient[] ingredientSlot;
+    private Burger.Ingredient[] selectedSlots;
+    private List<Burger.Ingredient> currentBuild;
     private GameObject buildSpace;
 
     // Use this for initialization
     new void Start () {
         base.Start();
 
-        ingredientSlot = new string[8];
+        ingredientSlot = new Burger.Ingredient[8];
 
-        ingredientSlot[0] = "TopBun";
-        ingredientSlot[1] = "Patty";
-        ingredientSlot[2] = "BottomBun";
-        ingredientSlot[3] = "Cheese";
-        ingredientSlot[4] = "Lettuce";
-        ingredientSlot[5] = "Tomato";
-        ingredientSlot[6] = "";
-        ingredientSlot[7] = "";
+        ingredientSlot[0] = Burger.Ingredient.TopBun;
+        ingredientSlot[1] = Burger.Ingredient.Patty;
+        ingredientSlot[2] = Burger.Ingredient.BottomBun;
+        ingredientSlot[3] = Burger.Ingredient.Cheese;
+        ingredientSlot[4] = Burger.Ingredient.Lettuce;
+        ingredientSlot[5] = Burger.Ingredient.Tomato;
+        ingredientSlot[6] = (Burger.Ingredient)(-1);
+        ingredientSlot[7] = (Burger.Ingredient)(-1);
 
-        selectedSlots = new string[4];
+        selectedSlots = new Burger.Ingredient[4];
         for (int i = 0; i < selectedSlots.Length; i++)
-            selectedSlots[i] = "";
+            selectedSlots[i] = (Burger.Ingredient)(-1);
 
-        currentBuild = new List<string>();
+        currentBuild = new List<Burger.Ingredient>();
         newBuildSpace();
 	}
 	
@@ -46,7 +46,7 @@ public class AssemblyGame : Minigame {
         Destroy(buildSpace.gameObject);
         newBuildSpace();
 
-        currentBuild = new List<string>();
+        currentBuild = new List<Burger.Ingredient>();
         updateHUD();
     }
 
@@ -93,7 +93,7 @@ public class AssemblyGame : Minigame {
             HUD.transform.Find(otherPanel).transform.Find("BGPanel").GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.35f);
         } else {
             for(int x = 0; x < selectedSlots.Length; x++) {
-                selectedSlots[x] = "";
+                selectedSlots[x] = (Burger.Ingredient)(-1);
             }
             HUD.transform.Find("LeftItems").transform.Find("BGPanel").GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.35f);
             HUD.transform.Find("RightItems").transform.Find("BGPanel").GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.35f);
@@ -101,26 +101,26 @@ public class AssemblyGame : Minigame {
     }
 
     private void addIngredient(int slot) {
-        if(selectedSlots[slot] != "") {
+        if(selectedSlots[slot] != (Burger.Ingredient)(-1)) {
             currentBuild.Add(selectedSlots[slot]);
             Transform ingredient;
             switch (selectedSlots[slot]) {
-                case "Tomato":
+                case Burger.Ingredient.Tomato:
                     ingredient = Instantiate(tomatoPrefab);
                     break;
-                case "Lettuce":
+                case Burger.Ingredient.Lettuce:
                     ingredient = Instantiate(lettucePrefab);
                     break;
-                case "TopBun":
+                case Burger.Ingredient.TopBun:
                     ingredient = Instantiate(topBunPrefab);
                     break;
-                case "BottomBun":
+                case Burger.Ingredient.BottomBun:
                     ingredient = Instantiate(bottomBunPrefab);
                     break;
-                case "Patty":
+                case Burger.Ingredient.Patty:
                     ingredient = Instantiate(pattyPrefab);
                     break;
-                case "Cheese":
+                case Burger.Ingredient.Cheese:
                     ingredient = Instantiate(cheesePrefab);
                     break;
                 default:
@@ -135,11 +135,11 @@ public class AssemblyGame : Minigame {
     }
 
     private void updateHUD() {
-        string text = "Build:\n";
-        foreach(string ingredient in currentBuild) {
+        /*string text = "Build:\n";
+        foreach(Burger.Ingredient ingredient in currentBuild) {
             text += ingredient + "\n";
         }
-        buildText.text = text;
+        buildText.text = text;*/
     }
 
     private void newBuildSpace() {
