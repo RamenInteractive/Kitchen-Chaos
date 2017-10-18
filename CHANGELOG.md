@@ -5,6 +5,17 @@
 - Colt King [ColtTheKing]
 
 # Developer Changelog
+
+### [0.1.1] 2017/10/18
+==================
+#### Changed Features
+- Throwing can now be charged to throw further
+
+### [0.1.0] 2017/10/18
+==================
+#### Changed Features
+- Integrated individual modules into Alpha build
+
 ### [0.0.9] 2017/10/18
 ==================
 #### New Features
