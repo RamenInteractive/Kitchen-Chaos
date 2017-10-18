@@ -4,18 +4,18 @@ using UnityEngine;
 
 public abstract class Minigame : Interactable {
 
-    protected List<Ingredient>[] ingredients; // Ingredient Storage
+    protected List<Ingredient> ingredients; // Ingredient Storage
     protected GameObject player; // Player currently using minigame
     protected Controller controller; // Control scheme for the minigame
-    protected bool inUse = false;
 
-
+    private bool inUse = false;
     public Camera viewpoint;
     public GameObject HUD;
 
     // Use this for initialization
     protected void Start () {
         viewpoint.GetComponent<Camera>().enabled = false;
+        ingredients = new List<Ingredient>();
 	}
 	
 	// Update is called once per frame
@@ -24,8 +24,11 @@ public abstract class Minigame : Interactable {
             if (Input.GetKeyDown(KeyCode.X)) {
                 exit();
             }
+            activeUpdate();
         }
     }
+
+    protected abstract void activeUpdate();
 
     /**
      * Enter
@@ -42,6 +45,7 @@ public abstract class Minigame : Interactable {
             player.transform.Find("FirstPersonCharacter").gameObject.GetComponent<Camera>().enabled = false;
             viewpoint.GetComponent<Camera>().enabled = true;
             gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 0f;
+            GameObject.Find("CrossHair").GetComponent<CanvasGroup>().alpha = 0f;
             HUD.GetComponent<CanvasGroup>().alpha = 1f;
             player.SetActive(false);
         }
@@ -81,6 +85,7 @@ public abstract class Minigame : Interactable {
         viewpoint.GetComponent<Camera>().enabled = false;
         HUD.GetComponent<CanvasGroup>().alpha = 0f;
         gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 1f;
+        GameObject.Find("CrossHair").GetComponent<CanvasGroup>().alpha = 1f;
         player = null;
         inUse = false;
     }

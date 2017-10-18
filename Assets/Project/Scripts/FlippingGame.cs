@@ -41,64 +41,6 @@ public class FlippingGame : Minigame {
 	new void Update ()
     {
         base.Update();
-        //progressBar.GetComponent<CanvasGroup>().alpha = 1f;
-
-        if (inUse)
-        {
-            if (!slot1 && Input.GetKeyDown("q"))
-            {
-                burger1.GetComponent<MeshRenderer>().enabled = true;
-                timer1.GetComponent<TextMesh>().color = Color.green;
-                slot1 = true;
-                flipped1 = false;
-                time1 = 15f;
-            }
-
-            if (time1 < 10f && !flipped1 && Input.GetKeyDown("a"))
-            {
-                time1 = 15f;
-                flipped1 = true;
-            }
-
-            if (time1 < 10f && flipped1 && Input.GetKeyDown("a"))
-            {
-                burger1.GetComponent<MeshRenderer>().enabled = false;
-                burger1.GetComponent<MeshRenderer>().enabled = true;
-                timer1.GetComponent<TextMesh>().color = Color.green;
-                timer1.GetComponent<TextMesh>().text = "Open";
-                flipped1 = false;
-                slot1 = false;
-                burger1.GetComponent<MeshRenderer>().enabled = false;
-                cooked++;
-            }
-
-            if (!slot2 && Input.GetKeyDown("e"))
-            {
-                burger2.GetComponent<MeshRenderer>().enabled = true;
-                timer2.GetComponent<TextMesh>().color = Color.green;
-                slot2 = true;
-                time2 = 15f;
-            }
-
-            if (time2 < 10f && !flipped2 && Input.GetKeyDown("d"))
-            {
-                time2 = 15f;
-                flipped2 = true;
-            }
-
-            if (time2 < 10f && flipped2 && Input.GetKeyDown("d"))
-            {
-                burger2.GetComponent<MeshRenderer>().enabled = false;
-                burger2.GetComponent<MeshRenderer>().enabled = true;
-                timer2.GetComponent<TextMesh>().color = Color.green;
-                timer2.GetComponent<TextMesh>().text = "Open";
-                flipped2 = false;
-                slot2 = false;
-                burger2.GetComponent<MeshRenderer>().enabled = false;
-                cooked++;
-            }
-
-        }
 
         if (slot1)
         {
@@ -144,5 +86,55 @@ public class FlippingGame : Minigame {
     public override void complete()
     {
 
+    }
+
+    protected override void activeUpdate()
+    {
+        if (!slot1 && Input.GetKeyDown("q")) {
+            burger1.GetComponent<MeshRenderer>().enabled = true;
+            timer1.GetComponent<TextMesh>().color = Color.green;
+            slot1 = true;
+            flipped1 = false;
+            time1 = 15f;
+        }
+
+        if (time1 < 10f && !flipped1 && Input.GetKeyDown("a")) {
+            time1 = 15f;
+            flipped1 = true;
+        }
+
+        if (time1 < 10f && flipped1 && Input.GetKeyDown("a")) {
+            burger1.GetComponent<MeshRenderer>().enabled = false;
+            burger1.GetComponent<MeshRenderer>().enabled = true;
+            timer1.GetComponent<TextMesh>().color = Color.green;
+            timer1.GetComponent<TextMesh>().text = "Open";
+            flipped1 = false;
+            slot1 = false;
+            burger1.GetComponent<MeshRenderer>().enabled = false;
+            cooked++;
+        }
+
+        if (!slot2 && Input.GetKeyDown("e")) {
+            burger2.GetComponent<MeshRenderer>().enabled = true;
+            timer2.GetComponent<TextMesh>().color = Color.green;
+            slot2 = true;
+            time2 = 15f;
+        }
+
+        if (time2 < 10f && !flipped2 && Input.GetKeyDown("d")) {
+            time2 = 15f;
+            flipped2 = true;
+        }
+
+        if (time2 < 10f && flipped2 && Input.GetKeyDown("d")) {
+            burger2.GetComponent<MeshRenderer>().enabled = false;
+            burger2.GetComponent<MeshRenderer>().enabled = true;
+            timer2.GetComponent<TextMesh>().color = Color.green;
+            timer2.GetComponent<TextMesh>().text = "Open";
+            flipped2 = false;
+            slot2 = false;
+            burger2.GetComponent<MeshRenderer>().enabled = false;
+            cooked++;
+        }
     }
 }
