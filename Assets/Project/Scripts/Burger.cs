@@ -15,11 +15,12 @@ public class Burger : IFood
     //Random constructor
     public Burger(float diffModifier)
     {
-        int toppings = (int)(Random.value * (int)(diffModifier * 0.1 + MAX_TOPPINGS - 1) + 1);
+        ingredients = new List<Ingredient>();
+        //int toppings = (int)(Random.value * (int)(diffModifier * 0.1 + MAX_TOPPINGS - 1) + 1);
+        int toppings = Random.Range(1, (int)(MAX_TOPPINGS * diffModifier));
         int ingredientCount = System.Enum.GetNames(typeof(Ingredient)).Length;
 
         ingredients.Add(Ingredient.TopBun);
-        ingredients.Add(Ingredient.BottomBun);
 
         for(int i = 0; i < toppings; i++)
         {
@@ -28,6 +29,8 @@ public class Burger : IFood
                 if (rand < ingFreq[j])
                     ingredients.Add((Ingredient)j);
         }
+
+        ingredients.Add(Ingredient.BottomBun);
 
         generateCompareVal();
     }
@@ -70,6 +73,16 @@ public class Burger : IFood
         if (temp.Count == 0)
             return true;
         return false;*/
+    }
+
+    public string ingredientTicketList() {
+        string output = "";
+
+        foreach(Ingredient ing in ingredients) {
+            output += "- " + ing + "\n";
+        }
+
+        return output;
     }
 
     private void generateCompareVal() {
