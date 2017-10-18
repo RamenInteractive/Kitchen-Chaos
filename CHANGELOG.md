@@ -5,6 +5,11 @@
 - Colt King [ColtTheKing]
 
 # Developer Changelog
+### [0.0.9] 2017/10/18
+==================
+#### Changed Features
+- Cleaned up Burger class
+
 ### [0.0.8] 2017/10/17
 ==================
 #### Changed Features

@@ -32,6 +32,7 @@ public class TicketGen : MonoBehaviour
             GameObject instTicket = Instantiate(ticket);
             instTicket.transform.parent = transform;
             instTicket.transform.localPosition = positions[tickets.Count];
+            instTicket.transform.localRotation = Quaternion.identity;
             tickets.Add(NewOrder(instTicket));
         }
     }
