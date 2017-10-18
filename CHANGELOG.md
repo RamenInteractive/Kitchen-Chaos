@@ -10,3 +10,13 @@
 #### New Features
 - Added abstract Minigame class
 - Connected InteractingRay, Interactable, and MiniGame classes
+
+### [0.0.2] 2017/10/11
+==================
+#### New Features
+- Added TicketGen class
+
+### [0.0.3] 2017/10/17
+==================
+#### New Features
+- Added basic fridge mechanics
