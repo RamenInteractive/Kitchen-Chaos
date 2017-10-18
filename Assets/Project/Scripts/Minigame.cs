@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Minigame : MonoBehaviour {
-    private bool inUse = false;
-    public bool InUse {
-        get {
-            return inUse;
-        }
-    }
+public abstract class Minigame : Interactable {
 
     protected List<Ingredient> ingredients; // Ingredient Storage
     protected GameObject player; // Player currently using minigame
     protected Controller controller; // Control scheme for the minigame
+    protected bool inUse = false;
+
 
     public Camera viewpoint;
     public GameObject HUD;
@@ -93,5 +89,10 @@ public abstract class Minigame : MonoBehaviour {
         GameObject.Find("CrossHair").GetComponent<CanvasGroup>().alpha = 1f;
         player = null;
         inUse = false;
+    }
+
+    public override void interact(GameObject caller)
+    {
+        enter(caller);
     }
 }
