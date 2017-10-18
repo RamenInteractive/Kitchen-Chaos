@@ -10,7 +10,7 @@ public class Burger : IFood
     private List<int> ingredients;
 
     //Random constructor
-    public Burger(int diffModifier)
+    public Burger(float diffModifier)
     {
         int toppings = (int)(Random.value * (int)(diffModifier * 0.1 + 9) + 1);
 
