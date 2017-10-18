@@ -17,9 +17,7 @@ public class Item : Interactable {
 
     public override void interact(GameObject caller)
     {
-        try {
-            caller.GetComponent<Player>().pickUp(this.gameObject);
-        } catch (MissingReferenceException) { }
+        caller.GetComponent<Player>().pickUp(this.gameObject);
     }
 }
 

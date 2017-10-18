@@ -582,6 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2916377c5b6c4b4987cee3c06534d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HoverHUD: {fileID: 0}
   viewpoint: {fileID: 20518265857966666}
   HUD: {fileID: 0}
   counter: {fileID: 0}

@@ -5,4 +5,6 @@ using UnityEngine;
 public interface IFood
 {
     bool Compare(GameObject food);
+
+    string ingredientTicketList();
 }
