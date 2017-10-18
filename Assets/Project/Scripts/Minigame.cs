@@ -4,6 +4,11 @@ using UnityEngine;
 
 public abstract class Minigame : MonoBehaviour {
     private bool inUse = false;
+    public bool InUse {
+        get {
+            return inUse;
+        }
+    }
 
     protected List<Ingredient>[] ingredients; // Ingredient Storage
     protected GameObject player; // Player currently using minigame
