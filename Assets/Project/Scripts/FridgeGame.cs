@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,47 +19,40 @@ public class FridgeGame : Minigame
         dirsPressed = new bool[4];
     }
 
-    new protected void Update() {
-        base.Update();
-        if (InUse) {
-            float hAxis = Input.GetAxis("Horizontal");
-            float vAxis = Input.GetAxis("Vertical");
-            // Input checking: Check the stick/keyboard/d-pad for input
-            // May later be replaced by a more robust input system
+    protected override void activeUpdate() {
+        float hAxis = Input.GetAxis("Horizontal");
+        float vAxis = Input.GetAxis("Vertical");
+        // Input checking: Check the stick/keyboard/d-pad for input
+        // May later be replaced by a more robust input system
 
-            // Check the horizontal axis direction
-            if (hAxis > 0.3 && !dirsPressed[0]) {
-                MoveCursor(0);
-                dirsPressed[0] = true;
-                dirsPressed[1] = false;
-            }
-            else if (hAxis < -0.3 && !dirsPressed[1]) {
-                MoveCursor(Mathf.PI);
-                dirsPressed[0] = false;
-                dirsPressed[1] = true;
-            }
-            else if (hAxis < 0.3 && hAxis > -0.3) {
-                // Horizontal axis is inside of the deadzone
-                dirsPressed[0] = false;
-                dirsPressed[1] = false;
-            }
+        // Check the horizontal axis direction
+        if (hAxis > 0.3 && !dirsPressed[0]) {
+            MoveCursor(0);
+            dirsPressed[0] = true;
+            dirsPressed[1] = false;
+        } else if (hAxis < -0.3 && !dirsPressed[1]) {
+            MoveCursor(Mathf.PI);
+            dirsPressed[0] = false;
+            dirsPressed[1] = true;
+        } else if (hAxis < 0.3 && hAxis > -0.3) {
+            // Horizontal axis is inside of the deadzone
+            dirsPressed[0] = false;
+            dirsPressed[1] = false;
+        }
 
-            // Check the vertical axis direction
-            if (vAxis > 0.3 && !dirsPressed[2]) {
-                MoveCursor(Mathf.PI * 0.5f);
-                dirsPressed[2] = true;
-                dirsPressed[3] = false;
-            }
-            else if (vAxis < -0.3 && !dirsPressed[3]) {
-                MoveCursor(Mathf.PI * 1.5f);
-                dirsPressed[2] = false;
-                dirsPressed[3] = true;
-            }
-            else if (vAxis < 0.3 && vAxis > -0.3) {
-                // Vertical axis is inside of the deadzone
-                dirsPressed[2] = false;
-                dirsPressed[3] = false;
-            }
+        // Check the vertical axis direction
+        if (vAxis > 0.3 && !dirsPressed[2]) {
+            MoveCursor(Mathf.PI * 0.5f);
+            dirsPressed[2] = true;
+            dirsPressed[3] = false;
+        } else if (vAxis < -0.3 && !dirsPressed[3]) {
+            MoveCursor(Mathf.PI * 1.5f);
+            dirsPressed[2] = false;
+            dirsPressed[3] = true;
+        } else if (vAxis < 0.3 && vAxis > -0.3) {
+            // Vertical axis is inside of the deadzone
+            dirsPressed[2] = false;
+            dirsPressed[3] = false;
         }
     }
 
