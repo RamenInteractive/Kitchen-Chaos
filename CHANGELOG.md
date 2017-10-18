@@ -5,12 +5,17 @@
 - Colt King [ColtTheKing]
 
 # Developer Changelog
-### [0.0.5] 2017/10/08
+### [0.0.6] 2017/10/08
 ==================
 ### New Features
 - Cutting Minigame basic functionality
 - Conveyor belt added
 - Item pickup mechanics
+
+### [0.0.5] 2017/10/17
+=================
+#### New Features
+- Added final kitchen scene
 
 ### [0.0.4] 2017/10/17
 ==================
