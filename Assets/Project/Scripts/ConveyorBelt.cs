@@ -5,7 +5,6 @@ using UnityEngine;
 public class ConveyorBelt : MonoBehaviour {
 
     public float speed = 3.0f;
-    public GameObject belt;
 
     // Use this for initialization
     void Start() {
@@ -23,6 +22,6 @@ public class ConveyorBelt : MonoBehaviour {
             return;
 
         float conveyorVelocity = speed * Time.deltaTime;
-        collision.gameObject.transform.Translate(0, 0, conveyorVelocity, belt.transform);
+        collision.gameObject.transform.Translate(0, 0, conveyorVelocity, this.transform);
     }
 }
