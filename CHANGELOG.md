@@ -5,6 +5,11 @@
 - Colt King [ColtTheKing]
 
 # Developer Changelog
+### [0.0.8] 2017/10/17
+==================
+#### Changed Features
+- Updated Minigames to use new methods of Interactable class and activeUpdate method
+
 ### [0.0.7] 2017/10/17
 ==================
 #### New Features
@@ -15,7 +20,7 @@
 
 ### [0.0.6] 2017/10/17
 ==================
-### New Features
+#### New Features
 - Cutting Minigame basic functionality
 - Conveyor belt added
 - Item pickup mechanics
