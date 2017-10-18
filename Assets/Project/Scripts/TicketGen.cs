@@ -16,37 +16,42 @@ public class TicketGen : MonoBehaviour
 
     public float diffModifier = 0;
     public GameObject ticket;
-    public ArrayList tickets;
+    public List<TicketOrder> tickets;
 
 	// Use this for initialization
 	void Start ()
     {
-        tickets = new ArrayList();
+        tickets = new List<TicketOrder>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown("c") && tickets.Count < NUM_TICKETS)
+        if (Input.GetKeyDown("c"))
         {
-            GameObject instTicket = Instantiate(ticket);
-            instTicket.transform.parent = transform;
-            instTicket.transform.localPosition = positions[tickets.Count];
-            tickets.Add(NewOrder(instTicket));
+            newOrder();
         }
     }
 
-    TicketOrder NewOrder(GameObject ticket)
+    public void newOrder()
     {
-        TicketOrder order = null;
-        int randFood = (int)Random.value * (FOOD_TYPES - 1);
+        if(tickets.Count < NUM_TICKETS) {
+            GameObject instTicket = Instantiate(ticket);
+            instTicket.transform.parent = transform;
+            instTicket.transform.localPosition = positions[tickets.Count];
+            instTicket.transform.localRotation = Quaternion.identity;
 
-        switch (randFood)
-        {
-            case 0: order = new TicketOrder(ticket, new Burger(diffModifier));
+            TicketOrder order = null;
+            int randFood = Random.Range(0, FOOD_TYPES);
+
+            switch (randFood) {
+                case 0:
+                    order = new TicketOrder(instTicket, new Burger(diffModifier), tickets.Count + 1);
                     break;
+            }
+
+            if (order != null)
+                tickets.Add(order);
         }
-        
-        return order;
     }
 }

@@ -121,7 +121,6 @@ GameObject:
   - component: {fileID: 33220896869707272}
   - component: {fileID: 65811704549286648}
   - component: {fileID: 23679300699318018}
-  - component: {fileID: 114879162371411362}
   - component: {fileID: 114858232210677952}
   m_Layer: 0
   m_Name: Interact
@@ -598,6 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fded8cb91062ea4c8552817ac3d2a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HoverHUD: {fileID: 0}
   viewpoint: {fileID: 20816667551553288}
   HUD: {fileID: 0}
   counter: {fileID: 0}
@@ -606,18 +606,6 @@ MonoBehaviour:
   cut: {fileID: 1471093219977016}
   chopped: {fileID: 1731803564617968}
   chop: 0
---- !u!114 &114879162371411362
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1677351175100022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db06e513b448e3441ae141933043f18f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HoverHUD: {fileID: 0}
 --- !u!124 &124306641461766860
 Behaviour:
   m_ObjectHideFlags: 1

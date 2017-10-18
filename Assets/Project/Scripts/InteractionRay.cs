@@ -25,10 +25,10 @@ public class InteractionRay : MonoBehaviour
         }
 
         if(objectHit != hover) {
-            if (hover != null) {
+            if (hover != null && hover.HoverHUD != null) {
                 hover.HoverHUD.GetComponent<CanvasGroup>().alpha = 0f;
             }
-            if (objectHit != null) {
+            if (objectHit != null && objectHit.HoverHUD != null) {
                 objectHit.HoverHUD.GetComponent<CanvasGroup>().alpha = 1f;
             }
             hover = objectHit;

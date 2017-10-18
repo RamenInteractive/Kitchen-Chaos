@@ -4,39 +4,41 @@ using UnityEngine;
 
 public class Burger : IFood
 {
-    public static float[] ingFreq = { 0.0f, 0.1f, 0.4f, 0.6f, 0.8f, 1.0f};
-    public enum Ingredient { TopBun, BottomBun, Burger, Cheese, Tomato, Lettuce };
+    public static int MAX_TOPPINGS = 10;
 
-    private List<int> ingredients;
+    public static float[] ingFreq = { 0.0f, 0.1f, 0.4f, 0.6f, 0.8f, 1.0f};
+    public enum Ingredient { TopBun, BottomBun, Patty, Cheese, Tomato, Lettuce };
+    public long compareVal = 0;
+
+    private List<Ingredient> ingredients;
 
     //Random constructor
     public Burger(float diffModifier)
     {
-        int toppings = (int)(Random.value * (int)(diffModifier * 0.1 + 9) + 1);
+        ingredients = new List<Ingredient>();
+        //int toppings = (int)(Random.value * (int)(diffModifier * 0.1 + MAX_TOPPINGS - 1) + 1);
+        int toppings = Random.Range(1, (int)(MAX_TOPPINGS * diffModifier));
+        int ingredientCount = System.Enum.GetNames(typeof(Ingredient)).Length;
 
-        ingredients.Add((int)Ingredient.TopBun);
-        ingredients.Add((int)Ingredient.BottomBun);
+        ingredients.Add(Ingredient.TopBun);
 
         for(int i = 0; i < toppings; i++)
         {
             float rand = Random.value;
-
-            if (rand >= ingFreq[0] && rand <= ingFreq[1])
-                ingredients.Add((int)Ingredient.BottomBun);
-            else if (rand >= ingFreq[1] && rand <= ingFreq[2])
-                ingredients.Add((int)Ingredient.Burger);
-            else if (rand >= ingFreq[2] && rand <= ingFreq[3])
-                ingredients.Add((int)Ingredient.Cheese);
-            else if (rand >= ingFreq[3] && rand <= ingFreq[4])
-                ingredients.Add((int)Ingredient.Tomato);
-            else if (rand >= ingFreq[4] && rand <= ingFreq[5])
-                ingredients.Add((int)Ingredient.Lettuce);
+            for (int j = 0; j < ingredientCount; j++)
+                if (rand < ingFreq[j])
+                    ingredients.Add((Ingredient)j);
         }
+
+        ingredients.Add(Ingredient.BottomBun);
+
+        generateCompareVal();
     }
 	
-    public Burger(List<int> i)
+    public Burger(List<Ingredient> i)
     {
-        ingredients = new List<int>(i);
+        ingredients = new List<Ingredient>(i);
+        generateCompareVal();
     }
 
     public bool Compare(GameObject food)
@@ -46,10 +48,12 @@ public class Burger : IFood
         if (b == null)
             return false;
 
-        List<int> temp = new List<int>(b.ingredients);
+        return (compareVal == b.compareVal);
+
+        /*List<Ingredient> temp = new List<Ingredient>(b.ingredients);
 
         //for each ingredient in this burger find a match in temp and remove it
-        foreach(int f in ingredients)
+        foreach(Ingredient f in ingredients)
         {
             bool found = false;
             for(int i = 0; i < temp.Count && !found; i++)
@@ -68,6 +72,22 @@ public class Burger : IFood
         //if there was an unremoved ingredient in them, the burgers are not the same
         if (temp.Count == 0)
             return true;
-        return false;
+        return false;*/
+    }
+
+    public string ingredientTicketList() {
+        string output = "";
+
+        foreach(Ingredient ing in ingredients) {
+            output += "- " + ing + "\n";
+        }
+
+        return output;
+    }
+
+    private void generateCompareVal() {
+        compareVal = 0;
+        for(int i = 0; i < ingredients.Count; i++)
+            compareVal += (long)System.Math.Pow(MAX_TOPPINGS, i);
     }
 }
