@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Minigame : MonoBehaviour {
+public abstract class Minigame : Interactable {
 
     protected List<Ingredient>[] ingredients; // Ingredient Storage
     protected GameObject player; // Player currently using minigame
@@ -83,5 +83,10 @@ public abstract class Minigame : MonoBehaviour {
         gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 1f;
         player = null;
         inUse = false;
+    }
+
+    public override void interact(GameObject caller)
+    {
+        enter(caller);
     }
 }
