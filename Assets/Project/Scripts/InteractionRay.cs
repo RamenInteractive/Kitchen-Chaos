@@ -1,17 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InteractionRay : MonoBehaviour
 {
     public float length = 3f;
 
     private Interactable hover;
+    public static bool touching;
 
 	// Use this for initialization
 	void Start ()
     {
         hover = null;
+        touching = false;
 	}
 	
 	// Update is called once per frame
@@ -34,10 +34,11 @@ public class InteractionRay : MonoBehaviour
                 objectHit.HoverHUD.GetComponent<CanvasGroup>().alpha = 1f;
             }
             hover = objectHit;
-        }
+            touching = true;
+        } 
 
         if(Input.GetMouseButtonDown(0) && hover != null) {
-            hover.gameObject.GetComponent<Minigame>().enter(gameObject.transform.parent.gameObject);
+            hover.interact(gameObject.transform.parent.gameObject);
         }
     }
 }
