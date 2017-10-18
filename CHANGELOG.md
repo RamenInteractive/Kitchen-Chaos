@@ -5,7 +5,15 @@
 - Colt King [ColtTheKing]
 
 # Developer Changelog
-### [0.0.6] 2017/10/08
+### [0.0.7] 2017/10/17
+==================
+#### New Features
+- Orders now create an example food object to compare to the player's completed food object
+- Created Food interface
+- Created method to compare 2 burgers
+- Created random burger generation
+
+### [0.0.6] 2017/10/17
 ==================
 ### New Features
 - Cutting Minigame basic functionality
