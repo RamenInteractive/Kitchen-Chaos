@@ -6,6 +6,10 @@ public class Player : MonoBehaviour {
     public Camera pov;
     public GameObject lHand, rHand;
     public float dropForce = 1.0f;
+    private float charge = -0.3f;
+    private bool charging = false;
+
+    float initFoV;
 
     public void dropItem()
     {
@@ -15,8 +19,8 @@ public class Player : MonoBehaviour {
             rHand.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             rHand.GetComponent<Rigidbody>().detectCollisions = true;
             rHand.GetComponent<Rigidbody>().useGravity = true;
-            rHand.transform.position = this.transform.position + this.transform.forward;
-            rHand.GetComponent<Rigidbody>().AddForce((transform.forward + transform.up) * dropForce);
+            rHand.transform.position = this.pov.transform.position + this.pov.transform.forward;
+            rHand.GetComponent<Rigidbody>().AddForce((pov.transform.forward) * dropForce * (charge + 1));
             rHand = null;
         }
     }
@@ -34,11 +38,34 @@ public class Player : MonoBehaviour {
         }
     }
 
+    private void Start()
+    {
+        initFoV = pov.fieldOfView;
+    }
+
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q) && charge < 10f)
         {
+            charging = true;
+            charge += 2.25f * Time.deltaTime;
+            if (charge > 4.5f)
+            {
+                charge = 4.5f;
+            }
+            float val = charge < 0 ? 0 : charge;
+            pov.fieldOfView = initFoV + (val / (val + 0.35f)) * 13;
+        }
+        else if (charging)
+        {
+            charging = false;
+            if (charge < 0)
+            {
+                charge = 0;
+            }
             dropItem();
+            charge = -0.3f;
+            pov.fieldOfView = initFoV;
         }
     }
 }
