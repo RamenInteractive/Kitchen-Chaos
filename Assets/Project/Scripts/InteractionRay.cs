@@ -2,7 +2,7 @@
 
 public class InteractionRay : MonoBehaviour
 {
-    public float length = 3f;
+    public float length = 4f;
 
     private Interactable hover;
 
