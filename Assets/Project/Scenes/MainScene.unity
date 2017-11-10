@@ -1640,7 +1640,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 760a9fecb67ed2d4390b9875be8bf3cf, type: 2}
   m_IsPrefabParent: 0
->>>>>>> 03708e1cdfc5d505cf48458a0fd602f86a2ad362
 --- !u!1 &1504266226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,7 +1852,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1571905113}
-<<<<<<< HEAD
 --- !u!1 &1629264572
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,13 +1926,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1629264572}
-=======
 --- !u!4 &1615607051 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4488147590366640, guid: b4f7a802b0538f34ea502fbc9bbedbf9,
     type: 2}
   m_PrefabInternal: {fileID: 1350544464}
->>>>>>> 03708e1cdfc5d505cf48458a0fd602f86a2ad362
 --- !u!1 &1759462347
 GameObject:
   m_ObjectHideFlags: 0
