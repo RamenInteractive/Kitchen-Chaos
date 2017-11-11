@@ -6,6 +6,15 @@
 
 # Developer Changelog
 
+### [0.1.2] 2017/11/10
+==================
+#### New Features
+- Ingredient System
+- Prefabs for Burger Ingredients
+- Hover over them and click to pick them up
+- Keeps track of cooked patties and chopped vegetables
+- Inside item script
+
 ### [0.1.1] 2017/10/18
 ==================
 #### Changed Features
