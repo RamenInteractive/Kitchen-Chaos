@@ -11,6 +11,7 @@ public abstract class Minigame : Interactable {
     private bool inUse = false;
     public Camera viewpoint;
     public GameObject HUD;
+    public static GameObject holding;
 
     // Use this for initialization
     protected void Start () {
@@ -47,6 +48,8 @@ public abstract class Minigame : Interactable {
             gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 0f;
             GameObject.Find("CrossHair").GetComponent<CanvasGroup>().alpha = 0f;
             HUD.GetComponent<CanvasGroup>().alpha = 1f;
+            holding = Player.rHand;
+            Debug.Log("being held" + holding);
             player.SetActive(false);
         }
     }
@@ -87,6 +90,7 @@ public abstract class Minigame : Interactable {
         gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 1f;
         GameObject.Find("CrossHair").GetComponent<CanvasGroup>().alpha = 1f;
         player = null;
+        holding = null;
         inUse = false;
     }
 

@@ -12,6 +12,7 @@ public class CuttingGame : Minigame {
     public GameObject cut;
     public GameObject chopped;
     public int chop;
+    private bool ingredientUse;
 
     // Use this for initialization
     new void Start () {
@@ -22,36 +23,42 @@ public class CuttingGame : Minigame {
         progressBar.value = 0;
     }
 
-    
     public override void complete() {
 
     }
 
     protected override void activeUpdate() {
-        if (Input.GetKeyDown("space")) {
-            progressBar.value = progressBar.value + .15f;
-        }
+        if (holding.name == "UncutTomato" || holding.name == "UncutLettuce")
+        {
+            if (Input.GetKeyDown("space"))
+            {
+                progressBar.value = progressBar.value + .15f;
+            }
 
-        if (progressBar.value >= .25f) {
-            uncut.GetComponent<MeshRenderer>().enabled = false;
-            cut.GetComponent<MeshRenderer>().enabled = true;
-            chopped.GetComponent<MeshRenderer>().enabled = false;
-        }
+            if (progressBar.value >= .25f)
+            {
+                uncut.GetComponent<MeshRenderer>().enabled = false;
+                cut.GetComponent<MeshRenderer>().enabled = true;
+                chopped.GetComponent<MeshRenderer>().enabled = false;
+            }
 
-        if (progressBar.value >= .60f) {
-            uncut.GetComponent<MeshRenderer>().enabled = false;
-            cut.GetComponent<MeshRenderer>().enabled = false;
-            chopped.GetComponent<MeshRenderer>().enabled = true;
-        }
+            if (progressBar.value >= .60f)
+            {
+                uncut.GetComponent<MeshRenderer>().enabled = false;
+                cut.GetComponent<MeshRenderer>().enabled = false;
+                chopped.GetComponent<MeshRenderer>().enabled = true;
+            }
 
-        if (progressBar.value == 1) {
-            uncut.GetComponent<MeshRenderer>().enabled = true;
-            cut.GetComponent<MeshRenderer>().enabled = false;
-            chopped.GetComponent<MeshRenderer>().enabled = false;
-            chop++;
-            counter.text = chop.ToString();
-            progressBar.value = 0;
+            if (progressBar.value == 1)
+            {
+                uncut.GetComponent<MeshRenderer>().enabled = true;
+                cut.GetComponent<MeshRenderer>().enabled = false;
+                chopped.GetComponent<MeshRenderer>().enabled = false;
+                chop++;
+                counter.text = chop.ToString();
+                progressBar.value = 0;
 
+            }
         }
     }
 }
