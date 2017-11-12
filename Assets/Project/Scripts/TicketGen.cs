@@ -17,6 +17,7 @@ public class TicketGen : MonoBehaviour
     public float diffModifier = 1;
     public GameObject ticket;
     public TicketOrder[] tickets;
+    private int tixSoFar;
 
 	// Use this for initialization
 	void Start ()
@@ -50,7 +51,7 @@ public class TicketGen : MonoBehaviour
             switch (randFood)
             {
                 case 0:
-                    order = new TicketOrder(instTicket, new Burger(diffModifier), i + 1);
+                    order = new TicketOrder(instTicket, new Burger(diffModifier), ++tixSoFar);
                     break;
             }
 
