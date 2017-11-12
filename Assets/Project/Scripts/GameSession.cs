@@ -23,26 +23,30 @@ public class GameSession : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         dayStartTime = Time.time;
+        StartCoroutine("startDay");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        dayTime = (Time.time - dayStartTime) / 360;
+        dayTime = (Time.time - dayStartTime) / 360f;
 	}
 
     private IEnumerator endDay() {
         daysCleared++;
         setDisplayText("Day " + daysCleared + " completed!\nScore: " + score);
-        yield return new WaitForSeconds(4f);
 
         difficulty += 0.05f;
         if (difficulty >= 1f) {
             difficulty = 1f;
         }
+
+        yield return new WaitForSeconds(4f);
+
+        StartCoroutine("startDay");
     }
 
     private IEnumerator finishOrder() {
-        score += Mathf.FloorToInt(100 + 1000 * difficulty * difficultyMod);
+        score += Mathf.FloorToInt(100 + 1000 * difficulty * difficultyMod * (daysCleared + 1));
         orderCompletionText.text = "Order complete!";
         yield return new WaitForSeconds(3f);
         orderCompletionText.text = "";
@@ -74,7 +78,7 @@ public class GameSession : MonoBehaviour {
             else if (dayTime > 0.7 && dayTime < 0.9) {
                 difficultyMod = 1.475f;
             }
-            yield return new WaitForSeconds(Random.Range(10, 30 + 80 * (1 - difficulty * difficultyMod)));
+            yield return new WaitForSeconds(Random.Range(10, 10 + 20 * (1 - difficulty * difficultyMod)));
             spawnOrder();
         }
         endDay();
