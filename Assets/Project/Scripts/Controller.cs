@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller
+public class Controller : MonoBehaviour
 {
-    Dictionary<string, string> buttons;
-    Dictionary<string, string> axes;
+    protected Dictionary<string, string> buttons;
+    protected Dictionary<string, string> axes;
     
     public bool GetButton(string name) {
         if (buttons.ContainsKey(name)) {
