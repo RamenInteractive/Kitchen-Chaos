@@ -6,15 +6,25 @@
 
 # Developer Changelog
 
-### [0.1.1] 2017/10/18
+### [0.1.1] 2017/11/10
 ==================
 #### Changed Features
-- Throwing can now be charged to throw further
+- Ticket board keeps track of orders slightly differently to allow easier management
+
+### [0.1.1] 2017/11/10
+==================
+#### New Features
+- Ingredient System
+- Prefabs for Burger Ingredients
+- Hover over them and click to pick them up
+- Keeps track of cooked patties and chopped vegetables
+- Inside item script
 
 ### [0.1.0] 2017/10/18
 ==================
 #### Changed Features
 - Integrated individual modules into Alpha build
+- Throwing can now be charged to throw further
 
 ### [0.0.9] 2017/10/18
 ==================
