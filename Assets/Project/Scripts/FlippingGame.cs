@@ -95,8 +95,9 @@ public class FlippingGame : Minigame {
     {
         if (holding.name == "UncookedPatty")
         {
-            if (!slot1)
+            if (!slot1 && holding.name == "UncookedPatty")
             {
+                holding = null;
                 burger1.GetComponent<MeshRenderer>().enabled = true;
                 timer1.GetComponent<TextMesh>().color = Color.green;
                 slot1 = true;
@@ -145,8 +146,8 @@ public class FlippingGame : Minigame {
                 timer2.GetComponent<TextMesh>().text = "Open";
                 flipped2 = false;
                 slot2 = false;
+                holding = Instantiate(pattyPrefab, completedTransform2);
                 burger2.GetComponent<MeshRenderer>().enabled = false;
-                Instantiate(pattyPrefab, completedTransform2);
                 cooked++;
             }
         }

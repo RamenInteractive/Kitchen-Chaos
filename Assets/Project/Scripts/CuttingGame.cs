@@ -33,6 +33,7 @@ public class CuttingGame : Minigame {
     protected override void activeUpdate() {
         if (holding.name == "UncutTomato" || holding.name == "UncutLettuce")
         {
+            base.interact(this.gameObject);
             if (Input.GetKeyDown("space"))
             {
                 progressBar.value = progressBar.value + .15f;
@@ -83,6 +84,14 @@ public class CuttingGame : Minigame {
                 progressBar.value = 0;
 
             }
+        } else if (holding == null)
+        {
+            interact(holding);
         }
+    }
+
+    public override void interact(GameObject obj)
+    {
+        HoverHUD.GetComponentInChildren<Text>().text = "Pick up ingredient";
     }
 }
