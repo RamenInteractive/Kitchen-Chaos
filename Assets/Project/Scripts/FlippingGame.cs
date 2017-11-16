@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FlippingGame : Minigame { 
+public class FlippingGame : Minigame {
 
     public Text counter;
     public GameObject burger1;
@@ -20,6 +20,9 @@ public class FlippingGame : Minigame {
     private static float time2;
 
     public int cooked;
+    public GameObject pattyPrefab;
+    public Transform completedTransform1;
+    public Transform completedTransform2;
 
     // Use this for initialization
     new void Start () {
@@ -90,51 +93,62 @@ public class FlippingGame : Minigame {
 
     protected override void activeUpdate()
     {
-        if (!slot1 && Input.GetKeyDown("q")) {
-            burger1.GetComponent<MeshRenderer>().enabled = true;
-            timer1.GetComponent<TextMesh>().color = Color.green;
-            slot1 = true;
-            flipped1 = false;
-            time1 = 15f;
-        }
+        if (holding.name == "UncookedPatty")
+        {
+            if (!slot1)
+            {
+                burger1.GetComponent<MeshRenderer>().enabled = true;
+                timer1.GetComponent<TextMesh>().color = Color.green;
+                slot1 = true;
+                flipped1 = false;
+                time1 = 15f;
+            }
 
-        if (time1 < 10f && !flipped1 && Input.GetKeyDown("a")) {
-            time1 = 15f;
-            flipped1 = true;
-        }
+            if (time1 < 10f && !flipped1 && Input.GetKeyDown("a"))
+            {
+                time1 = 15f;
+                flipped1 = true;
+            }
 
-        if (time1 < 10f && flipped1 && Input.GetKeyDown("a")) {
-            burger1.GetComponent<MeshRenderer>().enabled = false;
-            burger1.GetComponent<MeshRenderer>().enabled = true;
-            timer1.GetComponent<TextMesh>().color = Color.green;
-            timer1.GetComponent<TextMesh>().text = "Open";
-            flipped1 = false;
-            slot1 = false;
-            burger1.GetComponent<MeshRenderer>().enabled = false;
-            cooked++;
-        }
+            if (time1 < 10f && flipped1 && Input.GetKeyDown("a"))
+            {
+                burger1.GetComponent<MeshRenderer>().enabled = false;
+                burger1.GetComponent<MeshRenderer>().enabled = true;
+                timer1.GetComponent<TextMesh>().color = Color.green;
+                timer1.GetComponent<TextMesh>().text = "Open";
+                flipped1 = false;
+                slot1 = false;
+                burger1.GetComponent<MeshRenderer>().enabled = false;
+                Instantiate(pattyPrefab, completedTransform1);
+                cooked++;
+            }
 
-        if (!slot2 && Input.GetKeyDown("e")) {
-            burger2.GetComponent<MeshRenderer>().enabled = true;
-            timer2.GetComponent<TextMesh>().color = Color.green;
-            slot2 = true;
-            time2 = 15f;
-        }
+            if (slot1 && !slot2)
+            {
+                burger2.GetComponent<MeshRenderer>().enabled = true;
+                timer2.GetComponent<TextMesh>().color = Color.green;
+                slot2 = true;
+                time2 = 15f;
+            }
 
-        if (time2 < 10f && !flipped2 && Input.GetKeyDown("d")) {
-            time2 = 15f;
-            flipped2 = true;
-        }
+            if (time2 < 10f && !flipped2 && Input.GetKeyDown("d"))
+            {
+                time2 = 15f;
+                flipped2 = true;
+            }
 
-        if (time2 < 10f && flipped2 && Input.GetKeyDown("d")) {
-            burger2.GetComponent<MeshRenderer>().enabled = false;
-            burger2.GetComponent<MeshRenderer>().enabled = true;
-            timer2.GetComponent<TextMesh>().color = Color.green;
-            timer2.GetComponent<TextMesh>().text = "Open";
-            flipped2 = false;
-            slot2 = false;
-            burger2.GetComponent<MeshRenderer>().enabled = false;
-            cooked++;
+            if (time2 < 10f && flipped2 && Input.GetKeyDown("d"))
+            {
+                burger2.GetComponent<MeshRenderer>().enabled = false;
+                burger2.GetComponent<MeshRenderer>().enabled = true;
+                timer2.GetComponent<TextMesh>().color = Color.green;
+                timer2.GetComponent<TextMesh>().text = "Open";
+                flipped2 = false;
+                slot2 = false;
+                burger2.GetComponent<MeshRenderer>().enabled = false;
+                Instantiate(pattyPrefab, completedTransform2);
+                cooked++;
+            }
         }
     }
 }

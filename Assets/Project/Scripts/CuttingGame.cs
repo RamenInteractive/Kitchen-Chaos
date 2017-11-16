@@ -11,8 +11,11 @@ public class CuttingGame : Minigame {
     public GameObject uncut;
     public GameObject cut;
     public GameObject chopped;
+    public GameObject tomatoPrefab;
+    public GameObject lettucePrefab;
+    public Transform completedTransform;
+    private GameObject newCut;
     public int chop;
-    private bool ingredientUse;
 
     // Use this for initialization
     new void Start () {
@@ -55,6 +58,27 @@ public class CuttingGame : Minigame {
                 cut.GetComponent<MeshRenderer>().enabled = false;
                 chopped.GetComponent<MeshRenderer>().enabled = false;
                 chop++;
+                Destroy(Player.rHand.gameObject);
+                if (holding.name == "UncutLettuce")
+                {
+                    newCut = Instantiate(lettucePrefab, completedTransform);
+                    newCut.transform.localPosition = Vector3.zero;
+                    newCut.transform.GetComponent<Rigidbody>().useGravity = false;
+                    newCut.transform.GetComponent<Rigidbody>().detectCollisions = false;
+                    newCut.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                    Player.rHand = newCut;
+                }
+                else if (holding.name == "UncutTomato")
+                {
+                    Instantiate(tomatoPrefab, completedTransform);
+                    newCut.transform.localPosition = Vector3.zero;
+                    newCut.transform.GetComponent<Rigidbody>().useGravity = false;
+                    newCut.transform.GetComponent<Rigidbody>().detectCollisions = false;
+                    newCut.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                    Player.rHand = newCut;
+                }
+                exit();
+                Debug.Log("Holding this" + Player.rHand);
                 counter.text = chop.ToString();
                 progressBar.value = 0;
 

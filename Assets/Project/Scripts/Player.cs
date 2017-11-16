@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
             rHand = null;
         }
     }
-
+        
     public void pickUp(GameObject item)
     {
         if (rHand == null)
