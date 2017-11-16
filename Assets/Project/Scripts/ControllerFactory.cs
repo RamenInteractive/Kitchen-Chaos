@@ -5,12 +5,12 @@ using System.Text;
 using UnityEngine;
 
 static class ControllerFactory {
-    // Makes a controller from a 
-    public static Controller MakeControllerFromId(int controllerID) {
+    // Makes a controller from a detection ID
+    public static Controller AddControllerToObj(GameObject obj, int controllerID) {
         if (controllerID < -1 || controllerID > 11) {
             throw new Exception("Invalid Controller ID for MakeControllerFromId: " + controllerID);
         }
-        Controller c = new Controller();
+        Controller c = obj.AddComponent<Controller>();
         if (controllerID < 0) {
             // Keyboard
             ConfigureKeyboardController(c);
@@ -28,7 +28,7 @@ static class ControllerFactory {
         c.SetAxis("MoveH", "Horizontal");
         c.SetAxis("MoveV", "Vertical");
         c.SetAxis("LookH", "Mouse X");
-        c.SetAxis("LookY", "Mouse Y");
+        c.SetAxis("LookV", "Mouse Y");
         c.SetButton("Jump", KeyCode.Space);
         c.SetButton("LeftHand", KeyCode.Mouse0);
         c.SetButton("RightHand", KeyCode.Mouse1);
@@ -54,7 +54,7 @@ static class ControllerFactory {
         c.SetAxis("MoveH", "C" + controllerID + "_Horizontal");
         c.SetAxis("MoveV", "C" + controllerID + "_Vertical");
         c.SetAxis("LookH", "C" + controllerID + "_Horizontal2");
-        c.SetAxis("LookY", "C" + controllerID + "_Vertical2");
+        c.SetAxis("LookV", "C" + controllerID + "_Vertical2");
         c.SetButton("Jump", circle);
 
         KeyCode[] leftHandKeys = { square, l1, l2 };

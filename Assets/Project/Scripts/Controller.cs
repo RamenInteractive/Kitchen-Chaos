@@ -7,6 +7,11 @@ public class Controller : MonoBehaviour
     private Dictionary<string, KeyCode[]> buttons;
     private Dictionary<string, string> axes;
 
+    public Controller() {
+        buttons = new Dictionary<string, KeyCode[]>();
+        axes = new Dictionary<string, string>();
+    }
+
     /**
      * Attaches a single KeyCode to a button name
      */
