@@ -65,8 +65,8 @@ public class Item : Interactable
         }
     }
 
-    public override void interact(GameObject caller)
+    public override void interact(GameObject caller, bool leftHand)
     {
-        caller.GetComponent<Player>().pickUp(this.gameObject);
+        caller.GetComponent<Player>().pickUp(this.gameObject, leftHand);
     }
 }

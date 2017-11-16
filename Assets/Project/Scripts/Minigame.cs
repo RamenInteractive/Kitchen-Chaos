@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -90,7 +91,7 @@ public abstract class Minigame : Interactable {
         inUse = false;
     }
 
-    public override void interact(GameObject caller)
+    public override void interact(GameObject caller, bool leftHand)
     {
         enter(caller);
     }
