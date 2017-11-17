@@ -93,6 +93,7 @@ public class FlippingGame : Minigame {
 
     protected override void activeUpdate()
     {
+        Debug.Log(holding);
         if (holding.name == "UncookedPatty")
         {
             if (!slot1 && holding.name == "UncookedPatty")

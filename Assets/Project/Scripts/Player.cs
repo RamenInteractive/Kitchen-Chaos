@@ -35,7 +35,6 @@ public class Player : MonoBehaviour {
             item.GetComponent<Rigidbody>().detectCollisions = false;
             item.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             rHand = item;
-            Debug.Log(rHand);
         }
     }
 

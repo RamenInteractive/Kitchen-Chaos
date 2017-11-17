@@ -71,7 +71,7 @@ public class CuttingGame : Minigame {
                 }
                 else if (holding.name == "UncutTomato")
                 {
-                    Instantiate(tomatoPrefab, completedTransform);
+                    newCut = Instantiate(tomatoPrefab, completedTransform);
                     newCut.transform.localPosition = Vector3.zero;
                     newCut.transform.GetComponent<Rigidbody>().useGravity = false;
                     newCut.transform.GetComponent<Rigidbody>().detectCollisions = false;
@@ -79,19 +79,10 @@ public class CuttingGame : Minigame {
                     Player.rHand = newCut;
                 }
                 exit();
-                Debug.Log("Holding this" + Player.rHand);
                 counter.text = chop.ToString();
                 progressBar.value = 0;
 
-            }
-        } else if (holding == null)
-        {
-            interact(holding);
+            } 
         }
-    }
-
-    public override void interact(GameObject obj)
-    {
-        HoverHUD.GetComponentInChildren<Text>().text = "Pick up ingredient";
     }
 }

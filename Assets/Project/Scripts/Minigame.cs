@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Minigame : Interactable {
 
@@ -41,6 +42,7 @@ public abstract class Minigame : Interactable {
      */
     public void enter(GameObject p) {
         if(!inUse) {
+            HoverHUD.GetComponentInChildren<Text>().text = "Click to chop";
             inUse = true;
             player = p;
             player.transform.Find("FirstPersonCharacter").gameObject.GetComponent<Camera>().enabled = false;
@@ -48,8 +50,6 @@ public abstract class Minigame : Interactable {
             gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 0f;
             GameObject.Find("CrossHair").GetComponent<CanvasGroup>().alpha = 0f;
             HUD.GetComponent<CanvasGroup>().alpha = 1f;
-            holding = Player.rHand;
-            Debug.Log("being held" + holding);
             player.SetActive(false);
         }
     }
@@ -96,6 +96,12 @@ public abstract class Minigame : Interactable {
 
     public override void interact(GameObject caller)
     {
-        enter(caller);
+        Debug.Log("Not null???" + Player.rHand.name);
+        holding = Player.rHand;
+        Debug.Log("Not null???" + holding.name);
+        if (holding == null)
+            HoverHUD.GetComponentInChildren<Text>().text = "Pick up ingredient";
+        else
+            enter(caller);
     }
 }
