@@ -6,9 +6,9 @@ public class Player : MonoBehaviour {
     public Camera pov;
     public GameObject lHand, rHand;
     public float dropForce = 1.0f;
-    private float charge = -0.3f;
+    private float charge = -0.1f;
     private bool charging = false;
-    private float lhCharge = -0.3f;
+    private float lhCharge = -0.1f;
     private bool lhCharging = false;
 
     float initFoV;
@@ -69,9 +69,9 @@ public class Player : MonoBehaviour {
             {
                 charge = 4.5f;
             }
-            float val = charge < 0 ? 0 : charge;
+            float val = charge - 0.2f < 0 ? 0 : charge - 0.2f;
 
-            float tmp = initFoV + (val / (val + 0.35f)) * 13;
+            float tmp = initFoV + (val / (val + 0.35f)) * 13.2f;
             if (tmp > tempFoV) {
                 tempFoV = tmp;
             }
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour {
                 charge = 0;
             }
             dropItem(false);
-            charge = -0.3f;
+            charge = -0.1f;
         }
         if (Input.GetKey(KeyCode.Q) && lhCharge < 10f) {
             lhCharging = true;
@@ -92,9 +92,9 @@ public class Player : MonoBehaviour {
             if (lhCharge > 4.5f) {
                 lhCharge = 4.5f;
             }
-            float val = lhCharge < 0 ? 0 : lhCharge;
+            float val = lhCharge - 0.2f < 0 ? 0 : lhCharge - 0.2f;
 
-            float tmp = initFoV + (val / (val + 0.35f)) * 13;
+            float tmp = initFoV + (val / (val + 0.35f)) * 13.2f;
             if (tmp > tempFoV) {
                 tempFoV = tmp;
             }
@@ -105,7 +105,7 @@ public class Player : MonoBehaviour {
                 lhCharge = 0;
             }
             dropItem(true);
-            lhCharge = -0.3f;
+            lhCharge = -0.1f;
         }
         pov.fieldOfView = tempFoV;
     }
