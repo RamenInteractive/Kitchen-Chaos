@@ -8,6 +8,7 @@
 
 ### [0.1.1] 2017/11/16
 ==================
+- Throwing charge speed has been doubled
 - You can now pick up items and interact with stations with both hands
 
 ### [0.1.1] 2017/11/10
