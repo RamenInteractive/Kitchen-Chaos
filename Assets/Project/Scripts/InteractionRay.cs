@@ -36,9 +36,12 @@ public class InteractionRay : MonoBehaviour
             hover = objectHit;
         } 
 
-        //Attempts to interact with the object
-        if((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && hover != null) {
-            hover.interact(gameObject.transform.parent.gameObject);
+        if(Input.GetMouseButtonDown(0) && hover != null) {
+            hover.interact(gameObject.transform.parent.gameObject, true);
+        }
+
+        if (Input.GetMouseButtonDown(1) && hover != null) {
+            hover.interact(gameObject.transform.parent.gameObject, false);
         }
     }
 }

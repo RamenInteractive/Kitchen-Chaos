@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -91,14 +92,14 @@ public abstract class Minigame : Interactable {
         inUse = false;
     }
 
-    public virtual void handleItem()
+    public virtual void handleItem(bool leftHand)
     {
 
     }
 
-    public override void interact(GameObject caller)
+    public override void interact(GameObject caller, bool leftHand)
     {
         enter(caller);
-        handleItem();
+        handleItem(leftHand);
     }
 }

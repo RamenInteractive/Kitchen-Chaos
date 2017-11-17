@@ -164,12 +164,12 @@ public class AssemblyGame : Minigame
         buildSpace.transform.localPosition = Vector3.zero;
     }
 
-    public override void handleItem()
+    public override void handleItem(bool leftHand)
     {
         //DO STUFF HERE
     }
 
-    public override void interact(GameObject caller)
+    public override void interact(GameObject caller, bool leftHand)
     {
         Player p = caller.GetComponent<Player>();
         if (p != null)
@@ -177,14 +177,14 @@ public class AssemblyGame : Minigame
             if(Input.GetMouseButtonDown(0))
             {
                 if (p.lHand == null)
-                    base.interact(caller);
+                    base.interact(caller, leftHand);
                 else
                     ;
             }
             else if(Input.GetMouseButtonDown(1))
             {
                 if (p.rHand == null)
-                    base.interact(caller);
+                    base.interact(caller, leftHand);
                 else
                     ;
             }
