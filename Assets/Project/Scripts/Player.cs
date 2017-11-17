@@ -64,14 +64,14 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.E) && charge < 10f)
         {
             charging = true;
-            charge += 2.25f * Time.deltaTime;
+            charge += 4.5f * Time.deltaTime;
             if (charge > 4.5f)
             {
                 charge = 4.5f;
             }
-            float val = charge - 0.2f < 0 ? 0 : charge - 0.2f;
+            float val = charge - 0.4f < 0 ? 0 : charge - 0.4f;
 
-            float tmp = initFoV + (val / (val + 0.35f)) * 13.2f;
+            float tmp = initFoV + (val / (val + 0.35f)) * 13.4f;
             if (tmp > tempFoV) {
                 tempFoV = tmp;
             }
@@ -88,13 +88,13 @@ public class Player : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.Q) && lhCharge < 10f) {
             lhCharging = true;
-            lhCharge += 2.25f * Time.deltaTime;
+            lhCharge += 4.5f * Time.deltaTime;
             if (lhCharge > 4.5f) {
                 lhCharge = 4.5f;
             }
-            float val = lhCharge - 0.2f < 0 ? 0 : lhCharge - 0.2f;
+            float val = lhCharge - 0.4f < 0 ? 0 : lhCharge - 0.4f;
 
-            float tmp = initFoV + (val / (val + 0.35f)) * 13.2f;
+            float tmp = initFoV + (val / (val + 0.35f)) * 13.4f;
             if (tmp > tempFoV) {
                 tempFoV = tmp;
             }
