@@ -14,6 +14,7 @@
 - Merged the duplicate ingredient prefabs
 - Made ingredients into components instead of enums
 - Set up the methods for Minigame and AssemblyGame to work with the new inventory system
+- Throwing charge speed has been doubled
 
 ### [0.1.1] 2017/11/10
 ==================
