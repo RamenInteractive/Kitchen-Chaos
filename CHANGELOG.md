@@ -6,10 +6,15 @@
 
 # Developer Changelog
 
-### [0.1.1] 2017/11/10
+### [0.1.2] 2017/11/16
 ==================
+#### New Features
+- You can now pick up items and interact with stations with both hands
 #### Changed Features
-- Ticket board keeps track of orders slightly differently to allow easier management
+- Merged the duplicate ingredient prefabs
+- Made ingredients into components instead of enums
+- Set up the methods for Minigame and AssemblyGame to work with the new inventory system
+- Throwing charge speed has been doubled
 
 ### [0.1.1] 2017/11/10
 ==================
@@ -19,6 +24,8 @@
 - Hover over them and click to pick them up
 - Keeps track of cooked patties and chopped vegetables
 - Inside item script
+#### Changed Features
+- Ticket board keeps track of orders slightly differently to allow easier management
 
 ### [0.1.0] 2017/10/18
 ==================

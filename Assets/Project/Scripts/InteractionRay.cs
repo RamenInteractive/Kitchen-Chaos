@@ -27,15 +27,21 @@ public class InteractionRay : MonoBehaviour
         if(objectHit != hover) {
             if (hover != null && hover.HoverHUD != null) {
                 hover.HoverHUD.GetComponent<CanvasGroup>().alpha = 0f;
+                hover.hovering = false;
             }
             if (objectHit != null && objectHit.HoverHUD != null) {
                 objectHit.HoverHUD.GetComponent<CanvasGroup>().alpha = 1f;
+                objectHit.hovering = true;
             }
             hover = objectHit;
         } 
 
         if(Input.GetMouseButtonDown(0) && hover != null) {
-            hover.interact(gameObject.transform.parent.gameObject);
+            hover.interact(gameObject.transform.parent.gameObject, true);
+        }
+
+        if (Input.GetMouseButtonDown(1) && hover != null) {
+            hover.interact(gameObject.transform.parent.gameObject, false);
         }
     }
 }

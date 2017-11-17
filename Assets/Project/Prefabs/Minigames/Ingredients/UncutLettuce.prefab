@@ -23,9 +23,9 @@ GameObject:
   - component: {fileID: 23809950097113488}
   - component: {fileID: 54779842953449614}
   - component: {fileID: 135491994892086448}
-  - component: {fileID: 114068610680409494}
+  - component: {fileID: 114028548786332688}
   m_Layer: 0
-  m_Name: UncutLettuce
+  m_Name: UncutLettucePrefab
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1081765944057998}
   m_LocalRotation: {x: -0, y: -0, z: -4.656613e-10, w: 1}
-  m_LocalPosition: {x: -0.38, y: 1.103, z: 2.956}
+  m_LocalPosition: {x: 0.2, y: 0.5, z: 0}
   m_LocalScale: {x: 0.29999998, y: 0.3, z: 0.29999998}
   m_Children:
   - {fileID: 224995139163888316}
@@ -150,7 +150,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114068610680409494
+--- !u!114 &114028548786332688
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -158,10 +158,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1081765944057998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daae29b99d5486146bec4cfa2db70cd9, type: 3}
+  m_Script: {fileID: 11500000, guid: c121d896778120e45af1986426a32747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 0}
+  hovering: 0
 --- !u!114 &114316009414041828
 MonoBehaviour:
   m_ObjectHideFlags: 1

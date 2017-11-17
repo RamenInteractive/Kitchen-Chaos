@@ -672,6 +672,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4760474549665568}
+  - component: {fileID: 135204700429521492}
   m_Layer: 0
   m_Name: AssemblyStation
   m_TagString: Untagged
@@ -4829,9 +4830,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 1602993091254238}
+  hovering: 0
+  ingredients: []
+  player: {fileID: 0}
+  controller: {fileID: 0}
+  inUse: 0
   viewpoint: {fileID: 20678399233773850}
   HUD: {fileID: 1737004909521054}
   dropLocation: {x: 0.2, y: 0.5, z: 0}
+  assemblyStation: {fileID: 1487974353411446}
   tomatoPrefab: {fileID: 4445812911447204, guid: fce825b4f2ebcd64fa0a448d8be8182c,
     type: 2}
   lettucePrefab: {fileID: 4445812911447204, guid: b473b14b09705344ab7495252db21dc7,
@@ -4845,6 +4852,11 @@ MonoBehaviour:
   cheesePrefab: {fileID: 4445812911447204, guid: d22068d90e22d8449a2fcdcfbf835127,
     type: 2}
   buildText: {fileID: 0}
+  ingredientSlot: 
+  selectedSlots: 
+  currentBuild: 
+  ingredientsStored: 
+  buildSpace: {fileID: 0}
 --- !u!114 &114566172421419038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5179,6 +5191,18 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1341254657446734}
   m_Enabled: 1
+--- !u!135 &135204700429521492
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1487974353411446}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &222034152672161080
 CanvasRenderer:
   m_ObjectHideFlags: 1
