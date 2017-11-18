@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     public Camera pov;
-    public GameObject lHand, rHand;
+    public static GameObject lHand, rHand;
     public float dropForce = 1.0f;
     private float charge = -0.3f;
     private bool charging = false;
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
             rHand = null;
         }
     }
-
+        
     public void pickUp(GameObject item)
     {
         if (rHand == null)

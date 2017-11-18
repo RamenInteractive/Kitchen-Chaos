@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Minigame : Interactable {
 
@@ -11,16 +12,20 @@ public abstract class Minigame : Interactable {
     private bool inUse = false;
     public Camera viewpoint;
     public GameObject HUD;
+    public static GameObject holding;
+    private string hud;
 
     // Use this for initialization
     protected void Start () {
         viewpoint.GetComponent<Camera>().enabled = false;
         ingredients = new List<Ingredient>();
+        hud = HoverHUD.GetComponentInChildren<Text>().text;
 	}
 	
 	// Update is called once per frame
 	protected void Update () {
         if(inUse) {
+            Debug.Log("using");
             if (Input.GetKeyDown(KeyCode.X)) {
                 exit();
             }
@@ -40,6 +45,7 @@ public abstract class Minigame : Interactable {
      */
     public void enter(GameObject p) {
         if(!inUse) {
+            HoverHUD.GetComponentInChildren<Text>().text = hud;
             inUse = true;
             player = p;
             player.transform.Find("FirstPersonCharacter").gameObject.GetComponent<Camera>().enabled = false;
@@ -90,7 +96,7 @@ public abstract class Minigame : Interactable {
         inUse = false;
     }
 
-    public override void interact(GameObject caller)
+    public override void interact(GameObject caller)    
     {
         enter(caller);
     }
