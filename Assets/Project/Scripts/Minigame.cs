@@ -13,16 +13,19 @@ public abstract class Minigame : Interactable {
     public Camera viewpoint;
     public GameObject HUD;
     public static GameObject holding;
+    private string hud;
 
     // Use this for initialization
     protected void Start () {
         viewpoint.GetComponent<Camera>().enabled = false;
         ingredients = new List<Ingredient>();
+        hud = HoverHUD.GetComponentInChildren<Text>().text;
 	}
 	
 	// Update is called once per frame
 	protected void Update () {
         if(inUse) {
+            Debug.Log("using");
             if (Input.GetKeyDown(KeyCode.X)) {
                 exit();
             }
@@ -42,7 +45,7 @@ public abstract class Minigame : Interactable {
      */
     public void enter(GameObject p) {
         if(!inUse) {
-            HoverHUD.GetComponentInChildren<Text>().text = "Click to chop";
+            HoverHUD.GetComponentInChildren<Text>().text = hud;
             inUse = true;
             player = p;
             player.transform.Find("FirstPersonCharacter").gameObject.GetComponent<Camera>().enabled = false;
@@ -90,18 +93,11 @@ public abstract class Minigame : Interactable {
         gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 1f;
         GameObject.Find("CrossHair").GetComponent<CanvasGroup>().alpha = 1f;
         player = null;
-        holding = null;
         inUse = false;
     }
 
-    public override void interact(GameObject caller)
+    public override void interact(GameObject caller)    
     {
-        Debug.Log("Not null???" + Player.rHand.name);
-        holding = Player.rHand;
-        Debug.Log("Not null???" + holding.name);
-        if (holding == null)
-            HoverHUD.GetComponentInChildren<Text>().text = "Pick up ingredient";
-        else
-            enter(caller);
+        enter(caller);
     }
 }

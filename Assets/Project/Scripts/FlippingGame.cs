@@ -93,7 +93,8 @@ public class FlippingGame : Minigame {
 
     protected override void activeUpdate()
     {
-        Debug.Log(holding);
+        /*
+        holding = Player.rHand;
         if (holding.name == "UncookedPatty")
         {
             if (!slot1 && holding.name == "UncookedPatty")
@@ -125,13 +126,14 @@ public class FlippingGame : Minigame {
                 cooked++;
             }
 
-            if (slot1 && !slot2)
+            if (slot1 && !slot2 && holding.name == "UncookedPatty")
             {
+                holding = null;
                 burger2.GetComponent<MeshRenderer>().enabled = true;
                 timer2.GetComponent<TextMesh>().color = Color.green;
                 slot2 = true;
                 time2 = 15f;
-            }
+            } 
 
             if (time2 < 10f && !flipped2 && Input.GetKeyDown("d"))
             {
@@ -152,5 +154,6 @@ public class FlippingGame : Minigame {
                 cooked++;
             }
         }
+        */
     }
 }

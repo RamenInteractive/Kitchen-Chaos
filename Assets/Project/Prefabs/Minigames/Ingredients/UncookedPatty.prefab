@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 114541496015254054}
   m_Layer: 0
   m_Name: UncookedPatty
-  m_TagString: Ingredient
+  m_TagString: Uncooked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

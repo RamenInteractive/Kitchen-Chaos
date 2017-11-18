@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 114381686460264470}
   m_Layer: 0
   m_Name: UncutCheese
-  m_TagString: Ingredient
+  m_TagString: Uncooked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
