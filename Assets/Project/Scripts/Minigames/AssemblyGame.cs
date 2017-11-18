@@ -9,13 +9,6 @@ public class AssemblyGame : Minigame
     public static int TOTAL_SLOTS = 8;
     public static int SELECT_SLOTS = 4;
     public Vector3 dropLocation = new Vector3(0.2f, 0.5f, 0f);
-    public GameObject assemblyStation;
-    public Transform tomatoPrefab;
-    public Transform lettucePrefab;
-    public Transform topBunPrefab;
-    public Transform bottomBunPrefab;
-    public Transform pattyPrefab;
-    public Transform cheesePrefab;
     public Text buildText;
 
     private Ingredient[] ingredientSlots;
@@ -164,29 +157,92 @@ public class AssemblyGame : Minigame
         buildSpace.transform.localPosition = Vector3.zero;
     }
 
-    public override void handleItem(bool leftHand)
+    private bool storeIngredient(Ingredient ing)
     {
-        //DO STUFF HERE
+        int firstNull = -1;
+        Type ingType = ing.GetType();
+
+        for (int i = 0; i < ingredientSlots.Length; i++)
+        {
+            if (firstNull != -1 && ingredientSlots[i] == null)
+                firstNull = i;
+
+            if(ingredientSlots[i] != null && ingredientSlots[i].GetType() == ingType)
+            {
+                ingredientsStored[i]++;
+                return true;
+            }
+        }
+
+        //Reaches here if there aren't any of the same ingredient type in the station
+        if (firstNull != -1)
+        {
+            ingredientSlots[firstNull] = ing;
+            ingredientsStored[firstNull]++;
+            return true;
+        }
+
+        //If theres no room
+        return false;
+    }
+
+    /**
+     * handleItem
+     * ==========
+     * Checks the designated hand for an ingredient, then takes it from the player
+     * and puts it in the station
+     * 
+     * @param: p - The player with the item
+     * @param: leftHand - The hand you want to check
+     */
+    public override void handleItem(Player p, bool leftHand)
+    {
+        GameObject hand = leftHand ? p.lHand : p.rHand;
+        Ingredient inHand = hand.GetComponent<Ingredient>();
+
+        if (inHand == null)
+            return;
+
+        bool hasRoom = storeIngredient(inHand);
+
+        if (!hasRoom)
+            return;
+
+        if (leftHand)
+            p.lHand = null;
+        else
+            p.rHand = null;
     }
 
     public override void interact(GameObject caller, bool leftHand)
     {
         Player p = caller.GetComponent<Player>();
+
         if (p != null)
+            return;
+
+        GameObject hand = leftHand ? p.lHand : p.rHand;
+
+        //If you aren't holding anything
+        if (hand == null)
         {
-            if(Input.GetMouseButtonDown(0))
+            //check the opposite hand you interacted with for an ingredient
+            if (leftHand)
+                handleItem(p, false);
+            else
+                handleItem(p, true);
+
+            enter(caller);
+        }
+        else //If you are holding something
+        {
+            //If it's an ingredient take it into the station
+            if (hand.GetComponent<Ingredient>() != null)
             {
-                if (p.lHand == null)
-                    base.interact(caller, leftHand);
-                else
-                    ;
-            }
-            else if(Input.GetMouseButtonDown(1))
-            {
-                if (p.rHand == null)
-                    base.interact(caller, leftHand);
-                else
-                    ;
+                if(leftHand)
+                handleItem(p, true);
+            else
+                handleItem(p, false);
             }
         }
     }
