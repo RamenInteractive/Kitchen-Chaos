@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 65876456431899108}
   - component: {fileID: 114850102895991530}
   m_Layer: 0
-  m_Name: RawPattyPrefab
+  m_Name: UncookedPatty
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

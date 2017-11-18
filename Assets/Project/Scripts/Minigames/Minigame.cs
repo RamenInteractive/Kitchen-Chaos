@@ -32,9 +32,8 @@ public abstract class Minigame : Interactable {
     protected abstract void activeUpdate();
 
     /**
-     * Enter
+     * enter
      * =====
-     * 
      * Called to switch from player to minigame view and "check-out" this minigame
      * 
      * @param: p - Player wanting to enter this minigame
@@ -53,9 +52,8 @@ public abstract class Minigame : Interactable {
     }
 
     /**
-     * AddToStorage
+     * addToStorage
      * ============
-     * 
      * Add an ingredient to this minigame's ingredient storage
      * 
      * @param: ingredient - The ingredient to add to this minigame
@@ -66,20 +64,16 @@ public abstract class Minigame : Interactable {
     }
 
     /**
-     * Complete
+     * complete
      * ========
-     * 
      * Function that is called when this minigame's "task" is complete
-     * 
      */ 
     public abstract void complete();
 
     /**
-     * Exit
+     * exit
      * ====
-     * 
      * Exit minigame and change perspective back to player
-     * 
      */ 
     public void exit() {
         player.SetActive(true);
@@ -92,14 +86,27 @@ public abstract class Minigame : Interactable {
         inUse = false;
     }
 
-    public virtual void handleItem(bool leftHand)
+    /**
+     * handleItem
+     * ====
+     * Processes the item held in the designated hand of the caller
+     * 
+     * @param: p - The player with the item
+     * @param: leftHand - The hand you want to check
+     */
+    public virtual void handleItem(Player p, bool leftHand)
     {
 
     }
 
     public override void interact(GameObject caller, bool leftHand)
     {
+        Player p = caller.GetComponent<Player>();
+
+        if (p != null)
+            return;
+
         enter(caller);
-        handleItem(leftHand);
+        handleItem(p, leftHand);
     }
 }
