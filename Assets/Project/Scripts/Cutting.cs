@@ -70,7 +70,6 @@ public class Cutting : Minigame {
             if (progressBar.value == 1)
             {
                 GameObject cut;
-                Debug.Log(cuttingBoard.GetChild(0).gameObject.name);
                 if (cuttingBoard.GetChild(0).gameObject.name.Contains("UncutLettuce"))
                 {
                     Destroy(cuttingBoard.GetChild(0).gameObject);
@@ -89,7 +88,7 @@ public class Cutting : Minigame {
                 cut.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                 cut.GetComponentInChildren<Rigidbody>().detectCollisions = true;
                 cut.GetComponentInChildren<Rigidbody>().useGravity = true;
-                cut.GetComponentInChildren<Rigidbody>().AddForce((transform.up) * 5f);
+                cut.GetComponentInChildren<Rigidbody>().AddForce((transform.up) * 250f);
                 cutting = false;
             }
         }
