@@ -18,8 +18,17 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 224957630813886730}
   - component: {fileID: 225624329633552624}
+=======
+  - component: {fileID: 4700643440438916}
+  - component: {fileID: 33274886958504408}
+  - component: {fileID: 23022456336819022}
+  - component: {fileID: 54684119673592444}
+  - component: {fileID: 65876456431899108}
+  - component: {fileID: 114850102895991530}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1
   m_Layer: 0
   m_Name: Hover
   m_TagString: Untagged
@@ -89,7 +98,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1901590847734488}
   m_LocalRotation: {x: -0, y: -0, z: -4.656613e-10, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -1.1041639, y: 0.05, z: 2.8521016}
+=======
+  m_LocalPosition: {x: 0.2, y: 0.5, z: 0}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1
   m_LocalScale: {x: 0.3, y: 0.01, z: 0.3}
   m_Children:
   - {fileID: 224278374818370420}
@@ -244,7 +257,24 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+<<<<<<< HEAD
 --- !u!222 &222211849131093428
+=======
+--- !u!114 &114850102895991530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1310540461242002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df1ad90071d3c844a496e8f3518ce9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoverHUD: {fileID: 0}
+  hovering: 0
+--- !u!222 &222324179304241284
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

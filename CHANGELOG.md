@@ -6,7 +6,22 @@
 
 # Developer Changelog
 
-### [0.1.2] 2017/11/10
+### [0.1.3] 2017/11/17
+==================
+#### New Features
+- Assembly Station inventory management should be fully functional (can't test without a fridge)
+
+### [0.1.2] 2017/11/16
+==================
+#### New Features
+- You can now pick up items and interact with stations with both hands
+#### Changed Features
+- Merged the duplicate ingredient prefabs
+- Made ingredients into components instead of enums
+- Set up the methods for Minigame and AssemblyGame to work with the new inventory system
+- Throwing charge speed has been doubled
+
+### [0.1.1] 2017/11/10
 ==================
 #### New Features
 - Ingredient System
@@ -14,16 +29,14 @@
 - Hover over them and click to pick them up
 - Keeps track of cooked patties and chopped vegetables
 - Inside item script
-
-### [0.1.1] 2017/10/18
-==================
 #### Changed Features
-- Throwing can now be charged to throw further
+- Ticket board keeps track of orders slightly differently to allow easier management
 
 ### [0.1.0] 2017/10/18
 ==================
 #### Changed Features
 - Integrated individual modules into Alpha build
+- Throwing can now be charged to throw further
 
 ### [0.0.9] 2017/10/18
 ==================

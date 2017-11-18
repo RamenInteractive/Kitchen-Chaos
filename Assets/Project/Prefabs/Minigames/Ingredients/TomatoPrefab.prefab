@@ -1,0 +1,545 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_RootGameObject: {fileID: 1850294653353656}
+  m_IsPrefabParent: 1
+--- !u!1 &1353584040052000
+=======
+  m_RootGameObject: {fileID: 1502075348547986}
+  m_IsPrefabParent: 1
+--- !u!1 &1082036690722864
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  - component: {fileID: 224389739547788356}
+  - component: {fileID: 222432614103924646}
+  - component: {fileID: 114864140917608294}
+=======
+  - component: {fileID: 224787834477784364}
+  - component: {fileID: 222250653444790628}
+  - component: {fileID: 114518454257676324}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+--- !u!1 &1656317488763648
+=======
+--- !u!1 &1107917680168550
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  - component: {fileID: 224669638435153624}
+  - component: {fileID: 223906122531682430}
+  - component: {fileID: 114949328934127374}
+  - component: {fileID: 114729388448734406}
+=======
+  - component: {fileID: 224872044465616544}
+  - component: {fileID: 223429811348979006}
+  - component: {fileID: 114503706158926464}
+  - component: {fileID: 114911559838072236}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_Layer: 0
+  m_Name: HUD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+--- !u!1 &1822224441439676
+=======
+--- !u!1 &1502075348547986
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  - component: {fileID: 224263534652510848}
+  - component: {fileID: 225207338057755950}
+  m_Layer: 0
+  m_Name: Hover
+  m_TagString: Untagged
+=======
+  - component: {fileID: 4499405415493488}
+  - component: {fileID: 33840940013249936}
+  - component: {fileID: 23376039578090970}
+  - component: {fileID: 54749797302246614}
+  - component: {fileID: 65916935500116392}
+  - component: {fileID: 114224282031941904}
+  m_Layer: 0
+  m_Name: TomatoPrefab
+  m_TagString: Ingredient
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+--- !u!1 &1850294653353656
+=======
+--- !u!1 &1951549770434656
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  - component: {fileID: 4972044522654796}
+  - component: {fileID: 33340293905745848}
+  - component: {fileID: 23447335727754748}
+  - component: {fileID: 54363367917333674}
+  - component: {fileID: 65511624686747030}
+  - component: {fileID: 114544668997504418}
+  m_Layer: 0
+  m_Name: Tomato
+  m_TagString: Ingredient
+=======
+  - component: {fileID: 224313243870210436}
+  - component: {fileID: 225627246311938510}
+  m_Layer: 0
+  m_Name: Hover
+  m_TagString: Untagged
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+--- !u!4 &4972044522654796
+=======
+--- !u!4 &4499405415493488
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_GameObject: {fileID: 1850294653353656}
+  m_LocalRotation: {x: -0, y: -0, z: -4.656613e-10, w: 1}
+  m_LocalPosition: {x: -0.61546683, y: 0.05, z: 2.2145708}
+  m_LocalScale: {x: 0.29999998, y: 0.01, z: 0.29999998}
+  m_Children:
+  - {fileID: 224669638435153624}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23447335727754748
+=======
+  m_GameObject: {fileID: 1502075348547986}
+  m_LocalRotation: {x: -0, y: -0, z: -4.656613e-10, w: 1}
+  m_LocalPosition: {x: 0.2, y: 0.5, z: 0}
+  m_LocalScale: {x: 0.29999998, y: 0.01, z: 0.29999998}
+  m_Children:
+  - {fileID: 224872044465616544}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23376039578090970
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_GameObject: {fileID: 1850294653353656}
+=======
+  m_GameObject: {fileID: 1502075348547986}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: f84017f4f98b3c94cbb765e2fd1ae032, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+--- !u!33 &33340293905745848
+=======
+--- !u!33 &33840940013249936
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_GameObject: {fileID: 1850294653353656}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54363367917333674
+=======
+  m_GameObject: {fileID: 1502075348547986}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54749797302246614
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_GameObject: {fileID: 1850294653353656}
+=======
+  m_GameObject: {fileID: 1502075348547986}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+--- !u!65 &65511624686747030
+=======
+--- !u!65 &65916935500116392
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_GameObject: {fileID: 1850294653353656}
+=======
+  m_GameObject: {fileID: 1502075348547986}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1.0000001}
+  m_Center: {x: 0.00000005960464, y: 0, z: -0.00000008940696}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+--- !u!114 &114544668997504418
+=======
+--- !u!114 &114224282031941904
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_GameObject: {fileID: 1850294653353656}
+=======
+  m_GameObject: {fileID: 1502075348547986}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e62161f03c19e409ff24986643883b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  HoverHUD: {fileID: 1822224441439676}
+--- !u!114 &114729388448734406
+=======
+  HoverHUD: {fileID: 0}
+  hovering: 0
+--- !u!114 &114503706158926464
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_GameObject: {fileID: 1656317488763648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &114864140917608294
+=======
+  m_GameObject: {fileID: 1107917680168550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+--- !u!114 &114518454257676324
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_GameObject: {fileID: 1353584040052000}
+=======
+  m_GameObject: {fileID: 1082036690722864}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 7
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Click to Pick Up
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+--- !u!114 &114949328934127374
+=======
+--- !u!114 &114911559838072236
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_GameObject: {fileID: 1656317488763648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+--- !u!222 &222432614103924646
+=======
+  m_GameObject: {fileID: 1107917680168550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!222 &222250653444790628
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_GameObject: {fileID: 1353584040052000}
+--- !u!223 &223906122531682430
+=======
+  m_GameObject: {fileID: 1082036690722864}
+--- !u!223 &223429811348979006
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+Canvas:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_GameObject: {fileID: 1656317488763648}
+=======
+  m_GameObject: {fileID: 1107917680168550}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+--- !u!224 &224263534652510848
+=======
+--- !u!224 &224313243870210436
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_GameObject: {fileID: 1822224441439676}
+=======
+  m_GameObject: {fileID: 1951549770434656}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  - {fileID: 224389739547788356}
+  m_Father: {fileID: 224669638435153624}
+=======
+  - {fileID: 224787834477784364}
+  m_Father: {fileID: 224872044465616544}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+--- !u!224 &224389739547788356
+=======
+--- !u!224 &224787834477784364
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_GameObject: {fileID: 1353584040052000}
+=======
+  m_GameObject: {fileID: 1082036690722864}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_Father: {fileID: 224263534652510848}
+=======
+  m_Father: {fileID: 224313243870210436}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 15}
+  m_SizeDelta: {x: 160, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+--- !u!224 &224669638435153624
+=======
+--- !u!224 &224872044465616544
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_GameObject: {fileID: 1656317488763648}
+=======
+  m_GameObject: {fileID: 1107917680168550}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  - {fileID: 224263534652510848}
+  m_Father: {fileID: 4972044522654796}
+=======
+  - {fileID: 224313243870210436}
+  m_Father: {fileID: 4499405415493488}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+--- !u!225 &225207338057755950
+=======
+--- !u!225 &225627246311938510
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/Tomato.prefab
+  m_GameObject: {fileID: 1822224441439676}
+=======
+  m_GameObject: {fileID: 1951549770434656}
+>>>>>>> 4ea37f669f5be70e58c28b60fd086bee45ef1ab1:Assets/Project/Prefabs/Minigames/Ingredients/TomatoPrefab.prefab
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
