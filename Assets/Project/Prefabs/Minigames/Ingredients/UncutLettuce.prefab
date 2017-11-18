@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 135491994892086448}
   - component: {fileID: 114028548786332688}
   m_Layer: 0
-  m_Name: UncutLettucePrefab
+  m_Name: UncutLettuce
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

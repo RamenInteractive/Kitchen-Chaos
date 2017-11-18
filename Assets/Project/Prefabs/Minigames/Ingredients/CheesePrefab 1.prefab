@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54359942535029030}
   - component: {fileID: 114048439355096212}
   m_Layer: 0
-  m_Name: CheesePrefab
+  m_Name: CheesePrefab 1
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

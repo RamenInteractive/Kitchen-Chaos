@@ -6,6 +6,11 @@
 
 # Developer Changelog
 
+### [0.1.3] 2017/11/17
+==================
+#### New Features
+- Assembly Station inventory management should be fully functional (can't test without a fridge)
+
 ### [0.1.2] 2017/11/16
 ==================
 #### New Features
