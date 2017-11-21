@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     public float dropForce = 1.0f;
     private float charge = -0.3f;
     private bool charging = false;
+    private bool canThrow = true;
     private Controller controller;
 
     float initFoV;
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour {
             item.GetComponent<Rigidbody>().detectCollisions = false;
             item.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             rHand = item;
+            canThrow = false;
         }
     }
 
@@ -47,9 +49,12 @@ public class Player : MonoBehaviour {
 
     private void Update()
     {
-        if (controller.GetButton("LeftHand") && charge < 10f)
-        {
+        // controller.GetButton("LeftHand") && charge < 10f && lHand != null
+        if (controller.GetButtonDown("LeftHand") && canThrow) {
             charging = true;
+        }
+        if (charging && !controller.GetButtonUp("LeftHand"))
+        {
             charge += 2.25f * Time.deltaTime;
             if (charge > 4.5f)
             {
@@ -68,6 +73,9 @@ public class Player : MonoBehaviour {
             dropItem();
             charge = -0.3f;
             pov.fieldOfView = initFoV;
+        }
+        if (controller.GetButtonUp("LeftHand")) {
+            canThrow = true;
         }
     }
 }
