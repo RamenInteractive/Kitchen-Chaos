@@ -6,12 +6,14 @@
 
 # Developer Changelog
 
-### [0.1.1] 2017/11/10
+### [0.1.3] 2017/11/20
 ==================
-#### Changed Features
-- Ticket board keeps track of orders slightly differently to allow easier management
+#### Reworked Minigames
+- Recreated Minigames from scratch
+- Store ingredients via throwing
+- Completion of minigames outputs cut/cooked/burnt ingredients
 
-### [0.1.1] 2017/11/10
+### [0.1.2] 2017/11/10
 ==================
 #### New Features
 - Ingredient System
@@ -20,11 +22,15 @@
 - Keeps track of cooked patties and chopped vegetables
 - Inside item script
 
+### [0.1.1] 2017/10/18
+==================
+#### Changed Features
+- Throwing can now be charged to throw further
+
 ### [0.1.0] 2017/10/18
 ==================
 #### Changed Features
 - Integrated individual modules into Alpha build
-- Throwing can now be charged to throw further
 
 ### [0.0.9] 2017/10/18
 ==================

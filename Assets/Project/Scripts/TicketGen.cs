@@ -6,7 +6,7 @@ public class TicketGen : MonoBehaviour
 {
     public const int NUM_TICKETS = 12;
     public const int FOOD_TYPES = 1;
-    public static Vector3[] positions = { new Vector3(0.105f, 0.8f, -1.2f),  //top far left
+    public static Vector3[] positions = { new Vector3(0.105f, 0.8f, -1.2f),   //top far left
         new Vector3(0.105f, 0.8f, -0.4f), new Vector3(0.105f, 0.8f, 0.4f),   //top mid left, top mid right
         new Vector3(0.105f, 0.8f, 1.2f), new Vector3(0.105f, 0f, -1.2f),     //top far right, middle far left
         new Vector3(0.105f, 0f, -0.4f), new Vector3(0.105f, 0f, 0.4f),       //middle mid left, middle mid right
@@ -16,13 +16,12 @@ public class TicketGen : MonoBehaviour
 
     public float diffModifier = 1;
     public GameObject ticket;
-    public TicketOrder[] tickets;
-    private int tixSoFar;
+    public List<TicketOrder> tickets;
 
 	// Use this for initialization
 	void Start ()
     {
-        tickets = new TicketOrder[NUM_TICKETS];
+        tickets = new List<TicketOrder>();
 	}
 	
 	// Update is called once per frame
@@ -36,27 +35,23 @@ public class TicketGen : MonoBehaviour
 
     public void newOrder()
     {
-        for(int i = 0; i < NUM_TICKETS; i++)
-        {
-            if (tickets[i] != null)
-                continue;
+        if(tickets.Count < NUM_TICKETS) {
             GameObject instTicket = Instantiate(ticket);
             instTicket.transform.parent = transform;
-            instTicket.transform.localPosition = positions[i];
+            instTicket.transform.localPosition = positions[tickets.Count];
             instTicket.transform.localRotation = Quaternion.identity;
 
             TicketOrder order = null;
             int randFood = Random.Range(0, FOOD_TYPES);
 
-            switch (randFood)
-            {
+            switch (randFood) {
                 case 0:
-                    order = new TicketOrder(instTicket, new Burger(diffModifier), ++tixSoFar);
+                    order = new TicketOrder(instTicket, new Burger(diffModifier), tickets.Count + 1);
                     break;
             }
 
-            tickets[i] = order;
-            break;
+            if (order != null)
+                tickets.Add(order);
         }
     }
 }
