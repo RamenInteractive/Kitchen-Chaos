@@ -2,14 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : MonoBehaviour
-{
+public class Controller : MonoBehaviour {
     private Dictionary<string, KeyCode[]> buttons;
     private Dictionary<string, string> axes;
+    private Dictionary<string, float> prevAxisValues;
+    private float _deadZone;
+
+    public float deadZone {
+        get {
+            return _deadZone;
+        }
+
+        set {
+            _deadZone = value;
+        }
+    }
 
     public Controller() {
         buttons = new Dictionary<string, KeyCode[]>();
         axes = new Dictionary<string, string>();
+        prevAxisValues = new Dictionary<string, float>();
+    }
+
+    public void LateUpdate() {
+        foreach (KeyValuePair<string, string> i in axes) {
+            prevAxisValues[i.Key] = Input.GetAxis(i.Value);
+        }
     }
 
     /**
@@ -19,7 +37,7 @@ public class Controller : MonoBehaviour
         KeyCode[] c = new KeyCode[1];
         c[0] = key;
         buttons[name] = c;
-    } 
+    }
 
     /**
      * Attaches multiple KeyCodes to a button name
@@ -82,7 +100,7 @@ public class Controller : MonoBehaviour
         }
         return axes[name];
     }
-    
+
     /**
      * Checks whether a button is being pressed.
      * Functions identically to Input.GetButton
@@ -148,6 +166,17 @@ public class Controller : MonoBehaviour
         else {
             throw new System.Exception("No controller axis of name \"" + name + "\" found");
         }
+    }
+
+    /**
+     * Checks whether an axis just passed the deadzone
+     * Doesn't exactly have a built-in Unity equivalent
+     * Works best if called every frame
+     */
+    public bool GetAxisDown(string name) {
+
+        return GetAxis(name) > deadZone && prevAxisValues[name] <= deadZone
+            || GetAxis(name) < -deadZone && prevAxisValues[name] >= -deadZone;
     }
 
     /**

@@ -36,8 +36,10 @@ static class ControllerFactory {
         KeyCode[] acceptKeys = { KeyCode.Mouse0, KeyCode.Return };
         c.SetButton("Accept", acceptKeys);
 
-        KeyCode[] backKeys = { KeyCode.Q, KeyCode.Escape };
+        KeyCode[] backKeys = { KeyCode.Q, KeyCode.Backspace };
         c.SetButton("Back", backKeys);
+
+        c.deadZone = 0.3f;
     }
 
     private static void ConfigurePS4Controller(Controller c, int controllerID) {
@@ -67,5 +69,7 @@ static class ControllerFactory {
         c.SetButton("Accept", acceptKeys);
 
         c.SetButton("Back", circle);
+
+        c.deadZone = 0.3f;
     }
 }

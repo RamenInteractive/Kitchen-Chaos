@@ -51,33 +51,33 @@ public class AssemblyGame : Minigame {
     }
 
     protected override void activeUpdate() {
-        if(Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetKeyUp(KeyCode.LeftControl)) {
-            if(Input.GetKey(KeyCode.LeftAlt)) {
+        if(controller.GetButtonUp("RightHand") || controller.GetButtonUp("LeftHand")) {
+            if(controller.GetButton("RightHand")) {
                 selectSide(1);
-            } else if(Input.GetKey(KeyCode.LeftControl)) {
+            } else if(controller.GetButton("LeftHand")) {
                 selectSide(0);
             } else {
                 selectSide(-1);
             }
         }
-        if(Input.GetKeyDown(KeyCode.LeftControl)) {
+        if(controller.GetButtonDown("LeftHand")) {
             selectSide(0);
-        } else if(Input.GetKeyDown(KeyCode.LeftAlt)) {
+        } else if(controller.GetButtonDown("RightHand")) {
             selectSide(1);
         }
-        if(Input.GetKeyDown(KeyCode.UpArrow)) {
+        if(controller.GetAxisDown("MoveV") && controller.GetAxis("MoveV") > 0) {
             addIngredient(0);
         }
-        if(Input.GetKeyDown(KeyCode.RightArrow)) {
+        if(controller.GetAxisDown("MoveH") && controller.GetAxis("MoveH") > 0) {
             addIngredient(1);
         }
-        if(Input.GetKeyDown(KeyCode.DownArrow)) {
+        if(controller.GetAxisDown("MoveV") && controller.GetAxis("MoveV") < 0) {
             addIngredient(2);
         }
-        if(Input.GetKeyDown(KeyCode.LeftArrow)) {
+        if(controller.GetAxisDown("MoveH") && controller.GetAxis("MoveH") < 0) {
             addIngredient(3);
         }
-        if(Input.GetKeyDown(KeyCode.Return)) {
+        if(controller.GetButtonDown("Jump")) {
             complete();
         }
     }
