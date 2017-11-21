@@ -6,6 +6,13 @@
 
 # Developer Changelog
 
+### [0.1.3] 2017/11/20
+==================
+#### Reworked Minigames
+- Recreated Minigames from scratch
+- Store ingredients via throwing
+- Completion of minigames outputs cut/cooked/burnt ingredients
+
 ### [0.1.2] 2017/11/10
 ==================
 #### New Features
