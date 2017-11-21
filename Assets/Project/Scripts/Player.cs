@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     public float dropForce = 1.0f;
     private float charge = -0.3f;
     private bool charging = false;
+    private Controller controller;
 
     float initFoV;
 
@@ -41,11 +42,12 @@ public class Player : MonoBehaviour {
     private void Start()
     {
         initFoV = pov.fieldOfView;
+        controller = GetComponent<Controller>();
     }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Q) && charge < 10f)
+        if (controller.GetButton("LeftHand") && charge < 10f)
         {
             charging = true;
             charge += 2.25f * Time.deltaTime;
