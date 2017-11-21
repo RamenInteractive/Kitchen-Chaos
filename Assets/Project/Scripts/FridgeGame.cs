@@ -20,8 +20,8 @@ public class FridgeGame : Minigame
     }
 
     protected override void activeUpdate() {
-        float hAxis = Input.GetAxis("Horizontal");
-        float vAxis = Input.GetAxis("Vertical");
+        float hAxis = controller.GetAxis("MoveH");
+        float vAxis = controller.GetAxis("MoveV");
         // Input checking: Check the stick/keyboard/d-pad for input
         // May later be replaced by a more robust input system
 

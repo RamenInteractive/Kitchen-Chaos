@@ -25,8 +25,7 @@ public abstract class Minigame : Interactable {
 	// Update is called once per frame
 	protected void Update () {
         if(inUse) {
-            Debug.Log("using");
-            if (Input.GetKeyDown(KeyCode.X)) {
+            if (controller.GetButtonDown("Back")) {
                 exit();
             }
             activeUpdate();
@@ -53,7 +52,15 @@ public abstract class Minigame : Interactable {
             gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 0f;
             GameObject.Find("CrossHair").GetComponent<CanvasGroup>().alpha = 0f;
             HUD.GetComponent<CanvasGroup>().alpha = 1f;
-            player.SetActive(false);
+            controller = player.GetComponent<Controller>();
+
+            CustomFirstPersonController cfpc = player.GetComponent<CustomFirstPersonController>();
+            Player playerScript = player.GetComponent<Player>();
+
+            cfpc.enabled = false;
+            playerScript.enabled = false;
+
+            //player.SetActive(false);
         }
     }
 
@@ -86,7 +93,14 @@ public abstract class Minigame : Interactable {
      * 
      */ 
     public void exit() {
-        player.SetActive(true);
+        CustomFirstPersonController cfpc = player.GetComponent<CustomFirstPersonController>();
+        Player playerScript = player.GetComponent<Player>();
+
+        cfpc.enabled = true;
+        playerScript.enabled = true;
+
+        //player.SetActive(true);
+
         player.transform.Find("FirstPersonCharacter").gameObject.GetComponent<Camera>().enabled = true;
         viewpoint.GetComponent<Camera>().enabled = false;
         HUD.GetComponent<CanvasGroup>().alpha = 0f;

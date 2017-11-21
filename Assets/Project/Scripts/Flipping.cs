@@ -120,7 +120,7 @@ public class Flipping : Minigame {
 
     protected override void activeUpdate()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (controller.GetButtonDown("LeftHand") || controller.GetButtonDown("RightHand"))
         {
             for (int i = 0; i < 6; i++)
             {

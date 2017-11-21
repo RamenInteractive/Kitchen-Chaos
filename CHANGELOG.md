@@ -6,6 +6,11 @@
 
 # Developer Changelog
 
+### [0.1.4] 2017/11/21
+==================
+#### Changed Features
+- Reworked input system. Controls have been adjusted for most things.
+
 ### [0.1.3] 2017/11/20
 ==================
 #### Reworked Minigames
