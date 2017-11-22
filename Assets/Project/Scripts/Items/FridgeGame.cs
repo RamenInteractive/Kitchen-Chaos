@@ -14,6 +14,12 @@ public class FridgeGame : Minigame
     // The currently selected object within the object list
     private GameObject selectedObject;
 
+    public GameObject lettucePrefab;
+    public GameObject potatoPrefab;
+    public GameObject tomatoPrefab;
+    public GameObject pattyPrefab;
+    public GameObject cheesePrefab;
+
     new protected void Start() {
         base.Start();
         dirsPressed = new bool[4];
@@ -54,9 +60,61 @@ public class FridgeGame : Minigame
             dirsPressed[2] = false;
             dirsPressed[3] = false;
         }
-        if (Input.GetMouseButtonDown(0))
+        if (controller.GetButtonDown("LeftHand"))
         {
-            Instantiate(selectedObject, GameObject.Find("LeftHandPosition").transform);
+            if (selectedObject.name == "UncutLettuce")
+            {
+                GameObject copy = Instantiate(lettucePrefab);
+                player.GetComponent<Player>().pickUp(copy, true);
+            }
+            else if (selectedObject.name == "UncutPotato")
+            {
+                GameObject copy = Instantiate(potatoPrefab);
+                player.GetComponent<Player>().pickUp(copy, true);
+            }
+            else if (selectedObject.name == "UncutTomato")
+            {
+                GameObject copy = Instantiate(tomatoPrefab);
+                player.GetComponent<Player>().pickUp(copy, true);
+            }
+            else if (selectedObject.name == "UncookedPatty")
+            {
+                GameObject copy = Instantiate(pattyPrefab);
+                player.GetComponent<Player>().pickUp(copy, true);
+            }
+            else
+            {
+                GameObject copy = Instantiate(cheesePrefab);
+                player.GetComponent<Player>().pickUp(copy, true);
+            }
+
+        } else if (controller.GetButtonDown("RightHand"))
+        {
+            if (selectedObject.name == "UncutLettuce")
+            {
+                GameObject copy = Instantiate(lettucePrefab);
+                player.GetComponent<Player>().pickUp(copy, false);
+            }
+            else if (selectedObject.name == "UncutPotato")
+            {
+                GameObject copy = Instantiate(potatoPrefab);
+                player.GetComponent<Player>().pickUp(copy, false);
+            }
+            else if (selectedObject.name == "UncutTomato")
+            {
+                GameObject copy = Instantiate(tomatoPrefab);
+                player.GetComponent<Player>().pickUp(copy, false);
+            }
+            else if (selectedObject.name == "UncookedPatty")
+            {
+                GameObject copy = Instantiate(pattyPrefab);
+                player.GetComponent<Player>().pickUp(copy, false);
+            }
+            else 
+            {
+                GameObject copy = Instantiate(cheesePrefab);
+                player.GetComponent<Player>().pickUp(copy, false);
+            }
         }
     }
 
