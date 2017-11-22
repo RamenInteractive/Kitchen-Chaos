@@ -11,6 +11,9 @@
 #### Changed Features
 - Reworked input system. Controls have been adjusted for most things.
 
+#### New Features
+- Added split screen for multiplayer
+
 ### [0.1.3] 2017/11/20
 ==================
 #### Reworked Minigames
@@ -41,6 +44,7 @@
 ==================
 #### New Features
 - Updated Ticket class to draw text
+
 #### Changed Features
 - Cleaned up Burger class
 
