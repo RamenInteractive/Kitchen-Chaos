@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MenuController : MonoBehaviour {
 
-    private Screen currentScreen;
+    private MenuScreen currentScreen;
 
 	// Use this for initialization
 	void Start () {
