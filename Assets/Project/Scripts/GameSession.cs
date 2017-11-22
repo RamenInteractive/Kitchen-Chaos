@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour {
-    public const float MINUTE_VALUE = 0.5f;
+    public const float MINUTE_VALUE = 0.05f;
 
     public const int START_DAY = 1000;
     public const int END_DAY = 2300;
@@ -18,7 +18,7 @@ public class GameSession : MonoBehaviour {
     public const int DINNER_RUSH_START = 1730;
     public const int DINNER_RUSH_END = 2000;
 
-    public const int MAX_TIME_BTWN_ORDERS = 60;
+    public const int MAX_TIME_BTWN_ORDERS = 120;
     public const int MIN_TIME_BTWN_ORDERS = 10;
 
     public const float C_VAL = 3f;
@@ -28,6 +28,7 @@ public class GameSession : MonoBehaviour {
     private const int STATUS_LUNCH_RUSH = 2;
     private const int STATUS_DINNER_RUSH = 3;
     private const int STATUS_END_DAY = 4;
+    private const int STATUS_OVERTIME = 5;
 
     private const float LUNCH_DIFFICULTY_MOD = 1.32f;
     private const float DINNER_DIFFICULTY_MOD = 1.475f;
@@ -43,6 +44,9 @@ public class GameSession : MonoBehaviour {
     private int dayTime = 0; // hhmm format
 
     private int dayStatus = STATUS_NORMAL;
+
+    private float bVal;
+
 
     private int lastOrder = 0;
     private List<int> timeDiff;
@@ -64,6 +68,8 @@ public class GameSession : MonoBehaviour {
         curPlayers = new List<Player>();
         numPlayers = 1;
         spawnPlayers();
+        bVal = Mathf.Pow(MAX_TIME_BTWN_ORDERS * Mathf.Pow(0.75f, numPlayers - 1), C_VAL);
+
         StartCoroutine("startDay");
     }
 
@@ -75,7 +81,7 @@ public class GameSession : MonoBehaviour {
                 incrementTime((int)(minuteCount / MINUTE_VALUE));
                 minuteCount %= MINUTE_VALUE;
                 updateStatus();
-                if(dayStatus != STATUS_NO_ORDERS) {
+                if(dayStatus != STATUS_NO_ORDERS && dayStatus != STATUS_OVERTIME) {
                     randomChanceOrder();
                 }
             }
@@ -102,9 +108,10 @@ public class GameSession : MonoBehaviour {
     }
 
     public IEnumerator finishOrder(int startTime) {
-        int timeRemaining = TicketGen.TICKET_DURATION - timeSpent(startTime, dayTime);
-        score += Mathf.FloorToInt(100 + 100 * difficulty * difficultyMod * (daysCleared + 1) * timeRemaining);
-        orderCompletionText.text = "Order complete!";
+        float timeRemaining = 1 - Mathf.Pow(1 - (float)(TicketGen.TICKET_DURATION - timeSpent(startTime, dayTime)) / TicketGen.TICKET_DURATION, 1.5f);
+        int pointVal = Mathf.FloorToInt(100 + 100 * difficulty * difficultyMod * timeRemaining);
+        score += pointVal;
+        orderCompletionText.text = "Order complete!\n+" + pointVal;
         yield return new WaitForSeconds(3f);
         orderCompletionText.text = "";
     }
@@ -165,7 +172,7 @@ public class GameSession : MonoBehaviour {
             float maxf = 0.5f;
             float floor = maxf * difficulty * difficultyMod;
             float rand = Random.Range(floor, 1f);
-            float catchup = (Mathf.Pow(last, C_VAL) / Mathf.Pow(MAX_TIME_BTWN_ORDERS, C_VAL)) * (1 - rand);
+            float catchup = (Mathf.Pow(last, C_VAL) / bVal) * (1 - rand);
             if((rand + catchup) > 0.984f) {
                 spawnOrder();
             }
@@ -182,24 +189,43 @@ public class GameSession : MonoBehaviour {
                     StartCoroutine(setStatus(STATUS_DINNER_RUSH));
                 } else if (dayTime >= END_ORDERS) {
                     StartCoroutine(setStatus(STATUS_NO_ORDERS));
+                } else if (dayTime == LUNCH_RUSH_START - 30) {
+                    StartCoroutine(displayMessage("Prepare for the Lunch Rush!", 2f));
+                } else if (dayTime == DINNER_RUSH_START - 30) {
+                    StartCoroutine(displayMessage("Prepare for the Dinner Rush!", 2f));
                 }
                 break;
             case STATUS_NO_ORDERS:
                 if (dayTime >= START_ORDERS && dayTime < END_ORDERS) {
+                    StartCoroutine(displayMessage("The Kitchen is now open!", 2f));
                     StartCoroutine(setStatus(STATUS_NORMAL));
                 } else if (dayTime >= END_DAY) {
-                    StartCoroutine(setStatus(STATUS_END_DAY));
-                    StartCoroutine("endDay");
+                    if (ticketBoard.numOrders() == 0) {
+                        StartCoroutine(setStatus(STATUS_END_DAY));
+                        StartCoroutine("endDay");
+                    } else {
+                        StartCoroutine(setStatus(STATUS_OVERTIME));
+                    }
                 }
                 break;
             case STATUS_LUNCH_RUSH:
                 if (dayTime >= LUNCH_RUSH_END) {
+                    StartCoroutine(displayMessage("Lunch Rush Completed", 2f));
                     StartCoroutine(setStatus(STATUS_NORMAL));
                 }
                 break;
             case STATUS_DINNER_RUSH:
                 if (dayTime >= DINNER_RUSH_END) {
+                    StartCoroutine(displayMessage("Dinner Rush Completed", 2f));
                     StartCoroutine(setStatus(STATUS_NORMAL));
+                }
+                break;
+            case STATUS_OVERTIME:
+                if(ticketBoard.numOrders() == 0) {
+                    StartCoroutine(setStatus(STATUS_END_DAY));
+                    StartCoroutine("endDay");
+                } else {
+                    score -= Mathf.FloorToInt(difficulty * 10);
                 }
                 break;
             default:
@@ -221,7 +247,11 @@ public class GameSession : MonoBehaviour {
         } else if (status == STATUS_DINNER_RUSH) {
             difficultyMod = DINNER_DIFFICULTY_MOD;
             yield return displayMessage("Dinner Rush!", 3f);
+        } else if (status == STATUS_OVERTIME) {
+            clockText.color = new Color(1f, 0f, 0f);
+            yield return displayMessage("Overtime!!", 3f);
         } else {
+            clockText.color = new Color(1f, 1f, 1f);
             difficultyMod = 1f;
         }
     }
@@ -249,23 +279,9 @@ public class GameSession : MonoBehaviour {
 
     public static int timeSpent(int sTime, int curTime)
     {
-        int sMin = sTime % 100;
-        int sHour = sTime - sMin;
-        int cMin = curTime % 100;
-        int cHour = curTime - cMin;
+        int sMin = sTime / 100 * 60 + sTime % 100;
+        int cMin = curTime / 100 * 60 + sTime % 100;
 
-        int result = cHour - sHour;
-
-        if (sMin > cMin)
-        {
-            result -= 100;
-            result += 60 - sMin + cMin;
-        }
-        else
-        {
-            result += cMin - sMin;
-        }
-
-        return result;
+        return cMin - sMin;
     }
 }

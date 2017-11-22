@@ -6,7 +6,7 @@ public class TicketGen : MonoBehaviour
 {
     public const int NUM_TICKETS = 12;
     public const int FOOD_TYPES = 1;
-    public const int TICKET_DURATION = 200;
+    public const int TICKET_DURATION = 120;
     public static Vector3[] positions = { new Vector3(0.105f, 0.8f, -1.2f),  //top far left
         new Vector3(0.105f, 0.8f, -0.4f), new Vector3(0.105f, 0.8f, 0.4f),   //top mid left, top mid right
         new Vector3(0.105f, 0.8f, 1.2f), new Vector3(0.105f, 0f, -1.2f),     //top far right, middle far left
@@ -96,10 +96,22 @@ public class TicketGen : MonoBehaviour
         }
     }
 
+    public int numOrders() {
+        int sum = 0;
+        foreach(TicketOrder to in tickets) {
+            if (to != null)
+                sum++;
+        }
+        return sum;
+    }
+
     public void resetTickets()
     {
-        for(int i = 0; i < tickets.Length; i++)
-            deleteTicket(i);
+        for(int i = 0; i < tickets.Length; i++) {
+            if(tickets[i] != null) {
+                deleteTicket(i);
+            }
+        }
         tickets = new TicketOrder[NUM_TICKETS];
         tixSoFar = 0;
     }
