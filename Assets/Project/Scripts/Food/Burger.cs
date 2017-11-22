@@ -56,9 +56,12 @@ public class Burger : IFood
         generateCompareVal();
     }
 
-    public bool Compare(GameObject food)
+    public bool Compare(IFood food)
     {
-        Burger b = food.GetComponent<Burger>();
+        if (food.GetType() != GetType())
+            return false;
+
+        Burger b = (Burger)food;
 
         if (b == null)
             return false;

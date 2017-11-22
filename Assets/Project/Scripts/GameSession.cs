@@ -84,6 +84,7 @@ public class GameSession : MonoBehaviour {
     }
 
     private IEnumerator endDay() {
+        ticketBoard.resetTickets();
         daysCleared++;
         float sum = 0;
         foreach(int t in timeDiff) {
@@ -100,8 +101,9 @@ public class GameSession : MonoBehaviour {
         StartCoroutine("startDay");
     }
 
-    public IEnumerator finishOrder() {
-        score += Mathf.FloorToInt(100 + 1000 * difficulty * difficultyMod * (daysCleared + 1));
+    public IEnumerator finishOrder(int startTime) {
+        int timeRemaining = TicketGen.TICKET_DURATION - timeSpent(startTime, dayTime);
+        score += Mathf.FloorToInt(100 + 100 * difficulty * difficultyMod * (daysCleared + 1) * timeRemaining);
         orderCompletionText.text = "Order complete!";
         yield return new WaitForSeconds(3f);
         orderCompletionText.text = "";
@@ -238,5 +240,32 @@ public class GameSession : MonoBehaviour {
             lastOrder += 40;
         }
         return dayTime;
+    }
+
+    public int getTime()
+    {
+        return dayTime;
+    }
+
+    public static int timeSpent(int sTime, int curTime)
+    {
+        int sMin = sTime % 100;
+        int sHour = sTime - sMin;
+        int cMin = curTime % 100;
+        int cHour = curTime - cMin;
+
+        int result = cHour - sHour;
+
+        if (sMin > cMin)
+        {
+            result -= 100;
+            result += 60 - sMin + cMin;
+        }
+        else
+        {
+            result += cMin - sMin;
+        }
+
+        return result;
     }
 }

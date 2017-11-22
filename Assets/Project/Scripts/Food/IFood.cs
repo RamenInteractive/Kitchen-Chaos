@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IFood
 {
-    bool Compare(GameObject food);
+    bool Compare(IFood food);
 
     string ingredientTicketList();
 }
