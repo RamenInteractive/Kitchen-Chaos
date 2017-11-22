@@ -5,11 +5,22 @@
 - Colt King [ColtTheKing]
 
 # Developer Changelog
+### [0.1.5] 2017/11/21
+==================
+#### Changed Features
+- Reworked Game Loop and spawning algorithms
+
+#### New Features
+- Added Day cycle
+- Added Clock UI element
 
 ### [0.1.4] 2017/11/21
 ==================
 #### Changed Features
 - Reworked input system. Controls have been adjusted for most things.
+
+#### New Features
+- Added split screen for multiplayer
 
 ### [0.1.3] 2017/11/20
 ==================
@@ -41,6 +52,7 @@
 ==================
 #### New Features
 - Updated Ticket class to draw text
+
 #### Changed Features
 - Cleaned up Burger class
 

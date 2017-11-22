@@ -71,7 +71,7 @@ public class CustomFirstPersonController : MonoBehaviour {
         m_NextStep = m_StepCycle / 2f;
         m_Jumping = false;
         m_AudioSource = GetComponent<AudioSource>();
-        m_Controller = ControllerFactory.AddControllerToObj(gameObject, -1);
+        m_Controller = ControllerFactory.AddControllerToObj(gameObject, 0);
         m_MouseLook.Init(m_Controller, transform, m_Camera.transform);
 
     }
