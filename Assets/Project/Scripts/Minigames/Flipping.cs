@@ -7,6 +7,8 @@ public class Flipping : Minigame {
 
     public GameObject pattyPrefab;
     public GameObject burntPrefab;
+    public GameObject friesPrefab;
+    private bool beingUsed;
     public List<Transform> cooking;
     public List<GameObject> timers;
     public List<bool> occupied;
@@ -82,8 +84,9 @@ public class Flipping : Minigame {
     new void Update()
     {
         base.Update();
+
         for (int i = 0; i < 6; i++)
-        {
+        { 
             if (occupied[i])
             {
                 time[i] -= Time.deltaTime;
@@ -99,11 +102,13 @@ public class Flipping : Minigame {
                     GameObject burnt;
                     Destroy(cooking[i].GetChild(1).gameObject);
                     burnt = Instantiate(burntPrefab, cooking[i]);
+                    burnt.transform.localPosition = Vector3.zero;
                     burnt.transform.parent = GameObject.Find("GameController").transform;
                     burnt.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                     burnt.GetComponentInChildren<Rigidbody>().detectCollisions = true;
                     burnt.GetComponentInChildren<Rigidbody>().useGravity = true;
-                    burnt.GetComponentInChildren<Rigidbody>().AddForce((transform.up) * 50f);
+                    burnt.GetComponentInChildren<Rigidbody>().AddForce((transform.up) * 250f);
+                    burnt.GetComponentInChildren<Rigidbody>().AddForce((transform.forward * -1) * 250f);
                     occupied[i] = false;
                     flipped[i] = false;
                     timers[i].GetComponent<TextMesh>().text = "Burnt";
@@ -122,26 +127,30 @@ public class Flipping : Minigame {
     {
         if (controller.GetButtonDown("LeftHand") || controller.GetButtonDown("RightHand"))
         {
+            Debug.Log("Click");
             for (int i = 0; i < 6; i++)
             {
-                if (time[i] < 10f && !flipped[i])
+                if (time[i] < 10f && !flipped[i] && cooking[i].GetChild(1).gameObject.name.Contains("UncookedPatty"))
                 {
+                    Debug.Log("Hit");
                     flipped[i] = true;
                     time[i] = 15.0f;
                     timers[i].GetComponent<TextMesh>().text = time[i].ToString();
                     break;
                 }
 
-                if (time[i] < 10f && flipped[i])
+                if (time[i] < 10f && flipped[i] && cooking[i].GetChild(1).gameObject.name.Contains("UncookedPatty"))
                 {
                     GameObject done;
                     Destroy(cooking[i].GetChild(1).gameObject);
                     done = Instantiate(pattyPrefab, cooking[i]);
+                    done.transform.localPosition = Vector3.zero;
                     done.transform.parent = GameObject.Find("GameController").transform;
                     done.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                     done.GetComponentInChildren<Rigidbody>().detectCollisions = true;
                     done.GetComponentInChildren<Rigidbody>().useGravity = true;
-                    done.GetComponentInChildren<Rigidbody>().AddForce((transform.up) * 50f);
+                    done.GetComponentInChildren<Rigidbody>().AddForce((transform.up) * 250f);
+                    done.GetComponentInChildren<Rigidbody>().AddForce((transform.forward * -1) * 250f);
                     occupied[i] = false;
                     flipped[i] = false;
                     timers[i].GetComponent<TextMesh>().color = Color.green;
@@ -149,16 +158,33 @@ public class Flipping : Minigame {
                     time[i] = 15.0f;
                     break;
                 }
+
+                if (time[i] < 10f && cooking[i].GetChild(1).gameObject.name.Contains("CutPotato"))
+                {
+                    GameObject done;
+                    Destroy(cooking[i].GetChild(1).gameObject);
+                    done = Instantiate(friesPrefab, cooking[i]);
+                    done.transform.localPosition = Vector3.zero;
+                    done.transform.parent = GameObject.Find("GameController").transform;
+                    done.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
+                    done.GetComponentInChildren<Rigidbody>().detectCollisions = true;
+                    done.GetComponentInChildren<Rigidbody>().useGravity = true;
+                    done.GetComponentInChildren<Rigidbody>().AddForce((transform.up) * 250f);
+                    done.GetComponentInChildren<Rigidbody>().AddForce((transform.forward * -1) * 250f);
+                    occupied[i] = false;
+                    flipped[i] = false;
+                    timers[i].GetComponent<TextMesh>().color = Color.green;
+                    timers[i].GetComponent<TextMesh>().text = "Open";
+                    time[i] = 15.0f;
+                }
             }
         }
     }
 
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Hit1");
         if (collision.gameObject.tag == "Uncooked")
         {
-            Debug.Log("Hit2");
             for (int i = 0; i < 6; i++)
             {
                 if (!occupied[i])
