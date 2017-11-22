@@ -47,19 +47,28 @@ public class GameSession : MonoBehaviour {
     private int lastOrder = 0;
     private List<int> timeDiff;
 
+    private int numPlayers;
+    private List<Player> curPlayers;
+
+    public Player playerPrefab;
     public Light sun;
     public TicketGen ticketBoard;
     public Text displayText;
     public Text orderCompletionText;
     public Text clockText;
 
+    public static Vector3[] spawnPoints = { new Vector3(5, 1, 2), new Vector3(5, 1, 7), new Vector3(5, 1, -2), new Vector3(5, 1, -7) };
+
 	// Use this for initialization
 	void Start () {
+        curPlayers = new List<Player>();
+        numPlayers = 1;
+        spawnPlayers();
         StartCoroutine("startDay");
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update () {
         if(dayStatus != STATUS_END_DAY) {
             minuteCount += Time.deltaTime;
             if (minuteCount > MINUTE_VALUE) {
@@ -107,6 +116,36 @@ public class GameSession : MonoBehaviour {
 
     private void setDisplayText(string str) {
         displayText.text = str;
+    }
+
+    private void spawnPlayers()
+    {
+        for(int i = 0; i < numPlayers; i++)
+        {
+            curPlayers.Add(Instantiate(playerPrefab) as Player);
+            curPlayers[i].transform.Translate(spawnPoints[i]);
+        }
+
+        switch(numPlayers)
+        {
+            case 2:
+                curPlayers[0].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0.5f, 1, 0.5f);
+                curPlayers[1].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0, 1, 0.5f);
+                break;
+            case 3:
+                curPlayers[0].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+                curPlayers[1].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+                curPlayers[2].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0, 0.5f, 0.5f);
+                break;
+            case 4:
+                curPlayers[0].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+                curPlayers[1].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+                curPlayers[2].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0, 0.5f, 0.5f);
+                curPlayers[3].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0.5f, 0, 0.5f, 0.5f);
+                break;
+            default:
+                break;
+        }
     }
 
     private IEnumerator startDay() {

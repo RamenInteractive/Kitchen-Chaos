@@ -6,6 +6,21 @@
 
 # Developer Changelog
 
+### [0.1.4] 2017/11/21
+==================
+#### Changed Features
+- Reworked input system. Controls have been adjusted for most things.
+
+#### New Features
+- Added split screen for multiplayer
+
+### [0.1.3] 2017/11/20
+==================
+#### Reworked Minigames
+- Recreated Minigames from scratch
+- Store ingredients via throwing
+- Completion of minigames outputs cut/cooked/burnt ingredients
+
 ### [0.1.2] 2017/11/10
 ==================
 #### New Features
@@ -29,6 +44,7 @@
 ==================
 #### New Features
 - Updated Ticket class to draw text
+
 #### Changed Features
 - Cleaned up Burger class
 
