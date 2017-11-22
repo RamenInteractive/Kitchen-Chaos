@@ -54,10 +54,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4027387645473882}
   - component: {fileID: 143645111114635786}
+  - component: {fileID: 114710609529416694}
   - component: {fileID: 114552088849452952}
   - component: {fileID: 54596484831042864}
   - component: {fileID: 82976007190691700}
-  - component: {fileID: 114662113503220050}
   m_Layer: 2
   m_Name: CustomPlayer
   m_TagString: Player
@@ -136,6 +136,8 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
+  m_AllowMSAA: 1
+  m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -269,7 +271,7 @@ MonoBehaviour:
   lHand: {fileID: 0}
   rHand: {fileID: 0}
   dropForce: 150
---- !u!114 &114662113503220050
+--- !u!114 &114710609529416694
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -277,7 +279,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1823742579983830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b0db63f4957d7d46b24876a474fdf19, type: 3}
+  m_Script: {fileID: 11500000, guid: 05ec5cf00ca181d45a42ba1870e148c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsWalking: 0
@@ -305,7 +307,19 @@ MonoBehaviour:
     TimeToDecrease: 1
     IncreaseCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -351,8 +365,8 @@ MonoBehaviour:
       m_RotationOrder: 4
     VerticaltoHorizontalRatio: 2
   m_JumpBob:
-    BobDuration: 0
-    BobAmount: 0
+    BobDuration: 0.2
+    BobAmount: 0.1
   m_StepInterval: 5
   m_FootstepSounds:
   - {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
