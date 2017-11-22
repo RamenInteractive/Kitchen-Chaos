@@ -7,11 +7,13 @@ public class TicketOrder
     private int orderNumber;
     private GameObject ticket;
     private IFood idealFood;
+    private int startTime;
 
-	public TicketOrder(GameObject ticket, IFood idealFood, int num)
+	public TicketOrder(GameObject ticket, IFood idealFood, int num, int startTime)
     {
         this.ticket = ticket;
         this.idealFood = idealFood;
+        this.startTime = startTime;
         orderNumber = num;
 
         ticket.transform.Find("OrderNumber").GetComponent<TextMesh>().text = "ORDER: #" + num;
@@ -24,8 +26,18 @@ public class TicketOrder
         return orderNumber;
     }
 
-    private void CompleteOrder()
+    public GameObject getTicket()
     {
+        return ticket;
+    }
 
+    public int getStartTime()
+    {
+        return startTime;
+    }
+
+    public IFood getFood()
+    {
+        return idealFood;
     }
 }
