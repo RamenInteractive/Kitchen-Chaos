@@ -7,6 +7,8 @@ public class Flipping : Minigame {
 
     public GameObject pattyPrefab;
     public GameObject burntPrefab;
+    public GameObject friesPrefab;
+    private bool beingUsed;
     public List<Transform> cooking;
     public List<GameObject> timers;
     public List<bool> occupied;
@@ -82,10 +84,14 @@ public class Flipping : Minigame {
     new void Update()
     {
         base.Update();
+
         for (int i = 0; i < 6; i++)
-        {
+        { 
             if (occupied[i])
             {
+                AudioSource audio = GetComponent<AudioSource>();
+                audio.Play();
+                audio.loop = true;
                 time[i] -= Time.deltaTime;
                 timers[i].GetComponent<TextMesh>().text = Mathf.Round(time[i]).ToString();
 
@@ -124,7 +130,7 @@ public class Flipping : Minigame {
         {
             for (int i = 0; i < 6; i++)
             {
-                if (time[i] < 10f && !flipped[i])
+                if (time[i] < 10f && !flipped[i] && cooking[i].GetChild(1).gameObject.name == "UncookedPatty")
                 {
                     flipped[i] = true;
                     time[i] = 15.0f;
@@ -132,7 +138,7 @@ public class Flipping : Minigame {
                     break;
                 }
 
-                if (time[i] < 10f && flipped[i])
+                if (time[i] < 10f && flipped[i] && cooking[i].GetChild(1).gameObject.name == "UncookedPatty")
                 {
                     GameObject done;
                     Destroy(cooking[i].GetChild(1).gameObject);
@@ -149,16 +155,31 @@ public class Flipping : Minigame {
                     time[i] = 15.0f;
                     break;
                 }
+
+                if (time[i] < 10f && cooking[i].GetChild(1).gameObject.name == "CutPotatoes ")
+                {
+                    GameObject done;
+                    Destroy(cooking[i].GetChild(1).gameObject);
+                    done = Instantiate(friesPrefab, cooking[i]);
+                    done.transform.parent = GameObject.Find("GameController").transform;
+                    done.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
+                    done.GetComponentInChildren<Rigidbody>().detectCollisions = true;
+                    done.GetComponentInChildren<Rigidbody>().useGravity = true;
+                    done.GetComponentInChildren<Rigidbody>().AddForce((transform.up) * 50f);
+                    occupied[i] = false;
+                    flipped[i] = false;
+                    timers[i].GetComponent<TextMesh>().color = Color.green;
+                    timers[i].GetComponent<TextMesh>().text = "Open";
+                    time[i] = 15.0f;
+                }
             }
         }
     }
 
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Hit1");
         if (collision.gameObject.tag == "Uncooked")
         {
-            Debug.Log("Hit2");
             for (int i = 0; i < 6; i++)
             {
                 if (!occupied[i])
