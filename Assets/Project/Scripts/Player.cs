@@ -118,7 +118,6 @@ public class Player : MonoBehaviour {
             canLThrow = true;
         }
         pov.fieldOfView = tempFoV;
-        Debug.Log(canLThrow + "," + lhCharging);
     }
 
     private void LateUpdate() {

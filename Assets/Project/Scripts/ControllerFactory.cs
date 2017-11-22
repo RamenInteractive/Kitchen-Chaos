@@ -7,11 +7,11 @@ using UnityEngine;
 static class ControllerFactory {
     // Makes a controller from a detection ID
     public static Controller AddControllerToObj(GameObject obj, int controllerID) {
-        if (controllerID < -1 || controllerID > 11) {
+        if (controllerID < 0 || controllerID > 11) {
             throw new Exception("Invalid Controller ID for MakeControllerFromId: " + controllerID);
         }
         Controller c = obj.AddComponent<Controller>();
-        if (controllerID < 0) {
+        if (controllerID == 0) {
             // Keyboard
             ConfigureKeyboardController(c);
             
@@ -43,15 +43,15 @@ static class ControllerFactory {
     }
 
     private static void ConfigurePS4Controller(Controller c, int controllerID) {
-        int offset = controllerID * 20;
+        int offset = 1 * 20;
 
-        KeyCode square = KeyCode.Joystick1Button0 + offset;
-        KeyCode x = KeyCode.Joystick1Button1 + offset;
-        KeyCode l1 = KeyCode.Joystick1Button4 + offset;
-        KeyCode l2 = KeyCode.Joystick1Button6 + offset;
-        KeyCode r1 = KeyCode.Joystick1Button5 + offset;
-        KeyCode r2 = KeyCode.Joystick1Button7 + offset;
-        KeyCode circle = KeyCode.Joystick1Button2 + offset;
+        KeyCode square = KeyCode.JoystickButton0 + offset;
+        KeyCode x = KeyCode.JoystickButton1 + offset;
+        KeyCode l1 = KeyCode.JoystickButton4 + offset;
+        KeyCode l2 = KeyCode.JoystickButton6 + offset;
+        KeyCode r1 = KeyCode.JoystickButton5 + offset;
+        KeyCode r2 = KeyCode.JoystickButton7 + offset;
+        KeyCode circle = KeyCode.JoystickButton2 + offset;
 
         c.SetAxis("MoveH", "C" + controllerID + "_Horizontal");
         c.SetAxis("MoveV", "C" + controllerID + "_Vertical");
