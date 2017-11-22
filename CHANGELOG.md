@@ -9,6 +9,8 @@
 ==================
 #### New Features
 - Added Burger Assembly functionality
+- Added Difficulty scaling based on player count
+- Added Overtime mode when orders are on board at end of day
 
 #### Changed Features
 - Updated Burger comparison algorithm
