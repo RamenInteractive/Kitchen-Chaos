@@ -5,6 +5,15 @@
 - Colt King [ColtTheKing]
 
 # Developer Changelog
+### [0.1.5] 2017/11/21
+==================
+#### Changed Features
+- Reworked Game Loop and spawning algorithms
+
+#### New Features
+- Added Day cycle
+- Added Clock UI element
+- The end of the conveyor belt now triggers the game to compare the food to the current orders
 
 ### [0.1.4] 2017/11/21
 ==================
