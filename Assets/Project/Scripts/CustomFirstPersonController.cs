@@ -71,7 +71,7 @@ public class CustomFirstPersonController : MonoBehaviour {
         m_NextStep = m_StepCycle / 2f;
         m_Jumping = false;
         m_AudioSource = GetComponent<AudioSource>();
-        m_Controller = ControllerFactory.AddControllerToObj(gameObject, 0);
+        m_Controller = GetComponent<Controller>();
         m_MouseLook.Init(m_Controller, transform, m_Camera.transform);
 
     }
@@ -80,6 +80,9 @@ public class CustomFirstPersonController : MonoBehaviour {
     // Update is called once per frame
     private void Update() {
         RotateView();
+        if (!m_Controller) {
+            m_Controller = GetComponent<Controller>();
+        }
         // the jump state needs to read here to make sure it is not missed
         if (!m_Jump) {
             m_Jump = m_Controller.GetButtonDown("Jump");
