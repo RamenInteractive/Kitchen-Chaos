@@ -8,6 +8,7 @@ public class Flipping : Minigame {
     public GameObject pattyPrefab;
     public GameObject burntPrefab;
     public GameObject friesPrefab;
+    private bool beingUsed;
     public List<Transform> cooking;
     public List<GameObject> timers;
     public List<bool> occupied;
@@ -83,10 +84,14 @@ public class Flipping : Minigame {
     new void Update()
     {
         base.Update();
+
         for (int i = 0; i < 6; i++)
-        {
+        { 
             if (occupied[i])
             {
+                AudioSource audio = GetComponent<AudioSource>();
+                audio.Play();
+                audio.loop = true;
                 time[i] -= Time.deltaTime;
                 timers[i].GetComponent<TextMesh>().text = Mathf.Round(time[i]).ToString();
 
