@@ -161,7 +161,8 @@ public class Controller : MonoBehaviour {
      */
     public float GetAxis(string name) {
         if (axes.ContainsKey(name)) {
-            return Input.GetAxis(axes[name]);
+            float axis = Input.GetAxis(axes[name]);
+            return (axis < deadZone && axis > -deadZone) ? 0 : axis;
         }
         else {
             throw new System.Exception("No controller axis of name \"" + name + "\" found");
