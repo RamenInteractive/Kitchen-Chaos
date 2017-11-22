@@ -46,12 +46,10 @@ public class InteractionRay : MonoBehaviour
 
         if(controller.GetButtonDown("LeftHand") && hover != null) {
             hover.interact(parent, true);
-            Debug.Log("LeftHandInteract");
         }
 
         if (controller.GetButtonDown("RightHand") && hover != null) {
             hover.interact(parent, false);
-            Debug.Log("RightHandInteract");
         }
     }
 }

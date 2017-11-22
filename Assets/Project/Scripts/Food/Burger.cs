@@ -59,7 +59,7 @@ public class Burger : IFood
         string output = "";
 
         foreach(Ingredient ing in ingredients) {
-            output += "- " + ing + "\n";
+            output += "- " + ing.GetType().Name + "\n";
         }
 
         return output;
