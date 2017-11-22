@@ -626,16 +626,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 1211638406417280}
+  hovering: 0
   viewpoint: {fileID: 20296870930345932}
   HUD: {fileID: 1046345603012214}
   progressBar: {fileID: 114905931776173656}
   cuttingBoard: {fileID: 4717115295324884}
   cutting: 0
-  lettucePrefab: {fileID: 1873295732910800, guid: ab4fe053abaedbc41b51990be1b15d4e,
+  lettucePrefab: {fileID: 1772420139901480, guid: f0fcdd13d74fc604fbc7ba5fd9c6f91c,
     type: 2}
-  tomatoPrefab: {fileID: 1850294653353656, guid: 6b5b3afaa1686b44d958cef3bc16c880,
+  tomatoPrefab: {fileID: 1502075348547986, guid: 76bd352e9c0ef75458a176914cb374d7,
     type: 2}
-  cheesePrefab: {fileID: 1419783489043258, guid: 3b9be98c4f947b44a80358e6d782490b,
+  cheesePrefab: {fileID: 1371092318459228, guid: 27b3ac2f3ad49e6489d6187bfbd82b2c,
     type: 2}
   storage: []
   occupied: 

@@ -1159,9 +1159,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 1251176924571446}
+  hovering: 0
   viewpoint: {fileID: 20969822501331524}
   HUD: {fileID: 1516292379274836}
-  pattyPrefab: {fileID: 1784705924664170, guid: 57f8e254f9c960d479a155ca5dda45b1,
+  pattyPrefab: {fileID: 1326866869938252, guid: 31a32e806f4d396468f7f3e51c4ee0b2,
     type: 2}
   burntPrefab: {fileID: 1642698384986236, guid: e6cf4f75a7b3e9f459f70c0769caf05a,
     type: 2}
