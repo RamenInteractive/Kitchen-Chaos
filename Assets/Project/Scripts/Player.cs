@@ -22,9 +22,9 @@ public class Player : MonoBehaviour {
         if(hand != null)
         {
             hand.transform.parent = GameObject.Find("GameController").transform;
-            hand.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            hand.GetComponent<Rigidbody>().detectCollisions = true;
             hand.GetComponent<Rigidbody>().useGravity = true;
+            hand.GetComponent<Rigidbody>().detectCollisions = true;
+            hand.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             hand.transform.position = this.pov.transform.position + this.pov.transform.forward;
             hand.GetComponent<Rigidbody>().AddForce((pov.transform.forward) * dropForce * ((leftHand ? lhCharge : charge) + 1));
             if (leftHand) {
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour {
             item.transform.parent = leftHand ? GameObject.Find("LeftHandPosition").transform
                     : GameObject.Find("HandPosition").transform;
             item.transform.localPosition = Vector3.zero;
-            this.GetComponent<Rigidbody>().useGravity = false;
+            item.GetComponent<Rigidbody>().useGravity = false;
             item.GetComponent<Rigidbody>().detectCollisions = false;
             item.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             if (leftHand) {

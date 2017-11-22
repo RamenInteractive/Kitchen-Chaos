@@ -5,21 +5,29 @@ using UnityEngine;
 public class Burger : IFood
 {
     public static int MAX_TOPPINGS = 4;
-    public static Ingredient[] ingTypes = { new TopBun(), new BottomBun(), new Patty(), new Cheese(), new Tomato(), new Lettuce() };
+    //public static Ingredient[] ingTypes = { new TopBun(), new BottomBun(), new Patty(), new Cheese(), new Tomato(), new Lettuce() };
     public static float[] ingFreq = { 0.0f, 0.1f, 0.4f, 0.6f, 0.8f, 1.0f};
     public long compareVal = 0;
 
-    private List<Ingredient> ingredients;
+    private enum BurgerIngredients {
+        TopBun, BottomBun, Patty, Cheese, Tomato, Lettuce
+    };
+    private List<BurgerIngredients> ingredients;
 
     //Random constructor
     public Burger(float diffModifier)
     {
-        ingredients = new List<Ingredient>();
-        
-        int toppings = Random.Range(1, (int)(MAX_TOPPINGS * diffModifier));
-        int ingredientCount = ingTypes.Length;
+        ingredients = new List<BurgerIngredients>();
 
-        ingredients.Add(new TopBun());
+        int toppings;
+        if (diffModifier >= MAX_TOPPINGS)
+            toppings = MAX_TOPPINGS;
+        else
+            toppings = Random.Range((int)(diffModifier * (MAX_TOPPINGS - 1)) + 1, MAX_TOPPINGS);
+
+        int ingredientCount = System.Enum.GetNames(typeof(BurgerIngredients)).Length;
+
+        ingredients.Add(BurgerIngredients.TopBun);
 
         for(int i = 0; i < toppings; i++)
         {
@@ -28,20 +36,23 @@ public class Burger : IFood
             {
                 if (rand < ingFreq[j])
                 {
-                    ingredients.Add(ingTypes[j]);
+                    ingredients.Add((BurgerIngredients)j);
                     break;
                 }
             }
         }
 
-        ingredients.Add(new BottomBun());
+        ingredients.Add(BurgerIngredients.BottomBun);
 
         generateCompareVal();
     }
 	
     public Burger(List<Ingredient> i)
     {
-        ingredients = new List<Ingredient>(i);
+        ingredients = new List<BurgerIngredients>();
+        foreach(Ingredient ing in i) {
+            ingredients.Add((BurgerIngredients)System.Enum.Parse(typeof(BurgerIngredients), ing.GetType().Name));
+        }
         generateCompareVal();
     }
 
@@ -61,8 +72,8 @@ public class Burger : IFood
     public string ingredientTicketList() {
         string output = "";
 
-        foreach(Ingredient ing in ingredients) {
-            output += "- " + ing.GetType().Name + "\n";
+        foreach(BurgerIngredients ing in ingredients) {
+            output += "- " + ing + "\n";
         }
 
         return output;
@@ -70,7 +81,7 @@ public class Burger : IFood
 
     private void generateCompareVal() {
         compareVal = 0;
-        for(int i = 0; i < ingredients.Count; i++)
-            compareVal += (long)System.Math.Pow(MAX_TOPPINGS, i);
+        foreach(BurgerIngredients ing in ingredients)
+            compareVal += (long)System.Math.Pow(MAX_TOPPINGS, (int)ing);
     }
 }
