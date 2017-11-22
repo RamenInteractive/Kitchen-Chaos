@@ -54,7 +54,7 @@ public class TicketGen : MonoBehaviour
                     order = new TicketOrder(instTicket, new Burger(diffModifier), ++tixSoFar);
                     break;
             }
-
+            
             tickets[i] = order;
             break;
         }
