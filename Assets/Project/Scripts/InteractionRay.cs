@@ -8,8 +8,8 @@ public class InteractionRay : MonoBehaviour
     private GameObject parent;
     private Controller controller;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         hover = null;
         parent = gameObject.transform.parent.gameObject;
@@ -19,7 +19,8 @@ public class InteractionRay : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (!controller) {
+        if (!controller)
+        {
             controller = parent.GetComponent<Controller>();
         }
         Ray ray = new Ray(transform.position, transform.forward);
@@ -34,15 +35,21 @@ public class InteractionRay : MonoBehaviour
         if(objectHit != hover) {
             if (hover != null && hover.HoverHUD != null) {
                 hover.HoverHUD.GetComponent<CanvasGroup>().alpha = 0f;
+                hover.hovering = false;
             }
             if (objectHit != null && objectHit.HoverHUD != null) {
                 objectHit.HoverHUD.GetComponent<CanvasGroup>().alpha = 1f;
+                objectHit.hovering = true;
             }
             hover = objectHit;
         } 
 
         if(controller.GetButtonDown("LeftHand") && hover != null) {
-            hover.interact(parent);
+            hover.interact(parent, true);
+        }
+
+        if (controller.GetButtonDown("RightHand") && hover != null) {
+            hover.interact(parent, false);
         }
     }
 }
