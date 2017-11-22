@@ -39,7 +39,29 @@ public class AssemblyGame : Minigame
     public override void complete()
     {
         //Create food object
-        Destroy(buildSpace.gameObject);
+        foreach(Transform t in buildSpace.transform) {
+            t.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            t.gameObject.GetComponent<Rigidbody>().useGravity = false;
+            t.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+            t.localPosition = Vector3.zero;
+            t.localRotation = Quaternion.identity;
+        }
+        buildSpace.AddComponent<Rigidbody>();
+        buildSpace.AddComponent<BoxCollider>();
+        buildSpace.AddComponent<FoodComponent>();
+        buildSpace.GetComponent<FoodComponent>().food = new Burger(currentBuild);
+        buildSpace.GetComponent<BoxCollider>().size = new Vector3(0.1f, 0.3f, 0.3f);
+        buildSpace.tag = "Food";
+
+        Player p = player.GetComponent<Player>();
+        if(p.lHand == null) {
+            p.pickUp(buildSpace, true);
+        } else if(p.rHand == null) {
+            p.pickUp(buildSpace, false);
+        } else {
+            buildSpace.transform.parent = gameObject.transform.parent;
+        }
+
         newBuildSpace();
 
         currentBuild = new List<Ingredient>();
@@ -119,6 +141,7 @@ public class AssemblyGame : Minigame
                 ingredientSlots[overallSlot] = null;
             }
 
+            ingredient.SetActive(true);
             ingredient.transform.parent = buildSpace.transform;
             ingredient.transform.localPosition = dropLocation;
             ingredient.transform.rotation = Quaternion.identity;
@@ -133,6 +156,13 @@ public class AssemblyGame : Minigame
             text += ingredient + "\n";
         }
         buildText.text = text;*/
+        for(int i = 0; i < TOTAL_SLOTS; i++) {
+            string text = "[Empty]";
+            if (ingredientSlots[i] != null)
+                text = ingredientSlots[i].GetType().ToString() + " (" + ingredientsStored[i] + ")";
+
+            GameObject.Find("TextSlot" + i).GetComponent<Text>().text = text;
+        }
     }
 
     private void newBuildSpace()
@@ -149,7 +179,7 @@ public class AssemblyGame : Minigame
 
         for (int i = 0; i < ingredientSlots.Length; i++)
         {
-            if (firstNull != -1 && ingredientSlots[i] == null)
+            if (firstNull == -1 && ingredientSlots[i] == null)
                 firstNull = i;
 
             if(ingredientSlots[i] != null && ingredientSlots[i].GetType() == ingType)
@@ -162,6 +192,9 @@ public class AssemblyGame : Minigame
         //Reaches here if there aren't any of the same ingredient type in the station
         if (firstNull != -1)
         {
+            ing.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            ing.GetComponent<Rigidbody>().detectCollisions = true;
+            ing.GetComponent<Rigidbody>().useGravity = true;
             ingredientSlots[firstNull] = ing;
             ingredientsStored[firstNull]++;
             return true;
@@ -182,6 +215,8 @@ public class AssemblyGame : Minigame
      */
     public override void handleItem(Player p, bool leftHand)
     {
+        updateHUD();
+
         GameObject hand = leftHand ? p.lHand : p.rHand;
 
         if (hand == null)
@@ -201,6 +236,10 @@ public class AssemblyGame : Minigame
             p.lHand = null;
         else
             p.rHand = null;
+
+
+        inHand.gameObject.SetActive(false);
+        updateHUD();
     }
 
     public override void interact(GameObject caller, bool leftHand)
@@ -228,10 +267,7 @@ public class AssemblyGame : Minigame
             //If it's an ingredient take it into the station
             if (hand.GetComponent<Ingredient>() != null)
             {
-                if(leftHand)
-                handleItem(p, true);
-            else
-                handleItem(p, false);
+                handleItem(p, leftHand);
             }
         }
     }
