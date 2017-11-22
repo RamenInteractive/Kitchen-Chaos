@@ -110,7 +110,7 @@ public class GameSession : MonoBehaviour {
     private void spawnOrder() {
         timeDiff.Add(dayTime - lastOrder);
         lastOrder = dayTime;
-        ticketBoard.diffModifier = difficulty;
+        ticketBoard.diffModifier = difficulty * difficultyMod;
         ticketBoard.newOrder();
     }
 
