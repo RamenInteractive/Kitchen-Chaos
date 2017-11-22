@@ -56,7 +56,7 @@ public class FridgeGame : Minigame
         }
         if (Input.GetMouseButtonDown(0))
         {
-            complete();
+            Instantiate(selectedObject, GameObject.Find("LeftHandPosition").transform);
         }
     }
 
@@ -64,7 +64,6 @@ public class FridgeGame : Minigame
         foreach (Transform i in fridgeContainer.transform) {
             // just pick the first object in the list
             SelectObject(i.gameObject);
-
             break;
         }
     }
