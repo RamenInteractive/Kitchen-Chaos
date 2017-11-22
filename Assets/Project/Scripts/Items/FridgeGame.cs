@@ -54,12 +54,17 @@ public class FridgeGame : Minigame
             dirsPressed[2] = false;
             dirsPressed[3] = false;
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            complete();
+        }
     }
 
     public override void complete() {
         foreach (Transform i in fridgeContainer.transform) {
             // just pick the first object in the list
             SelectObject(i.gameObject);
+
             break;
         }
     }
