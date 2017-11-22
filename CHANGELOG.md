@@ -5,6 +5,14 @@
 - Colt King [ColtTheKing]
 
 # Developer Changelog
+### [0.1.5] 2017/11/21
+==================
+#### Changed Features
+- Reworked Game Loop and spawning algorithms
+
+#### New Features
+- Added Day cycle
+- Added Clock UI element
 
 ### [0.1.4] 2017/11/21
 ==================
