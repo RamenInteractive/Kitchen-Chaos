@@ -183,6 +183,10 @@ public class AssemblyGame : Minigame
     public override void handleItem(Player p, bool leftHand)
     {
         GameObject hand = leftHand ? p.lHand : p.rHand;
+
+        if (hand == null)
+            return;
+
         Ingredient inHand = hand.GetComponent<Ingredient>();
 
         if (inHand == null)
@@ -203,7 +207,7 @@ public class AssemblyGame : Minigame
     {
         Player p = caller.GetComponent<Player>();
 
-        if (p != null)
+        if (p == null)
             return;
 
         GameObject hand = leftHand ? p.lHand : p.rHand;

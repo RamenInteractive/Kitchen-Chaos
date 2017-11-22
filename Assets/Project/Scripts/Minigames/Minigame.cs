@@ -122,7 +122,7 @@ public abstract class Minigame : Interactable {
     {
         Player p = caller.GetComponent<Player>();
 
-        if (p != null)
+        if (p == null)
             return;
 
         enter(caller);

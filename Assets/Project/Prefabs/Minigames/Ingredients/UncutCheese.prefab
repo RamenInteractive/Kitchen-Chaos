@@ -224,10 +224,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1526320227491164}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daae29b99d5486146bec4cfa2db70cd9, type: 3}
+  m_Script: {fileID: 11500000, guid: d4d520af4c7c885408383845aa89c411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HoverHUD: {fileID: 1284591298195344}
+  HoverHUD: {fileID: 0}
+  hovering: 0
 --- !u!114 &114927240577072798
 MonoBehaviour:
   m_ObjectHideFlags: 1
