@@ -7,11 +7,11 @@ using UnityEngine;
 static class ControllerFactory {
     // Makes a controller from a detection ID
     public static Controller AddControllerToObj(GameObject obj, int controllerID) {
-        if (controllerID < -1 || controllerID > 11) {
+        if (controllerID < 0 || controllerID > 11) {
             throw new Exception("Invalid Controller ID for MakeControllerFromId: " + controllerID);
         }
         Controller c = obj.AddComponent<Controller>();
-        if (controllerID < 0) {
+        if (controllerID == 0) {
             // Keyboard
             ConfigureKeyboardController(c);
             
@@ -52,8 +52,6 @@ static class ControllerFactory {
         KeyCode r1 = KeyCode.JoystickButton5 + offset;
         KeyCode r2 = KeyCode.JoystickButton7 + offset;
         KeyCode circle = KeyCode.JoystickButton2 + offset;
-
-        Debug.Log(x);
 
         c.SetAxis("MoveH", "C" + controllerID + "_Horizontal");
         c.SetAxis("MoveV", "C" + controllerID + "_Vertical");
