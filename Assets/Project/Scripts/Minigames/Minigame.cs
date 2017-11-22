@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Minigame : Interactable {
 
@@ -12,11 +13,13 @@ public abstract class Minigame : Interactable {
     private bool inUse = false;
     public Camera viewpoint;
     public GameObject HUD;
+    private string hud;
 
     // Use this for initialization
     protected void Start () {
         viewpoint.GetComponent<Camera>().enabled = false;
         ingredients = new List<Ingredient>();
+        hud = HoverHUD.GetComponentInChildren<Text>().text;
 	}
 	
 	// Update is called once per frame
@@ -40,6 +43,7 @@ public abstract class Minigame : Interactable {
      */
     public virtual void enter(GameObject p) {
         if(!inUse) {
+            HoverHUD.GetComponentInChildren<Text>().text = hud;
             inUse = true;
             player = p;
             player.transform.Find("FirstPersonCharacter").gameObject.GetComponent<Camera>().enabled = false;
@@ -47,7 +51,15 @@ public abstract class Minigame : Interactable {
             gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 0f;
             GameObject.Find("CrossHair").GetComponent<CanvasGroup>().alpha = 0f;
             HUD.GetComponent<CanvasGroup>().alpha = 1f;
-            player.SetActive(false);
+            controller = player.GetComponent<Controller>();
+
+            CustomFirstPersonController cfpc = player.GetComponent<CustomFirstPersonController>();
+            Player playerScript = player.GetComponent<Player>();
+
+            cfpc.enabled = false;
+            playerScript.enabled = false;
+
+            //player.SetActive(false);
         }
     }
 
@@ -76,7 +88,14 @@ public abstract class Minigame : Interactable {
      * Exit minigame and change perspective back to player
      */ 
     public void exit() {
-        player.SetActive(true);
+        CustomFirstPersonController cfpc = player.GetComponent<CustomFirstPersonController>();
+        Player playerScript = player.GetComponent<Player>();
+
+        cfpc.enabled = true;
+        playerScript.enabled = true;
+
+        //player.SetActive(true);
+        
         player.transform.Find("FirstPersonCharacter").gameObject.GetComponent<Camera>().enabled = true;
         viewpoint.GetComponent<Camera>().enabled = false;
         HUD.GetComponent<CanvasGroup>().alpha = 0f;
