@@ -47,7 +47,6 @@ public class GameSession : MonoBehaviour {
 
     private float bVal;
 
-
     private int lastOrder = 0;
     private List<int> timeDiff;
 
