@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 65102741636363538}
   - component: {fileID: 114113106584875986}
   m_Layer: 0
-  m_Name: BurntPattyPrefab
+  m_Name: BurntPatty
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
