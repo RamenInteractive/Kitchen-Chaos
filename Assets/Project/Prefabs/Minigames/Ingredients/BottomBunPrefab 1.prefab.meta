@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Project/Prefabs/Minigames/Ingredients/BottomBunPrefab 1.prefab.meta
 guid: 174e1e8033dfa774aac6d6b40a6551b6
 timeCreated: 1511339952
+=======
+guid: cee93dc92a7e4384988b319d3c6d463a
+timeCreated: 1511326306
+>>>>>>> 483bcb20acf040684c2ef10779a64eee35544f63:Assets/Project/Prefabs/Minigames/Ingredients/BottomBunPrefab.prefab.meta
 licenseType: Free
 NativeFormatImporter:
   mainObjectFileID: 100100000

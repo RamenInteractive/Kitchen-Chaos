@@ -63,7 +63,7 @@ public class Cutting : Minigame {
                 }
             }
         } else {
-            if (Input.GetButtonDown("LeftHand") || Input.GetButtonDown("RightHand"))
+            if (controller.GetButtonDown("LeftHand") || controller.GetButtonDown("RightHand"))
             {
                 progressBar.value = progressBar.value + .15f;
             }

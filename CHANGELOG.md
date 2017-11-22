@@ -5,11 +5,33 @@
 - Colt King [ColtTheKing]
 
 # Developer Changelog
+### [0.1.6] 2017/11/22
+==================
+#### New Features
+- Added Burger Assembly functionality
+- Added Difficulty scaling based on player count
+- Added Overtime mode when orders are on board at end of day
+
+#### Changed Features
+- Updated Burger comparison algorithm
+
+### [0.1.5] 2017/11/21
+==================
+#### Changed Features
+- Reworked Game Loop and spawning algorithms
+
+#### New Features
+- Added Day cycle
+- Added Clock UI element
+- The end of the conveyor belt now triggers the game to compare the food to the current orders
 
 ### [0.1.4] 2017/11/21
 ==================
 #### Changed Features
 - Reworked input system. Controls have been adjusted for most things.
+
+#### New Features
+- Added split screen for multiplayer
 
 ### [0.1.3] 2017/11/20
 ==================
@@ -41,6 +63,7 @@
 ==================
 #### New Features
 - Updated Ticket class to draw text
+
 #### Changed Features
 - Cleaned up Burger class
 
