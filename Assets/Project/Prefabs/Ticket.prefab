@@ -536,11 +536,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-<<<<<<< HEAD
---- !u!114 &114721877251495854
-=======
 --- !u!114 &114378945655240478
->>>>>>> d86f206702d26c397ddbe10bfb2feb35f1292749
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
