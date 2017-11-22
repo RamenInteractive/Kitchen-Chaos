@@ -5,6 +5,14 @@
 - Colt King [ColtTheKing]
 
 # Developer Changelog
+### [0.1.6] 2017/11/22
+==================
+#### New Features
+- Added Burger Assembly functionality
+
+#### Changed Features
+- Updated Burger comparison algorithm
+
 ### [0.1.5] 2017/11/21
 ==================
 #### Changed Features
