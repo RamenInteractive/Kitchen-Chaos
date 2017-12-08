@@ -62,7 +62,7 @@ public class FridgeGame : Minigame
             dirsPressed[2] = false;
             dirsPressed[3] = false;
         }
-        if (controller.GetButtonDown("LeftHand"))
+        if (controller.GetButtonDown("LeftHand") && player.GetComponent<Player>().lHand == null)
         {
             if (selectedObject.name == "UncutLettuce") {
                 GameObject copy = Instantiate(lettucePrefab);
@@ -87,25 +87,17 @@ public class FridgeGame : Minigame
                 player.GetComponent<Player>().pickUp(copy, true);
             }
 
-        } else if (controller.GetButtonDown("RightHand"))
-        {
-            if (selectedObject.name == "UncutLettuce")
-            {
+        } else if (controller.GetButtonDown("RightHand") && player.GetComponent<Player>().rHand == null) {
+            if (selectedObject.name == "UncutLettuce") {
                 GameObject copy = Instantiate(lettucePrefab);
                 player.GetComponent<Player>().pickUp(copy, false);
-            }
-            else if (selectedObject.name == "UncutPotato")
-            {
+            } else if (selectedObject.name == "UncutPotato") {
                 GameObject copy = Instantiate(potatoPrefab);
                 player.GetComponent<Player>().pickUp(copy, false);
-            }
-            else if (selectedObject.name == "UncutTomato")
-            {
+            } else if (selectedObject.name == "UncutTomato") {
                 GameObject copy = Instantiate(tomatoPrefab);
                 player.GetComponent<Player>().pickUp(copy, false);
-            }
-            else if (selectedObject.name == "UncookedPatty")
-            {
+            } else if (selectedObject.name == "UncookedPatty") {
                 GameObject copy = Instantiate(pattyPrefab);
                 player.GetComponent<Player>().pickUp(copy, false);
             } else if (selectedObject.name == "TopBunPrefab") {
@@ -114,9 +106,7 @@ public class FridgeGame : Minigame
             } else if (selectedObject.name == "BottomBunPrefab") {
                 GameObject copy = Instantiate(btmBunPrefab);
                 player.GetComponent<Player>().pickUp(copy, false);
-            }
-            else 
-            {
+            } else {
                 GameObject copy = Instantiate(cheesePrefab);
                 player.GetComponent<Player>().pickUp(copy, false);
             }

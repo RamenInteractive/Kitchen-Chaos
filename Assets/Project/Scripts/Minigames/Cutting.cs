@@ -70,39 +70,91 @@ public class Cutting : Minigame {
 
             if (progressBar.value == 1)
             {
-                GameObject cut;
+                List<GameObject> cuts = new List<GameObject>();
+                GameObject cut1;
+                GameObject cut2;
+                GameObject cut3;
+                GameObject cut4;
+                GameObject cut5;
+
                 if (cuttingBoard.GetChild(0).gameObject.name.Contains("UncutLettuce"))
                 {
                     Destroy(cuttingBoard.GetChild(0).gameObject);
-                    cut = Instantiate(lettucePrefab, cuttingBoard);
-                    cut.transform.localPosition = Vector3.zero;
-                } else if (cuttingBoard.GetChild(0).gameObject.name.Contains("UncutTomato"))
+                    cut1 = Instantiate(lettucePrefab, cuttingBoard);
+                    cut1.transform.localPosition = Vector3.zero;
+                    cut2 = Instantiate(lettucePrefab, cuttingBoard);
+                    cut2.transform.localPosition = Vector3.zero;
+                    cut3 = Instantiate(lettucePrefab, cuttingBoard);
+                    cut3.transform.localPosition = Vector3.zero;
+
+                    cuts.Add(cut1);
+                    cuts.Add(cut2);
+                    cuts.Add(cut3);
+                }
+                else if (cuttingBoard.GetChild(0).gameObject.name.Contains("UncutTomato"))
                 {
                     Destroy(cuttingBoard.GetChild(0).gameObject);
-                    cut = Instantiate(tomatoPrefab, cuttingBoard);
-                    cut.transform.localPosition = Vector3.zero;
-                } else if (cuttingBoard.GetChild(0).gameObject.name.Contains("UncutCheese"))
+                    cut1 = Instantiate(tomatoPrefab, cuttingBoard);
+                    cut1.transform.localPosition = Vector3.zero;
+                    cut2 = Instantiate(tomatoPrefab, cuttingBoard);
+                    cut2.transform.localPosition = Vector3.zero;
+                    cut3 = Instantiate(tomatoPrefab, cuttingBoard);
+                    cut3.transform.localPosition = Vector3.zero;
+
+                    cuts.Add(cut1);
+                    cuts.Add(cut2);
+                    cuts.Add(cut3);
+                }
+                else if (cuttingBoard.GetChild(0).gameObject.name.Contains("UncutCheese"))
                 {
                     Destroy(cuttingBoard.GetChild(0).gameObject);
-                    cut = Instantiate(cheesePrefab, cuttingBoard);
-                    cut.transform.localPosition = Vector3.zero;
-                } else {
+                    cut1 = Instantiate(cheesePrefab, cuttingBoard);
+                    cut1.transform.localPosition = Vector3.zero;
+                    cut2 = Instantiate(cheesePrefab, cuttingBoard);
+                    cut2.transform.localPosition = Vector3.zero;
+                    cut3 = Instantiate(cheesePrefab, cuttingBoard);
+                    cut3.transform.localPosition = Vector3.zero;
+                    cut4 = Instantiate(cheesePrefab, cuttingBoard);
+                    cut4.transform.localPosition = Vector3.zero;
+                    cut5 = Instantiate(cheesePrefab, cuttingBoard);
+                    cut5.transform.localPosition = Vector3.zero;
+
+                    cuts.Add(cut1);
+                    cuts.Add(cut2);
+                    cuts.Add(cut3);
+                    cuts.Add(cut4);
+                    cuts.Add(cut5);
+                }
+                else if (cuttingBoard.GetChild(0).gameObject.name.Contains("UncutPotato"))
+                {
                     Destroy(cuttingBoard.GetChild(0).gameObject);
-                    cut = Instantiate(friesPrefab, cuttingBoard);
-                    cut.transform.localPosition = Vector3.zero;
+                    cut1 = Instantiate(friesPrefab, cuttingBoard);
+                    cut1.transform.localPosition = Vector3.zero;
+                    cut2 = Instantiate(friesPrefab, cuttingBoard);
+                    cut2.transform.localPosition = Vector3.zero;
+                    cut3 = Instantiate(friesPrefab, cuttingBoard);
+                    cut3.transform.localPosition = Vector3.zero;
+
+                    cuts.Add(cut1);
+                    cuts.Add(cut2);
+                    cuts.Add(cut3);
                 }
 
-                cut.transform.parent = GameObject.Find("GameController").transform;
-                cut.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
-                cut.GetComponentInChildren<Rigidbody>().detectCollisions = true;
-                cut.GetComponentInChildren<Rigidbody>().useGravity = true;
-                float angle = Random.Range(0, 360);
-                cut.GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1,Mathf.Sin(angle))) * 250f);
-                cutting = false;
+                for (int i = 0; i < cuts.Count; i++)
+                {
+                    cuts[i].transform.parent = GameObject.Find("GameController").transform;
+                    cuts[i].GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
+                    cuts[i].GetComponentInChildren<Rigidbody>().detectCollisions = true;
+                    cuts[i].GetComponentInChildren<Rigidbody>().useGravity = true;
+                    float angle = Random.Range(0, 360);
+                    cuts[i].GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
+                    
+                    cutting = false;
+                }
             }
         }
     }
-
+        
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Uncut")
@@ -126,30 +178,33 @@ public class Cutting : Minigame {
     public override void handleItem(Player p, bool leftHand)
     {
         GameObject hand = leftHand ? p.lHand : p.rHand;
+        int i;
 
         if (hand == null)
             return;
 
-        Ingredient inHand = hand.GetComponent<Ingredient>();
-
-        if (inHand == null)
-            return;
-
-        for (int i = 0; i < 4; i++)
+        for (i = 0; i < 4; i++)
         {
             if (!occupied[i])
             {
-                inHand.gameObject.transform.parent = storage[i];
-                inHand.gameObject.transform.localPosition = Vector3.zero;
-                inHand.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                inHand.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
-                inHand.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                hand.gameObject.transform.parent = storage[i];
+                hand.gameObject.transform.localPosition = Vector3.zero;
+                hand.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                hand.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+                hand.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 occupied[i] = true;
                 break;
             }
         }
 
-        inHand.gameObject.SetActive(false);
+        if (i == 4)
+            return;
+
+        if (leftHand)
+            p.lHand = null;
+        else
+            p.rHand = null;
+        
     }
 
     public override void interact(GameObject caller, bool leftHand)
@@ -175,7 +230,7 @@ public class Cutting : Minigame {
         else //If you are holding something
         {
             //If it's an ingredient take it into the station
-            if (hand.GetComponent<Ingredient>() != null)
+            if (hand.tag == "Uncut")
             {
                 handleItem(p, leftHand);
             }
