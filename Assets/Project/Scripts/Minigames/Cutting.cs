@@ -122,4 +122,63 @@ public class Cutting : Minigame {
             }
         }
     }
+
+    public override void handleItem(Player p, bool leftHand)
+    {
+        GameObject hand = leftHand ? p.lHand : p.rHand;
+
+        if (hand == null)
+            return;
+
+        Ingredient inHand = hand.GetComponent<Ingredient>();
+
+        if (inHand == null)
+            return;
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (!occupied[i])
+            {
+                inHand.gameObject.transform.parent = storage[i];
+                inHand.gameObject.transform.localPosition = Vector3.zero;
+                inHand.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                inHand.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+                inHand.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                occupied[i] = true;
+                break;
+            }
+        }
+
+        inHand.gameObject.SetActive(false);
+    }
+
+    public override void interact(GameObject caller, bool leftHand)
+    {
+        Player p = caller.GetComponent<Player>();
+
+        if (p == null)
+            return;
+
+        GameObject hand = leftHand ? p.lHand : p.rHand;
+
+        //If you aren't holding anything
+        if (hand == null)
+        {
+            //check the opposite hand you interacted with for an ingredient
+            if (leftHand)
+                handleItem(p, false);
+            else
+                handleItem(p, true);
+
+            enter(caller);
+        }
+        else //If you are holding something
+        {
+            //If it's an ingredient take it into the station
+            if (hand.GetComponent<Ingredient>() != null)
+            {
+                handleItem(p, leftHand);
+            }
+        }
+    }
 }
