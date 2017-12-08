@@ -11,6 +11,7 @@ public class Cutting : Minigame {
     public GameObject lettucePrefab;
     public GameObject tomatoPrefab;
     public GameObject cheesePrefab;
+    public GameObject friesPrefab;
 
     public List<Transform> storage;
     public List<bool> occupied;
@@ -74,14 +75,21 @@ public class Cutting : Minigame {
                 {
                     Destroy(cuttingBoard.GetChild(0).gameObject);
                     cut = Instantiate(lettucePrefab, cuttingBoard);
+                    cut.transform.localPosition = Vector3.zero;
                 } else if (cuttingBoard.GetChild(0).gameObject.name.Contains("UncutTomato"))
                 {
                     Destroy(cuttingBoard.GetChild(0).gameObject);
                     cut = Instantiate(tomatoPrefab, cuttingBoard);
-                } else
+                    cut.transform.localPosition = Vector3.zero;
+                } else if (cuttingBoard.GetChild(0).gameObject.name.Contains("UncutCheese"))
                 {
                     Destroy(cuttingBoard.GetChild(0).gameObject);
                     cut = Instantiate(cheesePrefab, cuttingBoard);
+                    cut.transform.localPosition = Vector3.zero;
+                } else {
+                    Destroy(cuttingBoard.GetChild(0).gameObject);
+                    cut = Instantiate(friesPrefab, cuttingBoard);
+                    cut.transform.localPosition = Vector3.zero;
                 }
 
                 cut.transform.parent = GameObject.Find("GameController").transform;
