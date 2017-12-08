@@ -66,10 +66,18 @@ public class GameSession : MonoBehaviour {
 	void Start () {
         curPlayers = new List<Player>();
         GameObject infoObj = GameObject.Find("GameInfo");
-        GameInfo info = infoObj.GetComponent<GameInfo>();
+        if (infoObj != null) {
+            GameInfo info = infoObj.GetComponent<GameInfo>();
+            numPlayers = info.numPlayers;
+            spawnPlayers(info);
+        }
+        else {
+            numPlayers = 1; // test play
+            curPlayers.Add(Instantiate(playerPrefab) as Player);
+            curPlayers[0].transform.Translate(spawnPoints[0]);
+            ControllerFactory.AddControllerToObj(curPlayers[0].gameObject, 0);
+        }
 
-        numPlayers = info.numPlayers;
-        spawnPlayers(info);
 
         bVal = Mathf.Pow(MAX_TIME_BTWN_ORDERS * Mathf.Pow(0.75f, numPlayers - 1), C_VAL);
         StartCoroutine("startDay");
