@@ -52,9 +52,9 @@ public class TicketOrder
     public bool UpdateTime(GameTime curTime)
     {
         timeSpent = curTime - startTime;
-        GameTime timeLeft = TICKET_DURATION - timeSpent;
+        int timeLeft = TICKET_DURATION - timeSpent.asMinutes;
 
-        if(timeLeft.asMinutes <= 0)
+        if(timeLeft <= 0)
             return false;
 
         return true;
