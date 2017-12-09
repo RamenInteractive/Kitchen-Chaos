@@ -36,7 +36,7 @@ public class TicketGen : MonoBehaviour
 
         for(int i = 0; i < tickets.Length; i++)
         {
-            if(tickets[i] != null && (myGame.getTime() - tickets[i].getStartTime()).asMinutes() >= TICKET_DURATION)
+            if(tickets[i] != null && tickets[i].UpdateTime(myGame.getTime()))
             {
                 deleteTicket(i);
             }
@@ -59,7 +59,7 @@ public class TicketGen : MonoBehaviour
 
         if(bestMatch != -1)
         {
-            IEnumerator coroutine = myGame.finishOrder(tickets[bestMatch].getStartTime());
+            StartCoroutine(myGame.finishOrder(tickets[bestMatch].getTimeSpent()));
             deleteTicket(bestMatch);
         }
     }
