@@ -20,6 +20,7 @@ public class TicketOrder
         orderNumber = num;
 
         ticket.transform.Find("OrderNumber").GetComponent<TextMesh>().text = "ORDER: #" + num;
+        ticket.transform.Find("OrderTime").GetComponent<TextMesh>().text = new GameTime(TICKET_DURATION).ToString(true);
         ticket.transform.Find("OrderType").GetComponent<TextMesh>().text = idealFood.GetType().Name;
         ticket.transform.Find("OrderIngredients").GetComponent<TextMesh>().text = idealFood.ingredientTicketList();
     }
@@ -54,7 +55,9 @@ public class TicketOrder
         timeSpent = curTime - startTime;
         int timeLeft = TICKET_DURATION - timeSpent;
 
-        if(timeLeft <= 0)
+        ticket.transform.Find("OrderTime").GetComponent<TextMesh>().text = new GameTime(timeLeft).ToString(true);
+
+        if (timeLeft <= 0)
             return false;
 
         return true;
