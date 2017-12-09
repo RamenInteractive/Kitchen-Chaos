@@ -7,9 +7,9 @@ public class TicketOrder
     private int orderNumber;
     private GameObject ticket;
     private IFood idealFood;
-    private int startTime;
+    private GameTime startTime;
 
-	public TicketOrder(GameObject ticket, IFood idealFood, int num, int startTime)
+	public TicketOrder(GameObject ticket, IFood idealFood, int num, GameTime startTime)
     {
         this.ticket = ticket;
         this.idealFood = idealFood;
@@ -31,7 +31,7 @@ public class TicketOrder
         return ticket;
     }
 
-    public int getStartTime()
+    public GameTime getStartTime()
     {
         return startTime;
     }

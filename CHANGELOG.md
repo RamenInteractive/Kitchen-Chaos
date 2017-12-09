@@ -5,6 +5,17 @@
 - Colt King [ColtTheKing]
 
 # Developer Changelog
+### [0.2.1] 2017/12/08
+=================
+#### Changed Features
+- Altered time into new GameTime class
+
+### [0.2.0] 2017/11/22 - Beta Release
+==================
+#### New Features
+- Added Pantry functionality
+- Added menu screen
+
 ### [0.1.6] 2017/11/22
 ==================
 #### New Features
@@ -54,7 +65,7 @@
 #### Changed Features
 - Throwing can now be charged to throw further
 
-### [0.1.0] 2017/10/18
+### [0.1.0] 2017/10/18 - Alpha Release
 ==================
 #### Changed Features
 - Integrated individual modules into Alpha build
