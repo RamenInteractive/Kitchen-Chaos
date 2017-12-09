@@ -22,7 +22,8 @@ public class FridgeGame : Minigame
     public GameObject btmBunPrefab;
     public GameObject topBunPrefab;
 
-    new protected void Start() {
+    new protected void Start()
+    {
         base.Start();
         dirsPressed = new bool[4];
     }
@@ -62,6 +63,8 @@ public class FridgeGame : Minigame
             dirsPressed[2] = false;
             dirsPressed[3] = false;
         }
+
+        // Check selected object 
         if (controller.GetButtonDown("LeftHand") && player.GetComponent<Player>().lHand == null)
         {
             if (selectedObject.name == "UncutLettuce") {
@@ -111,6 +114,22 @@ public class FridgeGame : Minigame
                 player.GetComponent<Player>().pickUp(copy, false);
             }
         }
+        
+    }
+
+    public override void enter(GameObject p)
+    {
+        player = p;
+        base.enter(p);
+        GameObject door = GameObject.Find("Door");
+        door.transform.Rotate(new Vector3(0, -90, 0));
+    }
+
+    public override void exit()
+    {
+        base.exit();
+        GameObject door = GameObject.Find("Door");
+        door.transform.Rotate(new Vector3(0, 90, 0));
     }
 
     public override void complete() {
