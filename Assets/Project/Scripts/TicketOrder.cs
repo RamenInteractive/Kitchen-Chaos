@@ -10,7 +10,7 @@ public class TicketOrder
     private GameObject ticket;
     private IFood idealFood;
     private GameTime startTime;
-    private GameTime timeSpent;
+    private int timeSpent;
 
 	public TicketOrder(GameObject ticket, IFood idealFood, int num, GameTime startTime)
     {
@@ -44,7 +44,7 @@ public class TicketOrder
         return idealFood;
     }
 
-    public GameTime getTimeSpent()
+    public int getTimeSpent()
     {
         return timeSpent;
     }
@@ -52,7 +52,7 @@ public class TicketOrder
     public bool UpdateTime(GameTime curTime)
     {
         timeSpent = curTime - startTime;
-        int timeLeft = TICKET_DURATION - timeSpent.asMinutes;
+        int timeLeft = TICKET_DURATION - timeSpent;
 
         if(timeLeft <= 0)
             return false;
