@@ -127,8 +127,8 @@ public class GameSession : MonoBehaviour {
         StartCoroutine("startDay");
     }
     
-    public IEnumerator finishOrder(GameTime timeSpent) {
-        float timeRemaining = 1 - Mathf.Pow(1 - (float)timeSpent.asMinutes / TicketGen.TICKET_DURATION, 1.5f);
+    public IEnumerator finishOrder(int timeSpent) {
+        float timeRemaining = 1 - Mathf.Pow(1 - (float)timeSpent / TicketGen.TICKET_DURATION, 1.5f);
         int pointVal = Mathf.FloorToInt(100 + 100 * difficulty * difficultyMod * timeRemaining);
         score += pointVal;
         orderCompletionText.text = "Order complete!\n+" + pointVal;
@@ -137,7 +137,7 @@ public class GameSession : MonoBehaviour {
     }
 
     private void spawnOrder() {
-        timeDiff.Add((dayTime - lastOrder).asMinutes());
+        timeDiff.Add((dayTime - lastOrder));
         lastOrder = dayTime;
         ticketBoard.diffModifier = difficulty * difficultyMod;
         ticketBoard.newOrder();
@@ -193,17 +193,8 @@ public class GameSession : MonoBehaviour {
         }
     }
 
-    private IEnumerator startDay() {
-        dayTime = START_DAY;
-        dayStatus = STATUS_NO_ORDERS;
-        lastOrder = dayTime - MIN_TIME_BTWN_ORDERS;
-        minuteCount = 0;
-        timeDiff = new List<int>();
-        yield return displayMessage("Day " + (daysCleared + 1), 4f);
-    }
-
     private void randomChanceOrder() {
-        int last = (dayTime - lastOrder).asMinutes();
+        int last = (dayTime - lastOrder);
         if(last >= MIN_TIME_BTWN_ORDERS) { 
             float maxf = 0.5f;
             float floor = maxf * difficulty * difficultyMod;
