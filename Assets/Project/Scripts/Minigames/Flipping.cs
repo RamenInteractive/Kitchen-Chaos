@@ -107,8 +107,8 @@ public class Flipping : Minigame {
                     burnt.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                     burnt.GetComponentInChildren<Rigidbody>().detectCollisions = true;
                     burnt.GetComponentInChildren<Rigidbody>().useGravity = true;
-                    burnt.GetComponentInChildren<Rigidbody>().AddForce((transform.up) * 250f);
-                    burnt.GetComponentInChildren<Rigidbody>().AddForce((transform.forward * -1) * 250f);
+                    float angle = Random.Range(0, 360);
+                    burnt.GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
                     occupied[i] = false;
                     flipped[i] = false;
                     timers[i].GetComponent<TextMesh>().text = "Burnt";
@@ -127,12 +127,10 @@ public class Flipping : Minigame {
     {
         if (controller.GetButtonDown("LeftHand") || controller.GetButtonDown("RightHand"))
         {
-            Debug.Log("Click");
             for (int i = 0; i < 6; i++)
             {
                 if (time[i] < 10f && !flipped[i] && cooking[i].GetChild(1).gameObject.name.Contains("UncookedPatty"))
                 {
-                    Debug.Log("Hit");
                     flipped[i] = true;
                     time[i] = 15.0f;
                     timers[i].GetComponent<TextMesh>().text = time[i].ToString();
@@ -149,8 +147,8 @@ public class Flipping : Minigame {
                     done.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                     done.GetComponentInChildren<Rigidbody>().detectCollisions = true;
                     done.GetComponentInChildren<Rigidbody>().useGravity = true;
-                    done.GetComponentInChildren<Rigidbody>().AddForce((transform.up) * 250f);
-                    done.GetComponentInChildren<Rigidbody>().AddForce((transform.forward * -1) * 250f);
+                    float angle = Random.Range(0, 360);
+                    done.GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
                     occupied[i] = false;
                     flipped[i] = false;
                     timers[i].GetComponent<TextMesh>().color = Color.green;
@@ -169,8 +167,8 @@ public class Flipping : Minigame {
                     done.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                     done.GetComponentInChildren<Rigidbody>().detectCollisions = true;
                     done.GetComponentInChildren<Rigidbody>().useGravity = true;
-                    done.GetComponentInChildren<Rigidbody>().AddForce((transform.up) * 250f);
-                    done.GetComponentInChildren<Rigidbody>().AddForce((transform.forward * -1) * 250f);
+                    float angle = Random.Range(0, 360);
+                    done.GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
                     occupied[i] = false;
                     flipped[i] = false;
                     timers[i].GetComponent<TextMesh>().color = Color.green;
@@ -202,5 +200,40 @@ public class Flipping : Minigame {
                 }
             }
         }
+    }
+
+    public override void handleItem(Player p, bool leftHand)
+    {
+        GameObject hand = leftHand ? p.lHand : p.rHand;
+        int i;
+
+        if (hand == null)
+            return;
+
+        for (i = 0; i < 6; i++)
+        {
+            if (!occupied[i])
+            {
+                hand.gameObject.transform.parent = cooking[i];
+                hand.gameObject.transform.localPosition = Vector3.zero;
+                hand.gameObject.transform.rotation = Quaternion.identity;
+                hand.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                hand.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+                hand.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                occupied[i] = true;
+                timers[i].GetComponent<TextMesh>().color = Color.green;
+                timers[i].GetComponent<TextMesh>().text = time[i].ToString();
+                break;
+            }
+        }
+
+        if (i == 6)
+            return;
+
+        if (leftHand)
+            p.lHand = null;
+        else
+            p.rHand = null;
+        
     }
 }
