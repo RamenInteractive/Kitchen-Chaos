@@ -127,8 +127,8 @@ public class GameSession : MonoBehaviour {
         StartCoroutine("startDay");
     }
     
-    public IEnumerator finishOrder(GameTime timeSpent) {
-        float timeRemaining = 1 - Mathf.Pow(1 - (float)timeSpent.asMinutes() / TicketGen.TICKET_DURATION, 1.5f);
+    public IEnumerator finishOrder(int timeSpent) {
+        float timeRemaining = 1 - Mathf.Pow(1 - (float)timeSpent / TicketGen.TICKET_DURATION, 1.5f);
         int pointVal = Mathf.FloorToInt(100 + 100 * difficulty * difficultyMod * timeRemaining);
         score += pointVal;
         orderCompletionText.text = "Order complete!\n+" + pointVal;
