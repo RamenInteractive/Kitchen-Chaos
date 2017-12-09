@@ -19,9 +19,9 @@
         rollOver();
     }
 
-    public GameTime(int HHmm) {
-        hour = HHmm / 100;
-        minute = HHmm % 100;
+    public GameTime(int minutes) {
+        hour = 0;
+        minute = minutes;
         rollOver();
     }
 
@@ -84,6 +84,14 @@
 
     public static GameTime operator -(GameTime l, int r) {
         return new GameTime(l).addMinutes(-r);
+    }
+
+    public static int operator +(int l, GameTime r) {
+        return l + r.asMinutes();
+    }
+
+    public static int operator -(int l, GameTime r) {
+        return l - r.asMinutes();
     }
 
     public static GameTime operator ++(GameTime l) {
