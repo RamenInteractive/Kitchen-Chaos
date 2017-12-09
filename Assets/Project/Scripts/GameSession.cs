@@ -137,8 +137,8 @@ public class GameSession : MonoBehaviour {
     }
 
     private void spawnOrder() {
-        timeDiff.Add((dayTime - lastOrder));
-        lastOrder = dayTime;
+        timeDiff.Add(dayTime - lastOrder);
+        lastOrder = new GameTime(dayTime);
         ticketBoard.diffModifier = difficulty * difficultyMod;
         ticketBoard.newOrder();
     }
@@ -194,7 +194,7 @@ public class GameSession : MonoBehaviour {
     }
 
     private void randomChanceOrder() {
-        int last = (dayTime - lastOrder);
+        int last = dayTime - lastOrder;
         if(last >= MIN_TIME_BTWN_ORDERS) { 
             float maxf = 0.5f;
             float floor = maxf * difficulty * difficultyMod;
@@ -289,6 +289,6 @@ public class GameSession : MonoBehaviour {
 
     public GameTime getTime()
     {
-        return dayTime;
+        return new GameTime(dayTime);
     }
 }

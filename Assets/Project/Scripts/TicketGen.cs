@@ -36,7 +36,7 @@ public class TicketGen : MonoBehaviour
 
         for(int i = 0; i < tickets.Length; i++)
         {
-            if(tickets[i] != null && tickets[i].UpdateTime(myGame.getTime()))
+            if(tickets[i] != null && !tickets[i].UpdateTime(myGame.getTime()))
             {
                 deleteTicket(i);
             }

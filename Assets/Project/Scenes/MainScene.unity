@@ -2119,7 +2119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c272582ca22ce1408ff9dc8b1e044f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 114552088849452952, guid: 5582bb5e22960744781cd5d044a3c845,
+    type: 2}
   sun: {fileID: 437108224}
   ticketBoard: {fileID: 1235285301}
   displayText: {fileID: 1793139768}
