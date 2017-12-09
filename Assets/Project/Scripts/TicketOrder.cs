@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class TicketOrder
 {
+    public const int TICKET_DURATION = 120;
+
     private int orderNumber;
     private GameObject ticket;
     private IFood idealFood;
     private GameTime startTime;
+    private GameTime timeSpent;
 
 	public TicketOrder(GameObject ticket, IFood idealFood, int num, GameTime startTime)
     {
@@ -39,5 +42,21 @@ public class TicketOrder
     public IFood getFood()
     {
         return idealFood;
+    }
+
+    public GameTime getTimeSpent()
+    {
+        return timeSpent;
+    }
+
+    public bool UpdateTime(GameTime curTime)
+    {
+        timeSpent = curTime - startTime;
+        int timeLeft = TICKET_DURATION - timeSpent.asMinutes;
+
+        if(timeLeft <= 0)
+            return false;
+
+        return true;
     }
 }

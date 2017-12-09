@@ -99,6 +99,16 @@ public class GameSession : MonoBehaviour {
         }
     }
 
+    private IEnumerator startDay()
+    {
+        dayTime = START_DAY;
+        dayStatus = STATUS_NO_ORDERS;
+        lastOrder = START_DAY - MIN_TIME_BTWN_ORDERS;
+        minuteCount = 0;
+        timeDiff = new List<int>();
+        yield return displayMessage("Day " + (daysCleared + 1), 4f);
+    }
+
     private IEnumerator endDay() {
         ticketBoard.resetTickets();
         daysCleared++;
@@ -116,9 +126,9 @@ public class GameSession : MonoBehaviour {
 
         StartCoroutine("startDay");
     }
-
-    public IEnumerator finishOrder(GameTime startTime) {
-        float timeRemaining = 1 - Mathf.Pow(1 - (float)(TicketGen.TICKET_DURATION - (dayTime - startTime).asMinutes()) / TicketGen.TICKET_DURATION, 1.5f);
+    
+    public IEnumerator finishOrder(GameTime timeSpent) {
+        float timeRemaining = 1 - Mathf.Pow(1 - (float)timeSpent.asMinutes / TicketGen.TICKET_DURATION, 1.5f);
         int pointVal = Mathf.FloorToInt(100 + 100 * difficulty * difficultyMod * timeRemaining);
         score += pointVal;
         orderCompletionText.text = "Order complete!\n+" + pointVal;
