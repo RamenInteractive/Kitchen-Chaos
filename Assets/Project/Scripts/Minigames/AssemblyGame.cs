@@ -100,6 +100,15 @@ public class AssemblyGame : Minigame
         }
     }
 
+    public void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Ingredient")
+        {
+            storeIngredient(collision.gameObject.GetComponent<Ingredient>());
+            collision.gameObject.SetActive(false);
+        }
+    }
+
     private void selectSide(int side)
     {
         if (side >= 0)
@@ -142,6 +151,7 @@ public class AssemblyGame : Minigame
             }
 
             ingredient.SetActive(true);
+            ingredient.tag = "Food";
             ingredient.transform.parent = buildSpace.transform;
             ingredient.transform.localPosition = dropLocation;
             ingredient.transform.rotation = Quaternion.identity;

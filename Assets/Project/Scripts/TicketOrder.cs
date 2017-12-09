@@ -9,11 +9,10 @@ public class TicketOrder
     private int orderNumber;
     private GameObject ticket;
     private IFood idealFood;
-    private int startTime;
-    private int timeSpent;
+    private GameTime startTime;
+    private GameTime timeSpent;
 
-
-    public TicketOrder(GameObject ticket, IFood idealFood, int num, int startTime)
+	public TicketOrder(GameObject ticket, IFood idealFood, int num, GameTime startTime)
     {
         this.ticket = ticket;
         this.idealFood = idealFood;
@@ -35,7 +34,7 @@ public class TicketOrder
         return ticket;
     }
 
-    public int getStartTime()
+    public GameTime getStartTime()
     {
         return startTime;
     }
@@ -45,17 +44,17 @@ public class TicketOrder
         return idealFood;
     }
 
-    public int getTimeSpent()
+    public GameTime getTimeSpent()
     {
         return timeSpent;
     }
 
-    public bool UpdateTime(int curTime)
+    public bool UpdateTime(GameTime curTime)
     {
-        timeSpent = GameSession.timeSpent(startTime, curTime);
-        int timeLeft = TICKET_DURATION - timeSpent;
+        timeSpent = curTime - startTime;
+        GameTime timeLeft = TICKET_DURATION - timeSpent;
 
-        if(timeLeft <= 0)
+        if(timeLeft.asMinutes <= 0)
             return false;
 
         return true;

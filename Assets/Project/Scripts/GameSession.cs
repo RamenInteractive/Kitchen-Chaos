@@ -4,21 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour {
-    public const float MINUTE_VALUE = 0.5f;
+    public const float MINUTE_VALUE = 0.75f;
 
-    public const int START_DAY = 1000;
-    public const int END_DAY = 2300;
+    public static GameTime START_DAY = new GameTime("10:00");
+    public static GameTime END_DAY = new GameTime("23:00");
 
-    public const int START_ORDERS = 1030;
-    public const int END_ORDERS = 2230;
+    public static GameTime START_ORDERS = START_DAY + 30;
+    public static GameTime END_ORDERS = END_DAY - 30;
 
-    public const int LUNCH_RUSH_START = 1200;
-    public const int LUNCH_RUSH_END = 1400;
+    public static GameTime LUNCH_RUSH_START = new GameTime("12:00");
+    public static GameTime LUNCH_RUSH_END = new GameTime("14:00");
 
-    public const int DINNER_RUSH_START = 1730;
-    public const int DINNER_RUSH_END = 2000;
+    public static GameTime DINNER_RUSH_START = new GameTime("17:30");
+    public static GameTime DINNER_RUSH_END = new GameTime("20:00");
 
-    public const int MAX_TIME_BTWN_ORDERS = 120;
+    public const int MAX_TIME_BTWN_ORDERS = 150;
     public const int MIN_TIME_BTWN_ORDERS = 10;
 
     public const float C_VAL = 3f;
@@ -41,13 +41,13 @@ public class GameSession : MonoBehaviour {
 
     private int daysCleared = 0;
     private int score = 0;
-    private int dayTime = 0; // hhmm format
+    private GameTime dayTime = new GameTime();
 
     private int dayStatus = STATUS_NORMAL;
 
     private float bVal;
 
-    private int lastOrder = 0;
+    private GameTime lastOrder;
     private List<int> timeDiff;
 
     private int numPlayers;
@@ -66,10 +66,18 @@ public class GameSession : MonoBehaviour {
 	void Start () {
         curPlayers = new List<Player>();
         GameObject infoObj = GameObject.Find("GameInfo");
-        GameInfo info = infoObj.GetComponent<GameInfo>();
+        if (infoObj != null) {
+            GameInfo info = infoObj.GetComponent<GameInfo>();
+            numPlayers = info.numPlayers;
+            spawnPlayers(info);
+        }
+        else {
+            numPlayers = 1; // test play
+            curPlayers.Add(Instantiate(playerPrefab) as Player);
+            curPlayers[0].transform.Translate(spawnPoints[0]);
+            ControllerFactory.AddControllerToObj(curPlayers[0].gameObject, 0);
+        }
 
-        numPlayers = info.numPlayers;
-        spawnPlayers(info);
 
         bVal = Mathf.Pow(MAX_TIME_BTWN_ORDERS * Mathf.Pow(0.75f, numPlayers - 1), C_VAL);
         StartCoroutine("startDay");
@@ -80,7 +88,7 @@ public class GameSession : MonoBehaviour {
         if(dayStatus != STATUS_END_DAY) {
             minuteCount += Time.deltaTime;
             if (minuteCount > MINUTE_VALUE) {
-                incrementTime((int)(minuteCount / MINUTE_VALUE));
+                dayTime.addMinutes((int)(minuteCount / MINUTE_VALUE));
                 minuteCount %= MINUTE_VALUE;
                 updateStatus();
                 if(dayStatus != STATUS_NO_ORDERS && dayStatus != STATUS_OVERTIME) {
@@ -118,9 +126,9 @@ public class GameSession : MonoBehaviour {
 
         StartCoroutine("startDay");
     }
-
-    public IEnumerator finishOrder(int timeSpent) {
-        float timeRemaining = 1 - Mathf.Pow(1 - (float)timeSpent / TicketOrder.TICKET_DURATION, 1.5f);
+    
+    public IEnumerator finishOrder(GameTime timeSpent) {
+        float timeRemaining = 1 - Mathf.Pow(1 - (float)timeSpent.asMinutes / TicketGen.TICKET_DURATION, 1.5f);
         int pointVal = Mathf.FloorToInt(100 + 100 * difficulty * difficultyMod * timeRemaining);
         score += pointVal;
         orderCompletionText.text = "Order complete!\n+" + pointVal;
@@ -129,7 +137,7 @@ public class GameSession : MonoBehaviour {
     }
 
     private void spawnOrder() {
-        timeDiff.Add(dayTime - lastOrder);
+        timeDiff.Add((dayTime - lastOrder).asMinutes());
         lastOrder = dayTime;
         ticketBoard.diffModifier = difficulty * difficultyMod;
         ticketBoard.newOrder();
@@ -185,8 +193,17 @@ public class GameSession : MonoBehaviour {
         }
     }
 
+    private IEnumerator startDay() {
+        dayTime = START_DAY;
+        dayStatus = STATUS_NO_ORDERS;
+        lastOrder = dayTime - MIN_TIME_BTWN_ORDERS;
+        minuteCount = 0;
+        timeDiff = new List<int>();
+        yield return displayMessage("Day " + (daysCleared + 1), 4f);
+    }
+
     private void randomChanceOrder() {
-        int last = dayTime - lastOrder;
+        int last = (dayTime - lastOrder).asMinutes();
         if(last >= MIN_TIME_BTWN_ORDERS) { 
             float maxf = 0.5f;
             float floor = maxf * difficulty * difficultyMod;
@@ -276,31 +293,11 @@ public class GameSession : MonoBehaviour {
     }
 
     private void updateClock() {
-        int hour = dayTime / 100;
-        int min = dayTime % 100;
-        int dHour = hour % 12;
-        clockText.text = (dHour == 0 ? 12 : dHour) + ":" + (min < 10 ? "0" + min : min.ToString()) + (hour >= 12 ? "PM" : "AM");
+        clockText.text = dayTime.ToString();
     }
 
-    private int incrementTime(int increment) {
-        dayTime += increment;
-        if(dayTime % 100 >= 60) {
-            dayTime += 40;
-            lastOrder += 40;
-        }
-        return dayTime;
-    }
-
-    public int getTime()
+    public GameTime getTime()
     {
         return dayTime;
-    }
-
-    public static int timeSpent(int sTime, int curTime)
-    {
-        int sMin = sTime / 100 * 60 + sTime % 100;
-        int cMin = curTime / 100 * 60 + sTime % 100;
-
-        return cMin - sMin;
     }
 }
