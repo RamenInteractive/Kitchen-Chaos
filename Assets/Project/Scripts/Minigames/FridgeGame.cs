@@ -25,6 +25,13 @@ public class FridgeGame : Minigame
     new protected void Start() {
         base.Start();
         dirsPressed = new bool[4];
+
+        foreach (Transform i in fridgeContainer.transform)
+        {
+            // just pick the first object in the list
+            SelectObject(i.gameObject);
+            return;
+        }
     }
 
     protected override void activeUpdate() {
