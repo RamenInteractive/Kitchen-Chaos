@@ -52,10 +52,10 @@ public class Cutting : Minigame {
                 if (occupied[i])
                 {
                     storage[i].GetChild(0).transform.parent = cuttingBoard;
-                    cuttingBoard.GetChild(1).gameObject.transform.localPosition = Vector3.zero;
-                    cuttingBoard.GetChild(1).gameObject.GetComponent<Rigidbody>().useGravity = false;
-                    cuttingBoard.GetChild(1).gameObject.GetComponent<Rigidbody>().detectCollisions = false;
-                    cuttingBoard.GetChild(1).gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                    cuttingBoard.GetChild(0).gameObject.transform.localPosition = Vector3.zero;
+                    cuttingBoard.GetChild(0).gameObject.GetComponent<Rigidbody>().useGravity = false;
+                    cuttingBoard.GetChild(0).gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+                    cuttingBoard.GetChild(0).gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                     cutting = true;
                     occupied[i] = false;
                     progressBar.value = 0;
@@ -77,9 +77,9 @@ public class Cutting : Minigame {
                 GameObject cut4;
                 GameObject cut5;
 
-                if (cuttingBoard.GetChild(1).gameObject.name.Contains("UncutLettuce"))
+                if (cuttingBoard.GetChild(0).gameObject.name.Contains("UncutLettuce"))
                 {
-                    Destroy(cuttingBoard.GetChild(1).gameObject);
+                    Destroy(cuttingBoard.GetChild(0).gameObject);
                     cut1 = Instantiate(lettucePrefab, cuttingBoard);
                     cut1.transform.localPosition = Vector3.zero;
                     cut2 = Instantiate(lettucePrefab, cuttingBoard);
@@ -105,9 +105,9 @@ public class Cutting : Minigame {
                     cuts.Add(cut2);
                     cuts.Add(cut3);
                 }
-                else if (cuttingBoard.GetChild(1).gameObject.name.Contains("UncutCheese"))
+                else if (cuttingBoard.GetChild(0).gameObject.name.Contains("UncutCheese"))
                 {
-                    Destroy(cuttingBoard.GetChild(1).gameObject);
+                    Destroy(cuttingBoard.GetChild(0).gameObject);
                     cut1 = Instantiate(cheesePrefab, cuttingBoard);
                     cut1.transform.localPosition = Vector3.zero;
                     cut2 = Instantiate(cheesePrefab, cuttingBoard);
@@ -125,9 +125,9 @@ public class Cutting : Minigame {
                     cuts.Add(cut4);
                     cuts.Add(cut5);
                 }
-                else if (cuttingBoard.GetChild(1).gameObject.name.Contains("UncutPotato"))
+                else if (cuttingBoard.GetChild(0).gameObject.name.Contains("UncutPotato"))
                 {
-                    Destroy(cuttingBoard.GetChild(1).gameObject);
+                    Destroy(cuttingBoard.GetChild(0).gameObject);
                     cut1 = Instantiate(friesPrefab, cuttingBoard);
                     cut1.transform.localPosition = Vector3.zero;
                     cut2 = Instantiate(friesPrefab, cuttingBoard);

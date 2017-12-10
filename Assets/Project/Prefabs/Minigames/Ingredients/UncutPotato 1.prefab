@@ -38,6 +38,8 @@ GameObject:
   - component: {fileID: 33492640266600278}
   - component: {fileID: 23952385323027466}
   - component: {fileID: 114668149790648480}
+  - component: {fileID: 135630069016650996}
+  - component: {fileID: 54769696743341890}
   m_Layer: 0
   m_Name: UncutPotato 1
   m_TagString: Uncut
@@ -133,6 +135,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1414320051657124}
   m_Mesh: {fileID: 4300000, guid: add255148241f3f42811537be6e81292, type: 3}
+--- !u!54 &54769696743341890
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1414320051657124}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &114510571078764204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -216,6 +233,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!135 &135630069016650996
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1414320051657124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.9244423
+  m_Center: {x: 0.20656413, y: 0.011938214, z: 0.28313488}
 --- !u!222 &222477800876301758
 CanvasRenderer:
   m_ObjectHideFlags: 1
