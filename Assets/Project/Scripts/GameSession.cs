@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameSession : MonoBehaviour {
+public class GameSession : MonoBehaviour
+{
     public const float MINUTE_VALUE = 0.75f;
 
     public static GameTime START_DAY = new GameTime("10:00");
@@ -62,16 +63,19 @@ public class GameSession : MonoBehaviour {
 
     public static Vector3[] spawnPoints = { new Vector3(5, 1, 2), new Vector3(5, 1, 7), new Vector3(5, 1, -2), new Vector3(5, 1, -7) };
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         curPlayers = new List<Player>();
         GameObject infoObj = GameObject.Find("GameInfo");
-        if (infoObj != null) {
+        if (infoObj != null)
+        {
             GameInfo info = infoObj.GetComponent<GameInfo>();
             numPlayers = info.numPlayers;
             spawnPlayers(info);
         }
-        else {
+        else
+        {
             numPlayers = 1; // test play
             curPlayers.Add(Instantiate(playerPrefab) as Player);
             curPlayers[0].transform.Translate(spawnPoints[0]);
@@ -84,14 +88,18 @@ public class GameSession : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-        if(dayStatus != STATUS_END_DAY) {
+    void Update()
+    {
+        if (dayStatus != STATUS_END_DAY)
+        {
             minuteCount += Time.deltaTime;
-            if (minuteCount > MINUTE_VALUE) {
+            if (minuteCount > MINUTE_VALUE)
+            {
                 dayTime.addMinutes((int)(minuteCount / MINUTE_VALUE));
                 minuteCount %= MINUTE_VALUE;
                 updateStatus();
-                if(dayStatus != STATUS_NO_ORDERS && dayStatus != STATUS_OVERTIME) {
+                if (dayStatus != STATUS_NO_ORDERS && dayStatus != STATUS_OVERTIME)
+                {
                     randomChanceOrder();
                 }
             }
@@ -109,25 +117,29 @@ public class GameSession : MonoBehaviour {
         yield return displayMessage("Day " + (daysCleared + 1), 4f);
     }
 
-    private IEnumerator endDay() {
+    private IEnumerator endDay()
+    {
         ticketBoard.resetTickets();
         daysCleared++;
         float sum = 0;
-        foreach(int t in timeDiff) {
+        foreach (int t in timeDiff)
+        {
             sum += t;
         }
         float avg = sum / timeDiff.Count;
         Debug.Log("Orders made: " + timeDiff.Count + " | Tavg: " + avg + " | Tmed: " + timeDiff[timeDiff.Count / 2]);
         yield return displayMessage("Day " + daysCleared + " completed!\nScore: " + score, 4f);
 
-        if (difficulty < 1f) {
+        if (difficulty < 1f)
+        {
             difficulty += 0.15f;
         }
 
         StartCoroutine("startDay");
     }
-    
-    public IEnumerator finishOrder(int timeSpent) {
+
+    public IEnumerator finishOrder(int timeSpent)
+    {
         float timeRemaining = 1 - Mathf.Pow(1 - (float)timeSpent / TicketGen.TICKET_DURATION, 1.5f);
         int pointVal = Mathf.FloorToInt(100 + 100 * difficulty * difficultyMod * timeRemaining);
         score += pointVal;
@@ -136,23 +148,26 @@ public class GameSession : MonoBehaviour {
         orderCompletionText.text = "";
     }
 
-    private void spawnOrder() {
+    private void spawnOrder()
+    {
         timeDiff.Add(dayTime - lastOrder);
         lastOrder = new GameTime(dayTime);
         ticketBoard.diffModifier = difficulty * difficultyMod;
         ticketBoard.newOrder();
     }
 
-    private void setDisplayText(string str) {
+    private void setDisplayText(string str)
+    {
         displayText.text = str;
     }
 
     private void spawnPlayers(GameInfo info)
     {
-        for(int i = 0; i < numPlayers; i++)
+        for (int i = 0; i < numPlayers; i++)
         {
             int controllerID = 0;
-            switch(i) {
+            switch (i)
+            {
                 case 0:
                     controllerID = info.player1Controller;
                     break;
@@ -171,7 +186,7 @@ public class GameSession : MonoBehaviour {
             ControllerFactory.AddControllerToObj(curPlayers[i].gameObject, controllerID);
         }
 
-        switch(numPlayers)
+        switch (numPlayers)
         {
             case 2:
                 curPlayers[0].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0.5f, 1, 0.5f);
@@ -193,65 +208,90 @@ public class GameSession : MonoBehaviour {
         }
     }
 
-    private void randomChanceOrder() {
+    private void randomChanceOrder()
+    {
         int last = dayTime - lastOrder;
-        if(last >= MIN_TIME_BTWN_ORDERS) { 
+        if (last >= MIN_TIME_BTWN_ORDERS)
+        {
             float maxf = 0.5f;
             float floor = maxf * difficulty * difficultyMod;
             float rand = Random.Range(floor, 1f);
             float catchup = (Mathf.Pow(last, C_VAL) / bVal) * (1 - rand);
-            if((rand + catchup) > 0.984f) {
+            if ((rand + catchup) > 0.984f)
+            {
                 spawnOrder();
             }
             //Debug.Log("Last: " + lastOrder + " | Time: " + dayTime + " | f: " + floor + " | r: " + rand + " | c: " + catchup + " | val: " + (rand + catchup));
         }
     }
 
-    private void updateStatus() {
-        switch (dayStatus) {
+    private void updateStatus()
+    {
+        switch (dayStatus)
+        {
             case STATUS_NORMAL:
-                if (dayTime >= LUNCH_RUSH_START && dayTime < LUNCH_RUSH_END) {
+                if (dayTime >= LUNCH_RUSH_START && dayTime < LUNCH_RUSH_END)
+                {
                     StartCoroutine(setStatus(STATUS_LUNCH_RUSH));
-                } else if (dayTime >= DINNER_RUSH_START && dayTime < DINNER_RUSH_END) {
+                }
+                else if (dayTime >= DINNER_RUSH_START && dayTime < DINNER_RUSH_END)
+                {
                     StartCoroutine(setStatus(STATUS_DINNER_RUSH));
-                } else if (dayTime >= END_ORDERS) {
+                }
+                else if (dayTime >= END_ORDERS)
+                {
                     StartCoroutine(setStatus(STATUS_NO_ORDERS));
-                } else if (dayTime == LUNCH_RUSH_START - 30) {
+                }
+                else if (dayTime == LUNCH_RUSH_START - 30)
+                {
                     StartCoroutine(displayMessage("Prepare for the Lunch Rush!", 2f));
-                } else if (dayTime == DINNER_RUSH_START - 30) {
+                }
+                else if (dayTime == DINNER_RUSH_START - 30)
+                {
                     StartCoroutine(displayMessage("Prepare for the Dinner Rush!", 2f));
                 }
                 break;
             case STATUS_NO_ORDERS:
-                if (dayTime >= START_ORDERS && dayTime < END_ORDERS) {
+                if (dayTime >= START_ORDERS && dayTime < END_ORDERS)
+                {
                     StartCoroutine(displayMessage("The Kitchen is now open!", 2f));
                     StartCoroutine(setStatus(STATUS_NORMAL));
-                } else if (dayTime >= END_DAY) {
-                    if (ticketBoard.numOrders() == 0) {
+                }
+                else if (dayTime >= END_DAY)
+                {
+                    if (ticketBoard.numOrders() == 0)
+                    {
                         StartCoroutine(setStatus(STATUS_END_DAY));
                         StartCoroutine("endDay");
-                    } else {
+                    }
+                    else
+                    {
                         StartCoroutine(setStatus(STATUS_OVERTIME));
                     }
                 }
                 break;
             case STATUS_LUNCH_RUSH:
-                if (dayTime >= LUNCH_RUSH_END) {
+                if (dayTime >= LUNCH_RUSH_END)
+                {
                     StartCoroutine(displayMessage("Lunch Rush Completed", 2f));
                     StartCoroutine(setStatus(STATUS_NORMAL));
                 }
                 break;
             case STATUS_DINNER_RUSH:
-                if (dayTime >= DINNER_RUSH_END) {
+                if (dayTime >= DINNER_RUSH_END)
+                {
                     StartCoroutine(displayMessage("Dinner Rush Completed", 2f));
                     StartCoroutine(setStatus(STATUS_NORMAL));
                 }
                 break;
             case STATUS_OVERTIME:
-                if(ticketBoard.numOrders() == 0) {
+                if (ticketBoard.numOrders() == 0)
+                {
                     StartCoroutine(setStatus(STATUS_END_DAY));
                     StartCoroutine("endDay");
-                } else {
+                }
+                else
+                {
                     score -= Mathf.FloorToInt(difficulty * 10);
                 }
                 break;
@@ -260,30 +300,40 @@ public class GameSession : MonoBehaviour {
         }
     }
 
-    private IEnumerator displayMessage(string text, float delay) {
+    private IEnumerator displayMessage(string text, float delay)
+    {
         setDisplayText(text);
         yield return new WaitForSeconds(delay);
         setDisplayText("");
     }
 
-    private IEnumerator setStatus(int status) {
+    private IEnumerator setStatus(int status)
+    {
         dayStatus = status;
-        if (status == STATUS_LUNCH_RUSH) {
+        if (status == STATUS_LUNCH_RUSH)
+        {
             difficultyMod = LUNCH_DIFFICULTY_MOD;
             yield return displayMessage("Lunch Rush!", 3f);
-        } else if (status == STATUS_DINNER_RUSH) {
+        }
+        else if (status == STATUS_DINNER_RUSH)
+        {
             difficultyMod = DINNER_DIFFICULTY_MOD;
             yield return displayMessage("Dinner Rush!", 3f);
-        } else if (status == STATUS_OVERTIME) {
+        }
+        else if (status == STATUS_OVERTIME)
+        {
             clockText.color = new Color(1f, 0f, 0f);
             yield return displayMessage("Overtime!!", 3f);
-        } else {
+        }
+        else
+        {
             clockText.color = new Color(1f, 1f, 1f);
             difficultyMod = 1f;
         }
     }
 
-    private void updateClock() {
+    private void updateClock()
+    {
         clockText.text = dayTime.ToString();
     }
 
