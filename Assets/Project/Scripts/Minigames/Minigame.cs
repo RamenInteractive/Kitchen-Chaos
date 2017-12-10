@@ -87,7 +87,7 @@ public abstract class Minigame : Interactable {
      * ====
      * Exit minigame and change perspective back to player
      */ 
-    public void exit() {
+    public virtual void exit() {
         CustomFirstPersonController cfpc = player.GetComponent<CustomFirstPersonController>();
         Player playerScript = player.GetComponent<Player>();
 
