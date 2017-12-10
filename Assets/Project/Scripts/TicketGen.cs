@@ -34,9 +34,9 @@ public class TicketGen : MonoBehaviour
         if (Input.GetKeyDown("c"))
             newOrder();
 
-        for(int i = 0; i < tickets.Length; i++)
+        for (int i = 0; i < tickets.Length; i++)
         {
-            if(tickets[i] != null && !tickets[i].UpdateTime(myGame.getTime()))
+            if (tickets[i] != null && !tickets[i].UpdateTime(myGame.getTime()))
             {
                 deleteTicket(i);
             }
@@ -46,7 +46,7 @@ public class TicketGen : MonoBehaviour
     public void checkOrders(IFood food)
     {
         int bestMatch = -1;
-        for(int i = 0; i < tickets.Length; i++)
+        for (int i = 0; i < tickets.Length; i++)
         {
             //if already found an order thats been waiting longer keep that one
             if (tickets[i] == null || food.GetType() != tickets[i].getFood().GetType()
@@ -57,7 +57,7 @@ public class TicketGen : MonoBehaviour
                 bestMatch = i;
         }
 
-        if(bestMatch != -1)
+        if (bestMatch != -1)
         {
             StartCoroutine(myGame.finishOrder(tickets[bestMatch].getTimeSpent()));
             deleteTicket(bestMatch);
@@ -96,9 +96,11 @@ public class TicketGen : MonoBehaviour
         }
     }
 
-    public int numOrders() {
+    public int numOrders()
+    {
         int sum = 0;
-        foreach(TicketOrder to in tickets) {
+        foreach (TicketOrder to in tickets)
+        {
             if (to != null)
                 sum++;
         }
@@ -107,8 +109,10 @@ public class TicketGen : MonoBehaviour
 
     public void resetTickets()
     {
-        for(int i = 0; i < tickets.Length; i++) {
-            if(tickets[i] != null) {
+        for (int i = 0; i < tickets.Length; i++)
+        {
+            if (tickets[i] != null)
+            {
                 deleteTicket(i);
             }
         }

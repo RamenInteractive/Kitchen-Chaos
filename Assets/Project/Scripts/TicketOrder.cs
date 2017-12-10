@@ -12,7 +12,7 @@ public class TicketOrder
     private GameTime startTime;
     private int timeSpent;
 
-	public TicketOrder(GameObject ticket, IFood idealFood, int num, GameTime startTime)
+    public TicketOrder(GameObject ticket, IFood idealFood, int num, GameTime startTime)
     {
         this.ticket = ticket;
         this.idealFood = idealFood;
