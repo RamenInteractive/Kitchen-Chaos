@@ -43,13 +43,13 @@ public class AssemblyGame : Minigame
             t.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             t.gameObject.GetComponent<Rigidbody>().useGravity = false;
             t.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
-            t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
         }
         buildSpace.AddComponent<Rigidbody>();
         buildSpace.AddComponent<BoxCollider>();
         buildSpace.AddComponent<FoodComponent>();
         buildSpace.GetComponent<FoodComponent>().food = new Burger(currentBuild);
+        Debug.Log(buildSpace.GetComponent<FoodComponent>().food != null);
         buildSpace.GetComponent<BoxCollider>().size = new Vector3(0.1f, 0.3f, 0.3f);
         buildSpace.tag = "Food";
 

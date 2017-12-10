@@ -43,7 +43,7 @@ public class TicketGen : MonoBehaviour
         }
     }
 
-    public void checkOrders(IFood food)
+    public bool checkOrders(IFood food)
     {
         int bestMatch = -1;
         for(int i = 0; i < tickets.Length; i++)
@@ -61,7 +61,9 @@ public class TicketGen : MonoBehaviour
         {
             StartCoroutine(myGame.finishOrder(tickets[bestMatch].getTimeSpent()));
             deleteTicket(bestMatch);
+            return true;
         }
+        return false;
     }
 
     private void deleteTicket(int i)
