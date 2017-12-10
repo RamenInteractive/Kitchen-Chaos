@@ -353,7 +353,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1496496299}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &499120319 stripped
 Transform:
@@ -1754,10 +1754,10 @@ Transform:
   - {fileID: 499120319}
   - {fileID: 1615607051}
   - {fileID: 543366990}
-  - {fileID: 1435472752}
   - {fileID: 437108225}
-  - {fileID: 1516806084}
+  - {fileID: 1435472752}
   - {fileID: 1930883344}
+  - {fileID: 1516806084}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2421,7 +2421,7 @@ Prefab:
         type: 2}
       propertyPath: lettucePrefab
       value: 
-      objectReference: {fileID: 1455786084942456, guid: f73979ec763e9854f96ae0781cf5cbdc,
+      objectReference: {fileID: 1180601595508216, guid: f73979ec763e9854f96ae0781cf5cbdc,
         type: 2}
     - target: {fileID: 114359188201663706, guid: e16029586635ff0408cfcfd4ec771ae5,
         type: 2}
