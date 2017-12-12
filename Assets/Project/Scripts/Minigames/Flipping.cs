@@ -78,8 +78,7 @@ public class Flipping : Minigame {
         occupied.Add(false);
         flipped.Add(false);
         time.Add(15.0f);
-
-        GetComponent<AudioSource>().Play();
+        
         for (int i = 0; i < 6; i++)
         {
             timers[i].GetComponent<TextMesh>().color = Color.green;
@@ -120,8 +119,12 @@ public class Flipping : Minigame {
                 }
             }
         }
+        sound = isCooking();
 
-        isCooking();
+        if (!sound)
+        {
+            GetComponent<AudioSource>().Stop();
+        }
     }
 
     public override void complete()
@@ -193,6 +196,7 @@ public class Flipping : Minigame {
             {
                 if (!occupied[i])
                 {
+                    GetComponent<AudioSource>().Play();
                     collision.gameObject.transform.parent = cooking[i];
                     collision.gameObject.transform.localPosition = Vector3.zero;
                     collision.gameObject.transform.rotation = Quaternion.identity;
@@ -213,10 +217,10 @@ public class Flipping : Minigame {
         }
     }
 
-    public void isCooking()
+    public bool isCooking()
     {
+        bool somethingCooking = false;
         int count = 0;
-
         for (int i = 0; i < 6; i++)
         {
             if (occupied[i])
@@ -225,16 +229,12 @@ public class Flipping : Minigame {
             }
         }
 
-        if (count > 0)
-        {
-            GetComponent<AudioSource>().Play();
-        }
-        else
-        {
-            //GetComponent<AudioSource>().Stop();
-        }
-    }
+        if (count > 0) 
+          somethingCooking = true;
 
+        return somethingCooking;
+    }
+    
     public override void handleItem(Player p, bool leftHand)
     {
         GameObject hand = leftHand ? p.lHand : p.rHand;
@@ -247,6 +247,7 @@ public class Flipping : Minigame {
         {
             if (!occupied[i])
             {
+                GetComponent<AudioSource>().Play();
                 hand.gameObject.transform.parent = cooking[i];
                 hand.gameObject.transform.localPosition = Vector3.zero;
                 hand.gameObject.transform.rotation = Quaternion.identity;

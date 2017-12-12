@@ -7,6 +7,7 @@ public class Ticket : Item {
     public GameObject FireSmokeParticleSystem;
     public GameObject LightSmokeParticleSystem;
     public GameObject paper;
+    public AudioClip fire;
 
     private TicketVisualState curState;
 
@@ -18,8 +19,9 @@ public class Ticket : Item {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        GetComponent<AudioSource>().playOnAwake = false;
+        GetComponent<AudioSource>().clip = fire;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -47,6 +49,7 @@ public class Ticket : Item {
                 case TicketVisualState.Flaming:
                     Instantiate(FireSmokeParticleSystem, transform);
                     Instantiate(FireParticleSystem, transform);
+                    GetComponent<AudioSource>().Play();
                     r.material.color = new Color(0.85f, 0.3f, 0.25f);
                     break;
             }
