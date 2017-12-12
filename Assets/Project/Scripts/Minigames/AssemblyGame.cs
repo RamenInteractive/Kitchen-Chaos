@@ -49,7 +49,6 @@ public class AssemblyGame : Minigame
         buildSpace.AddComponent<BoxCollider>();
         buildSpace.AddComponent<FoodComponent>();
         buildSpace.GetComponent<FoodComponent>().food = new Burger(currentBuild);
-        Debug.Log(buildSpace.GetComponent<FoodComponent>().food != null);
         buildSpace.GetComponent<BoxCollider>().size = new Vector3(0.1f, 0.3f, 0.3f);
         buildSpace.tag = "Food";
 

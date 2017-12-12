@@ -38,7 +38,7 @@ public class TicketGen : MonoBehaviour
         {
             if(tickets[i] != null && !tickets[i].UpdateTime(myGame.getTime()))
             {
-                deleteTicket(i);
+                failTicket(i);
             }
         }
     }
@@ -62,8 +62,15 @@ public class TicketGen : MonoBehaviour
             StartCoroutine(myGame.finishOrder(tickets[bestMatch].getTimeSpent()));
             deleteTicket(bestMatch);
             return true;
+        } else {
+            StartCoroutine(myGame.failOrder());
+            return false;
         }
-        return false;
+    }
+
+    private void failTicket(int i) {
+        deleteTicket(i);
+        myGame.loseLife();
     }
 
     private void deleteTicket(int i)

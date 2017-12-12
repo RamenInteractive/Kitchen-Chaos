@@ -22,10 +22,8 @@ public class SubmitOrder : MonoBehaviour
         FoodComponent foodComp = collision.gameObject.GetComponent<FoodComponent>();
         if (foodComp != null)
         {
-            Debug.Log("Collided");
-            board.checkOrders(foodComp.food);
-            Debug.Log("Finished Check");
             Destroy(collision.gameObject);
+            board.checkOrders(foodComp.food);
         }
     }
 }
