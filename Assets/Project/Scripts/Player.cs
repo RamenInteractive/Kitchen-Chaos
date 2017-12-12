@@ -40,8 +40,8 @@ public class Player : MonoBehaviour {
     {
         if ((leftHand ? lHand : rHand) == null)
         {
-            item.transform.parent = leftHand ? GameObject.Find("LeftHandPosition").transform
-                    : GameObject.Find("HandPosition").transform;
+            item.transform.parent = leftHand ? transform.Find("FirstPersonCharacter/LeftHandPosition").transform
+                    : transform.Find("FirstPersonCharacter/HandPosition").transform;
             item.transform.localPosition = Vector3.zero;
             item.GetComponent<Rigidbody>().useGravity = false;
             item.GetComponent<Rigidbody>().detectCollisions = false;
