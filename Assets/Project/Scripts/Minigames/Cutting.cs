@@ -12,6 +12,7 @@ public class Cutting : Minigame {
     public GameObject tomatoPrefab;
     public GameObject cheesePrefab;
     public GameObject friesPrefab;
+    public AudioClip chop;
 
     public List<Transform> storage;
     public List<bool> occupied;
@@ -21,7 +22,10 @@ public class Cutting : Minigame {
     public Transform slot4;
 
     // Use this for initialization
-    new void Start () {
+    new void Start ()
+    {
+        this.GetComponent<AudioSource>().playOnAwake = false;
+        this.GetComponent<AudioSource>().clip = chop;
         storage = new List<Transform>();
         occupied = new List<bool>();
         progressBar.value = 0.0f;
@@ -66,6 +70,7 @@ public class Cutting : Minigame {
             if (controller.GetButtonDown("LeftHand") || controller.GetButtonDown("RightHand"))
             {
                 progressBar.value = progressBar.value + .15f;
+                GetComponent<AudioSource>().Play();
             }
 
             if (progressBar.value == 1)
@@ -146,9 +151,7 @@ public class Cutting : Minigame {
                     cuts[i].GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                     cuts[i].GetComponentInChildren<Rigidbody>().detectCollisions = true;
                     cuts[i].GetComponentInChildren<Rigidbody>().useGravity = true;
-                    float angle = Random.Range(0, 360);
-                    cuts[i].GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
-                    
+
                     cutting = false;
                 }
             }
@@ -172,6 +175,9 @@ public class Cutting : Minigame {
                     break;
                 }
             }
+        } else {
+            float angle = Random.Range(0, 360);
+            collision.gameObject.GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
         }
     }
 

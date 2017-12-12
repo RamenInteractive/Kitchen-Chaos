@@ -106,7 +106,7 @@ public class AssemblyGame : Minigame
         {
             storeIngredient(collision.gameObject.GetComponent<Ingredient>());
             collision.gameObject.SetActive(false);
-        }
+        } 
     }
 
     private void selectSide(int side)
@@ -275,7 +275,7 @@ public class AssemblyGame : Minigame
         else //If you are holding something
         {
             //If it's an ingredient take it into the station
-            if (hand.GetComponent<Ingredient>() != null)
+            if (hand.GetComponent<Ingredient>() != null && hand.tag == "Ingredient")
             {
                 handleItem(p, leftHand);
             }
