@@ -57,9 +57,14 @@ public class TicketOrder
 
         ticket.transform.Find("OrderTime").GetComponent<TextMesh>().text = new GameTime(timeLeft).ToString(true);
 
+        Ticket t = ticket.GetComponent<Ticket>();
+        if (t != null) {
+            t.updateTicketState((float)timeSpent / TICKET_DURATION);
+        }
+
         if (timeLeft <= 0)
             return false;
 
         return true;
-    }
+	}
 }

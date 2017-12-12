@@ -236,4 +236,34 @@ public class Flipping : Minigame {
             p.rHand = null;
         
     }
+
+    public override void interact(GameObject caller, bool leftHand)
+    {
+        Player p = caller.GetComponent<Player>();
+
+        if (p == null)
+            return;
+
+        GameObject hand = leftHand ? p.lHand : p.rHand;
+
+        //If you aren't holding anything
+        if (hand == null)
+        {
+            //check the opposite hand you interacted with for an ingredient
+            if (leftHand)
+                handleItem(p, false);
+            else
+                handleItem(p, true);
+
+            enter(caller);
+        }
+        else //If you are holding something
+        {
+            //If it's an ingredient take it into the station
+            if (hand.tag == "Uncooked")
+            {
+                handleItem(p, leftHand);
+            }
+        }
+    }
 }
