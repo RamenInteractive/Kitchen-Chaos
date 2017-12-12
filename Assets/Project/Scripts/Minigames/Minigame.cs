@@ -46,8 +46,13 @@ public abstract class Minigame : Interactable {
             HoverHUD.GetComponentInChildren<Text>().text = hud;
             inUse = true;
             player = p;
-            player.transform.Find("FirstPersonCharacter").gameObject.GetComponent<Camera>().enabled = false;
-            viewpoint.GetComponent<Camera>().enabled = true;
+
+            Camera c = viewpoint.GetComponent<Camera>();
+            Camera c2 = player.GetComponentInChildren<Camera>();
+
+            c2.enabled = false;
+            c.rect = c2.rect;
+            c.enabled = true;
             gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 0f;
             GameObject.Find("CrossHair").GetComponent<CanvasGroup>().alpha = 0f;
             HUD.GetComponent<CanvasGroup>().alpha = 1f;
@@ -95,8 +100,9 @@ public abstract class Minigame : Interactable {
         playerScript.enabled = true;
 
         //player.SetActive(true);
-        
-        player.transform.Find("FirstPersonCharacter").gameObject.GetComponent<Camera>().enabled = true;
+
+
+        player.GetComponentInChildren<Camera>().enabled = true;
         viewpoint.GetComponent<Camera>().enabled = false;
         HUD.GetComponent<CanvasGroup>().alpha = 0f;
         gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 1f;
