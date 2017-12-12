@@ -42,7 +42,6 @@ public abstract class Minigame : Interactable {
      * @param: p - Player wanting to enter this minigame
      */
     public virtual void enter(GameObject p) {
-        if(!inUse) {
             HoverHUD.GetComponentInChildren<Text>().text = hud;
             inUse = true;
             player = p;
@@ -65,7 +64,6 @@ public abstract class Minigame : Interactable {
             playerScript.enabled = false;
 
             //player.SetActive(false);
-        }
     }
 
     /**
@@ -131,7 +129,9 @@ public abstract class Minigame : Interactable {
         if (p == null)
             return;
 
-        enter(caller);
-        handleItem(p, leftHand);
+        if (!inUse) {
+            handleItem(p, leftHand);
+            enter(caller);
+        }
     }
 }
