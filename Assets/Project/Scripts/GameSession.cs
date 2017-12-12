@@ -65,6 +65,7 @@ public class GameSession : MonoBehaviour {
     public Text displayText;
     public Text orderCompletionText;
     public Text clockText;
+    public SoundEffectPlayer audioPlayer;
 
     public AudioClip bgm; 
 
@@ -142,14 +143,15 @@ public class GameSession : MonoBehaviour {
         float timeRemaining = 1 - Mathf.Pow(1 - (float)timeSpent / TicketGen.TICKET_DURATION, 1.5f);
         int pointVal = Mathf.FloorToInt(100 + 100 * difficulty * difficultyMod * timeRemaining);
         score += pointVal;
-        orderCompletionText.color = CORRECT_COLOUR;
+        orderCompletionText.color = Color.green;
         orderCompletionText.text = "Order complete!\n+" + pointVal;
         yield return new WaitForSeconds(3f);
         orderCompletionText.text = "";
     }
 
     public IEnumerator failOrder() {
-        orderCompletionText.color = INCORRECT_COLOUR;
+        audioPlayer.playIncorrect();
+        orderCompletionText.color = Color.red;
         orderCompletionText.text = "Incorrect Order!";
         yield return new WaitForSeconds(3f);
         orderCompletionText.text = "";
