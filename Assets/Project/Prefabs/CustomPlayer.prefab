@@ -170,6 +170,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
 --- !u!54 &54596484831042864
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -283,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974e82d00764cbc43a479eff9824c084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  length: 2
+  length: 4
 --- !u!114 &114552088849452952
 MonoBehaviour:
   m_ObjectHideFlags: 1
