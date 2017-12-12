@@ -8,6 +8,7 @@ public class Ticket : Item {
     public GameObject LightSmokeParticleSystem;
     public GameObject paper;
     public AudioClip fire;
+    public AudioClip bell;
 
     private TicketVisualState curState;
 
@@ -20,7 +21,8 @@ public class Ticket : Item {
     // Use this for initialization
     void Start () {
         GetComponent<AudioSource>().playOnAwake = false;
-        GetComponent<AudioSource>().clip = fire;
+        GetComponent<AudioSource>().clip = bell;
+        GetComponent<AudioSource>().Play();
     }
 	
 	// Update is called once per frame
@@ -37,7 +39,8 @@ public class Ticket : Item {
             // If half the time has passed, the ticket should be smoking
             newState = TicketVisualState.Smoking;
         }
-        if (curState != newState) {
+        if (curState != newState)
+        {
             // Clear out existing particle systems
             removeParticleEffects();
             Renderer r = paper.GetComponent<Renderer>();
@@ -49,6 +52,7 @@ public class Ticket : Item {
                 case TicketVisualState.Flaming:
                     Instantiate(FireSmokeParticleSystem, transform);
                     Instantiate(FireParticleSystem, transform);
+                    GetComponent<AudioSource>().clip = fire;
                     GetComponent<AudioSource>().Play();
                     r.material.color = new Color(0.85f, 0.3f, 0.25f);
                     break;
