@@ -66,6 +66,8 @@ public class TicketGen : MonoBehaviour
 
     private void deleteTicket(int i)
     {
+        Ticket t = tickets[i].getTicket().GetComponent<Ticket>();
+        t.removeParticleEffects();
         Destroy(tickets[i].getTicket());
         tickets[i] = null;
     }
