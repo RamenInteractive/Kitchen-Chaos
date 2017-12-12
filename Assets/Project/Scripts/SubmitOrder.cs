@@ -19,11 +19,11 @@ public class SubmitOrder : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<IFood>() != null)
+        FoodComponent foodComp = collision.gameObject.GetComponent<FoodComponent>();
+        if (foodComp != null)
         {
-            IFood food = collision.gameObject.GetComponent<IFood>();
-
-            board.checkOrders(food);
+            Destroy(collision.gameObject);
+            board.checkOrders(foodComp.food);
         }
     }
 }
