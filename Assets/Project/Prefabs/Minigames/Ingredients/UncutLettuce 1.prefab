@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 54581015847474458}
   - component: {fileID: 135270044740269574}
   m_Layer: 0
-  m_Name: UncutLettuce
+  m_Name: UncutLettuce 1
   m_TagString: Uncut
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
