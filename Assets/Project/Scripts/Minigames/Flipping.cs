@@ -26,11 +26,17 @@ public class Flipping : Minigame {
     public GameObject timer5;
     public Transform slot6;
     public GameObject timer6;
+    public AudioClip sizzle;
+    private bool sound;
 
     private List<float> time;
 
     // Use this for initialization
-    new void Start () {
+    new void Start ()
+    {
+        this.GetComponent<AudioSource>().playOnAwake = false;
+        this.GetComponent<AudioSource>().loop = true;
+        this.GetComponent<AudioSource>().clip = sizzle;
         cooking = new List<Transform>();
         timers = new List<GameObject>();
         occupied = new List<bool>();
@@ -72,7 +78,7 @@ public class Flipping : Minigame {
         occupied.Add(false);
         flipped.Add(false);
         time.Add(15.0f);
-
+        
         for (int i = 0; i < 6; i++)
         {
             timers[i].GetComponent<TextMesh>().color = Color.green;
@@ -106,15 +112,18 @@ public class Flipping : Minigame {
                     burnt.transform.parent = GameObject.Find("GameController").transform;
                     burnt.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                     burnt.GetComponentInChildren<Rigidbody>().detectCollisions = true;
-                    burnt.GetComponentInChildren<Rigidbody>().useGravity = true;
-                    float angle = Random.Range(0, 360);
-                    burnt.GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
-                    occupied[i] = false;
+                    burnt.GetComponentInChildren<Rigidbody>().useGravity = true;occupied[i] = false;
                     flipped[i] = false;
                     timers[i].GetComponent<TextMesh>().text = "Burnt";
                     time[i] = 15.0f;
                 }
             }
+        }
+        sound = isCooking();
+
+        if (!sound)
+        {
+            GetComponent<AudioSource>().Stop();
         }
     }
 
@@ -187,6 +196,7 @@ public class Flipping : Minigame {
             {
                 if (!occupied[i])
                 {
+                    GetComponent<AudioSource>().Play();
                     collision.gameObject.transform.parent = cooking[i];
                     collision.gameObject.transform.localPosition = Vector3.zero;
                     collision.gameObject.transform.rotation = Quaternion.identity;
@@ -199,9 +209,32 @@ public class Flipping : Minigame {
                     break;
                 }
             }
+        } else
+        {
+            float angle = Random.Range(0, 360);
+            collision.gameObject.GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
+
         }
     }
 
+    public bool isCooking()
+    {
+        bool somethingCooking = false;
+        int count = 0;
+        for (int i = 0; i < 6; i++)
+        {
+            if (occupied[i])
+            {
+                count++;
+            }
+        }
+
+        if (count > 0) 
+          somethingCooking = true;
+
+        return somethingCooking;
+    }
+    
     public override void handleItem(Player p, bool leftHand)
     {
         GameObject hand = leftHand ? p.lHand : p.rHand;
@@ -214,6 +247,7 @@ public class Flipping : Minigame {
         {
             if (!occupied[i])
             {
+                GetComponent<AudioSource>().Play();
                 hand.gameObject.transform.parent = cooking[i];
                 hand.gameObject.transform.localPosition = Vector3.zero;
                 hand.gameObject.transform.rotation = Quaternion.identity;
