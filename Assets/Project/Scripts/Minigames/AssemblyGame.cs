@@ -43,7 +43,6 @@ public class AssemblyGame : Minigame
             t.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             t.gameObject.GetComponent<Rigidbody>().useGravity = false;
             t.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
-            t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
         }
         buildSpace.AddComponent<Rigidbody>();
