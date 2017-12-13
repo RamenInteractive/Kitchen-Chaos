@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33362726323486290}
   - component: {fileID: 65496200295652068}
   - component: {fileID: 23890757025710460}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33185631355731988}
   - component: {fileID: 65491574206209956}
   - component: {fileID: 23563640360242386}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 33149911074807414}
   - component: {fileID: 65844210318130714}
   - component: {fileID: 23866787132913904}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 224629879371124282}
   - component: {fileID: 222694031622958120}
   - component: {fileID: 114399612267070282}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 223935465304270428}
   - component: {fileID: 114878675171597094}
   - component: {fileID: 114972759472486738}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 33716184686521114}
   - component: {fileID: 65789956731059474}
   - component: {fileID: 23606494311815440}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fry1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 33275005683993282}
   - component: {fileID: 65966866488336696}
   - component: {fileID: 23621527600326732}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 33599524413690536}
   - component: {fileID: 65789185917944160}
   - component: {fileID: 23219628775350236}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 33115275051509178}
   - component: {fileID: 65005824761180238}
   - component: {fileID: 23972887688122018}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fry3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 54605150808416550}
   - component: {fileID: 65932092309095364}
   - component: {fileID: 114260552580337206}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fries
   m_TagString: Food
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224399910825116786}
   - component: {fileID: 225827124783322802}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 33377684497016578}
   - component: {fileID: 65101020783310618}
   - component: {fileID: 23785940840207486}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fry4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4125245734831932}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Packaging
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 33561069152832470}
   - component: {fileID: 65141719617067006}
   - component: {fileID: 23248390020913478}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fry2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 33700746559936228}
   - component: {fileID: 65145110788253472}
   - component: {fileID: 23636093833200120}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fry5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1004,7 +1004,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 1583754849956092}
-  hovering: 0
 --- !u!114 &114399612267070282
 MonoBehaviour:
   m_ObjectHideFlags: 1

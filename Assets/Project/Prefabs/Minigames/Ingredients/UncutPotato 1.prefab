@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224205166675909940}
   - component: {fileID: 225411558813876416}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114668149790648480}
   - component: {fileID: 135630069016650996}
   - component: {fileID: 54769696743341890}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: UncutPotato 1
   m_TagString: Uncut
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 224959056435125134}
   - component: {fileID: 222477800876301758}
   - component: {fileID: 114712531576687942}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 223221806424731686}
   - component: {fileID: 114510571078764204}
   - component: {fileID: 114994832321726268}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 0}
-  hovering: 0
 --- !u!114 &114712531576687942
 MonoBehaviour:
   m_ObjectHideFlags: 1

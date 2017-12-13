@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114338483061711262}
   - component: {fileID: 54173149189823230}
   - component: {fileID: 135995114102546516}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: UncutTomato 1
   m_TagString: Uncut
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224437303929988750}
   - component: {fileID: 225867482193561456}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 223732025736905840}
   - component: {fileID: 114065358515393290}
   - component: {fileID: 114087801373643212}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 224325326922371144}
   - component: {fileID: 222605784629240292}
   - component: {fileID: 114226288202029224}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 0}
-  hovering: 0
 --- !u!135 &135995114102546516
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 223600341321347674}
   - component: {fileID: 114866886719399968}
   - component: {fileID: 114110541087623804}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33399075707811250}
   - component: {fileID: 65443571851683400}
   - component: {fileID: 23859546890957540}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fry4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 54884151645939326}
   - component: {fileID: 65269329360053572}
   - component: {fileID: 114621321381682550}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CutPotatoes
   m_TagString: Uncooked
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 33175040477974282}
   - component: {fileID: 65050456153109688}
   - component: {fileID: 23480703639388580}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fry2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 33426003801088182}
   - component: {fileID: 65618753616982566}
   - component: {fileID: 23099387906411246}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fry1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4177990537232290}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 33843720421596290}
   - component: {fileID: 65912757038291040}
   - component: {fileID: 23462658808111328}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fry3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 224332981070366096}
   - component: {fileID: 222627181021232404}
   - component: {fileID: 114535757364994660}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 33110463027686462}
   - component: {fileID: 65600474586909654}
   - component: {fileID: 23088320790110788}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fry5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224770250730648344}
   - component: {fileID: 225698787093980196}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 1879040048940180}
-  hovering: 0
 --- !u!114 &114866886719399968
 MonoBehaviour:
   m_ObjectHideFlags: 1

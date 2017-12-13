@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 223056069187595592}
   - component: {fileID: 114362941991780044}
   - component: {fileID: 114657617412215112}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 23632363303610464}
   - component: {fileID: 54562277605593960}
   - component: {fileID: 114172550976489524}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: UncutCheese
   m_TagString: Uncut
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224355196662789464}
   - component: {fileID: 225515330014695558}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 224452793243527330}
   - component: {fileID: 222359106858594268}
   - component: {fileID: 114869733729882722}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 1396388027549778}
-  hovering: 0
 --- !u!114 &114362941991780044
 MonoBehaviour:
   m_ObjectHideFlags: 1

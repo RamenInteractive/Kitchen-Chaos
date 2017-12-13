@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23381935295253196}
   - component: {fileID: 114395805613179738}
   - component: {fileID: 82379970973062430}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,7 +772,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -974,7 +974,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 1507778955967054}
-  hovering: 0
   viewpoint: {fileID: 20730465887617410}
   HUD: {fileID: 1299750639064622}
   progressBar: {fileID: 114921097829137258}
@@ -988,7 +987,7 @@ MonoBehaviour:
     type: 2}
   friesPrefab: {fileID: 1260584124322478, guid: 28180ef4a28c4f94480a5362bb7d2346,
     type: 2}
-  chop: {fileID: 8300000, guid: 38c4b2ea7e40acf498223f2c8052b51e, type: 3}
+  chop: {fileID: 8300000, guid: 031b0b95f2dd7e74199abe6739292d50, type: 3}
   storage: []
   occupied: 
   slot1: {fileID: 4163463736478558}

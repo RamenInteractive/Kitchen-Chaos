@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 223561729630780008}
   - component: {fileID: 114725192507303244}
   - component: {fileID: 114971210723988492}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 54203909416749254}
   - component: {fileID: 65554724590172188}
   - component: {fileID: 114350853709369854}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PattyPrefab
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224815074763760130}
   - component: {fileID: 225996070219919264}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 224552728685452908}
   - component: {fileID: 222795373805281908}
   - component: {fileID: 114814939324953504}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 1498065291298192}
-  hovering: 0
 --- !u!114 &114725192507303244
 MonoBehaviour:
   m_ObjectHideFlags: 1

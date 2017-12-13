@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 223088865650203996}
   - component: {fileID: 114417553377554146}
   - component: {fileID: 114513506471204124}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224038020963842810}
   - component: {fileID: 225148531686885792}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 54809330549050902}
   - component: {fileID: 65042928431707064}
   - component: {fileID: 114678915456938526}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LettucePrefab
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 224986567882872048}
   - component: {fileID: 222785821709244786}
   - component: {fileID: 114111674127703890}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 1398027796157090}
-  hovering: 0
 --- !u!222 &222785821709244786
 CanvasRenderer:
   m_ObjectHideFlags: 1

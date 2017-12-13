@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 4145528926335888}
   - component: {fileID: 65750658294264234}
   - component: {fileID: 114359188201663706}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2079,7 +2079,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 1662749144926904}
-  hovering: 0
   viewpoint: {fileID: 20141192418304924}
   HUD: {fileID: 1766099011361762}
   fridgeContainer: {fileID: 1718293270391616}

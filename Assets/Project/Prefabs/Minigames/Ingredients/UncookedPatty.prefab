@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 223959489619403114}
   - component: {fileID: 114296451388168924}
   - component: {fileID: 114974706610978320}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 224146625838209554}
   - component: {fileID: 222051380198877234}
   - component: {fileID: 114109835247072042}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 54309118151220900}
   - component: {fileID: 65567854074561998}
   - component: {fileID: 114729427248688740}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: UncookedPatty
   m_TagString: Uncooked
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224109673764456106}
   - component: {fileID: 225515593933052442}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 1689318516764104}
-  hovering: 0
 --- !u!114 &114974706610978320
 MonoBehaviour:
   m_ObjectHideFlags: 1

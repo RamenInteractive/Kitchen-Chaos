@@ -42,29 +42,31 @@ public abstract class Minigame : Interactable {
      * @param: p - Player wanting to enter this minigame
      */
     public virtual void enter(GameObject p) {
-            HoverHUD.GetComponentInChildren<Text>().text = hud;
-            inUse = true;
-            player = p;
+        HoverHUD.GetComponentInChildren<Text>().text = hud;
+        inUse = true;
+        player = p;
 
-            Camera c = viewpoint.GetComponent<Camera>();
-            Camera c2 = player.GetComponentInChildren<Camera>();
+        player.GetComponent<Player>().stopHover();
 
-            c2.enabled = false;
-            c.rect = c2.rect;
-            c.enabled = true;
-            gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 0f;
-            HUD.GetComponent<CanvasGroup>().alpha = 1f;
-            controller = player.GetComponent<Controller>();
+        Camera c = viewpoint.GetComponent<Camera>();
+        Camera c2 = player.GetComponentInChildren<Camera>();
 
-            player.GetComponent<Player>().hideCrosshair();
+        c2.enabled = false;
+        c.rect = c2.rect;
+        c.enabled = true;
+        gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 0f;
+        HUD.GetComponent<CanvasGroup>().alpha = 1f;
+        controller = player.GetComponent<Controller>();
+
+        player.GetComponent<Player>().hideCrosshair();
             
-            CustomFirstPersonController cfpc = player.GetComponent<CustomFirstPersonController>();
-            Player playerScript = player.GetComponent<Player>();
+        CustomFirstPersonController cfpc = player.GetComponent<CustomFirstPersonController>();
+        Player playerScript = player.GetComponent<Player>();
 
-            cfpc.enabled = false;
-            playerScript.enabled = false;
+        cfpc.enabled = false;
+        playerScript.enabled = false;
 
-            //player.SetActive(false);
+        //player.SetActive(false);
     }
 
     /**
