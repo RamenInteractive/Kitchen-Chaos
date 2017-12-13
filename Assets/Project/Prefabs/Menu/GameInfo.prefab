@@ -56,3 +56,6 @@ MonoBehaviour:
   player2Controller: 0
   player3Controller: 0
   player4Controller: 0
+  score: 0
+  keyboard: 00000000
+  gameOver: 0
