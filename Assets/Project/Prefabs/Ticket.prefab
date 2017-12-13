@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 137343574654960670}
   - component: {fileID: 114485184796060876}
   - component: {fileID: 82139930886993998}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ticket
   m_TagString: Food
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4860367568629626}
   - component: {fileID: 23437985519703746}
   - component: {fileID: 102077818141425100}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OrderTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 223869823626613900}
   - component: {fileID: 114041392844144618}
   - component: {fileID: 114292654891678308}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HUDCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 224691855276469126}
   - component: {fileID: 222658659849501066}
   - component: {fileID: 114741902655589158}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4292686240062398}
   - component: {fileID: 23843973938093136}
   - component: {fileID: 102018342438406938}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OrderIngredients
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 4192780255412988}
   - component: {fileID: 23375396292579248}
   - component: {fileID: 102570802460611330}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OrderNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 4340427544765654}
   - component: {fileID: 23171677733603000}
   - component: {fileID: 102211429343983850}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OrderType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 33934592205615964}
   - component: {fileID: 65842752164073804}
   - component: {fileID: 23592590726296332}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Paper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224621069569687348}
   - component: {fileID: 225952848860891366}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PickUpHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 00448f54523ac64469a630d03134100f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -693,7 +693,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 0}
-  hovering: 0
   FireParticleSystem: {fileID: 1089354520790494, guid: f24900f55cad2844e9d137069c3265e9,
     type: 2}
   FireSmokeParticleSystem: {fileID: 1051253478658290, guid: 3ac0cf85f52ab2a4686311d16dbcbde6,

@@ -175,9 +175,6 @@ public class Cutting : Minigame {
                     break;
                 }
             }
-        } else {
-            float angle = Random.Range(0, 360);
-            collision.gameObject.GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
         }
     }
 
