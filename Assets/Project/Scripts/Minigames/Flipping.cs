@@ -112,13 +112,8 @@ public class Flipping : Minigame {
                     burnt.transform.parent = GameObject.Find("GameController").transform;
                     burnt.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                     burnt.GetComponentInChildren<Rigidbody>().detectCollisions = true;
-<<<<<<< HEAD
                     burnt.GetComponentInChildren<Rigidbody>().useGravity = true;
                     occupied[i] = false;
-=======
-                    burnt.GetComponentInChildren<Rigidbody>().useGravity = true;occupied[i] = false;
-                    burnt.GetComponentInChildren<Rigidbody>().AddForce(Vector3.up * 200f);
->>>>>>> c22ce57b47fba1b7d6f76f990762f6f022e57e32
                     flipped[i] = false;
                     timers[i].GetComponent<TextMesh>().text = "Burnt";
                     time[i] = 15.0f;
@@ -211,12 +206,6 @@ public class Flipping : Minigame {
                     break;
                 }
             }
-<<<<<<< HEAD
-=======
-        } else {
-            float angle = Random.Range(0, 360);
-            collision.gameObject.GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
->>>>>>> c22ce57b47fba1b7d6f76f990762f6f022e57e32
         }
     }
 
