@@ -17,8 +17,16 @@ static class ControllerFactory {
             
         }
         else {
-            // Controller, assumed PS4
-            ConfigurePS4Controller(c, controllerID);
+            string name = Input.GetJoystickNames()[controllerID - 1];
+            switch (name)
+            {
+                case "Wireless Controller":
+                    ConfigureGenericController(c, controllerID);
+                    break;
+                default:
+                    ConfigurePS4Controller(c, controllerID);
+                    break;
+            }
         }
 
         return c;
@@ -42,21 +50,53 @@ static class ControllerFactory {
         c.deadZone = 0.3f;
     }
 
-    private static void ConfigurePS4Controller(Controller c, int controllerID) {
-        int offset = 1 * 20;
+    private static void ConfigureGenericController(Controller c, int controllerID) {
+        int offset = controllerID * 20;
 
         KeyCode square = KeyCode.JoystickButton0 + offset;
+        KeyCode circle = KeyCode.JoystickButton2 + offset;
         KeyCode x = KeyCode.JoystickButton1 + offset;
         KeyCode l1 = KeyCode.JoystickButton4 + offset;
         KeyCode l2 = KeyCode.JoystickButton6 + offset;
         KeyCode r1 = KeyCode.JoystickButton5 + offset;
         KeyCode r2 = KeyCode.JoystickButton7 + offset;
-        KeyCode circle = KeyCode.JoystickButton2 + offset;
 
         c.SetAxis("MoveH", "C" + controllerID + "_Horizontal");
         c.SetAxis("MoveV", "C" + controllerID + "_Vertical");
         c.SetAxis("LookH", "C" + controllerID + "_Horizontal2");
         c.SetAxis("LookV", "C" + controllerID + "_Vertical2");
+        c.SetButton("Jump", circle);
+
+        KeyCode[] leftHandKeys = { square, l1, l2 };
+        c.SetButton("LeftHand", leftHandKeys);
+
+        KeyCode[] rightHandKeys = { x, r1, r2 };
+        c.SetButton("RightHand", rightHandKeys);
+
+        KeyCode[] acceptKeys = { square, x, l1, l2, r1, r2 };
+        c.SetButton("Accept", acceptKeys);
+
+        c.SetButton("Back", circle);
+
+        c.deadZone = 0.3f;
+    }
+
+    private static void ConfigurePS4Controller(Controller c, int controllerID)
+    {
+        int offset = controllerID * 20;
+
+        KeyCode x = KeyCode.JoystickButton0 + offset;
+        KeyCode square = KeyCode.JoystickButton2 + offset;
+        KeyCode circle = KeyCode.JoystickButton1 + offset;
+        KeyCode l1 = KeyCode.JoystickButton4 + offset;
+        KeyCode l2 = KeyCode.JoystickButton6 + offset;
+        KeyCode r1 = KeyCode.JoystickButton5 + offset;
+        KeyCode r2 = KeyCode.JoystickButton7 + offset;
+
+        c.SetAxis("MoveH", "C" + controllerID + "_Horizontal");
+        c.SetAxis("MoveV", "C" + controllerID + "_Vertical");
+        c.SetAxis("LookH", "PS4C" + controllerID + "_Horizontal2");
+        c.SetAxis("LookV", "PS4C" + controllerID + "_Vertical2");
         c.SetButton("Jump", circle);
 
         KeyCode[] leftHandKeys = { square, l1, l2 };

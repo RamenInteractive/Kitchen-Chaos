@@ -24,13 +24,8 @@ public class MenuScreen : MonoBehaviour {
     }
 
     protected bool GetAnyAccept() {
-        return Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.JoystickButton1);
+        return Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.JoystickButton0);
     }
-
-    protected bool GetAnyStart() {
-        return Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.JoystickButton9);
-    }
-
     protected bool GetAnyBack() {
         return Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.JoystickButton2);
     }
