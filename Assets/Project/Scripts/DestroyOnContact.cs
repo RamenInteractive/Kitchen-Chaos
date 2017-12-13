@@ -14,7 +14,7 @@ public class DestroyOnContact : MonoBehaviour {
 		
 	}
 
-    void OnTriggerEnter(Collision collision) {
+    void OnTriggerEnter(Collider collision) {
         if(collision.gameObject.transform.tag == "Food" || collision.gameObject.transform.tag == "Ingredient" || collision.gameObject.transform.tag == "Uncut" || collision.gameObject.transform.tag == "Uncooked") {
             Destroy(collision.gameObject);
         }
