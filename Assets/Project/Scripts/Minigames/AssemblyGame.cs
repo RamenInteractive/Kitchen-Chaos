@@ -229,7 +229,7 @@ public class AssemblyGame : Minigame
 
         GameObject hand = leftHand ? p.lHand : p.rHand;
 
-        if (hand == null)
+        if (hand == null || hand.GetComponent<Ingredient>() == null || hand.tag != "Ingredient")
             return;
 
         Ingredient inHand = hand.GetComponent<Ingredient>();
@@ -274,11 +274,7 @@ public class AssemblyGame : Minigame
         }
         else //If you are holding something
         {
-            //If it's an ingredient take it into the station
-            if (hand.GetComponent<Ingredient>() != null && hand.tag == "Ingredient")
-            {
-                handleItem(p, leftHand);
-            }
+            handleItem(p, leftHand);
         }
     }
 }
