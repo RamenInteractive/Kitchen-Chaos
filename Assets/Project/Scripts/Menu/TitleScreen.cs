@@ -8,7 +8,7 @@ using UnityEngine.UI;
 class TitleScreen : MenuScreen {
     public int selectedItem = 0;
     public Text startGameText;
-    public Text highScoreText;
+    public Text tutorialText;
     public Text exitGameText;
 
     private bool canMoveCursor = true;
@@ -51,7 +51,7 @@ class TitleScreen : MenuScreen {
                 startGameText.color = new Color(0.6f, 0.35f, 0f);
                 break;
             case 1:
-                highScoreText.color = new Color(0.6f, 0.35f, 0f);
+                tutorialText.color = new Color(0.6f, 0.35f, 0f);
                 break;
             case 2:
                 exitGameText.color = new Color(0.6f, 0.35f, 0f);
@@ -62,7 +62,7 @@ class TitleScreen : MenuScreen {
 
     private void SetAllMenuItemsInactive() {
         startGameText.color = new Color(0f, 0f, 0f);
-        highScoreText.color = new Color(0f, 0f, 0f);
+        tutorialText.color = new Color(0f, 0f, 0f);
         exitGameText.color = new Color(0f, 0f, 0f);
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour {
 
@@ -10,7 +11,19 @@ public class MenuController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         screens = GetComponentsInChildren<MenuScreen>(true);
-        SetScreen(0);
+        GameObject info = GameObject.Find("GameInfo");
+        if (info != null) {
+            GameInfo gi = info.GetComponent<GameInfo>();
+            if (gi.gameOver) {
+                SetScreen(2);
+            }
+            else {
+                SetScreen(0);
+            }
+        }
+        else {
+            SetScreen(0);
+        }
     }
 
     public void SetScreen(int id) {
