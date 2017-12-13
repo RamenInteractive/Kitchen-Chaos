@@ -5,6 +5,12 @@ using UnityEngine;
 public class SoundEffectPlayer : MonoBehaviour {
     public AudioClip correctClip;
     public AudioClip incorrectClip;
+    public AudioClip scrollClip;
+    public AudioClip selectClip;
+    public AudioClip cancelClip;
+    public AudioClip popClip;
+    public AudioClip malletGliss;
+    public AudioClip whistleClip;
 
     private AudioSource source;
 
@@ -25,6 +31,36 @@ public class SoundEffectPlayer : MonoBehaviour {
 
     public void playIncorrect() {
         source.clip = incorrectClip;
+        source.Play();
+    }
+
+    public void playScroll() {
+        source.clip = scrollClip;
+        source.Play();
+    }
+
+    public void playSelect() {
+        source.clip = selectClip;
+        source.Play();
+    }
+
+    public void playCancel() {
+        source.clip = cancelClip;
+        source.Play();
+    }
+
+    public void playPop() {
+        source.clip = popClip;
+        source.Play();
+    }
+
+    public void playMalletGliss() {
+        source.clip = malletGliss;
+        source.Play();
+    }
+
+    public void playWhistle() {
+        source.clip = whistleClip;
         source.Play();
     }
 }

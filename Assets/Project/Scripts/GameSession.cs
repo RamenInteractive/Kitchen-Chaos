@@ -67,6 +67,7 @@ public class GameSession : MonoBehaviour {
     public Text orderCompletionText;
     public Text clockText;
     public SoundEffectPlayer audioPlayer;
+    public BGMPlayer bgmPlayer;
 
     public GameObject gameInfoPrefab;
 
@@ -76,9 +77,7 @@ public class GameSession : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GetComponent<AudioSource>().clip = bgm;
-        GetComponent<AudioSource>().loop = true;
-        GetComponent<AudioSource>().Play();
+        bgmPlayer.startMusic();
         curPlayers = new List<Player>();
         GameObject infoObj = GameObject.Find("GameInfo");
         if (infoObj != null) {
@@ -143,6 +142,7 @@ public class GameSession : MonoBehaviour {
     }
     
     public IEnumerator finishOrder(int timeSpent) {
+        audioPlayer.playCorrect();
         float timeRemaining = 1 - Mathf.Pow(1 - (float)timeSpent / TicketGen.TICKET_DURATION, 1.5f);
         int pointVal = Mathf.FloorToInt(100 + 100 * difficulty * difficultyMod * timeRemaining);
         score += pointVal;
@@ -230,7 +230,8 @@ public class GameSession : MonoBehaviour {
 
     private void randomChanceOrder() {
         int last = dayTime - lastOrder;
-        if(last >= MIN_TIME_BTWN_ORDERS) { 
+        int minTime = Mathf.FloorToInt(MIN_TIME_BTWN_ORDERS / (difficulty * difficultyMod));
+        if(last >= minTime) { 
             float maxf = 0.5f;
             float floor = maxf * difficulty * difficultyMod;
             float rand = Random.Range(floor, 1f);

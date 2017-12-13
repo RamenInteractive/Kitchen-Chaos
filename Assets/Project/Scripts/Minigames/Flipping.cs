@@ -119,6 +119,7 @@ public class Flipping : Minigame {
                     flipped[i] = false;
                     timers[i].GetComponent<TextMesh>().text = "Burnt";
                     time[i] = 15.0f;
+                    sfx.playWhistle();
                 }
             }
         }
@@ -166,6 +167,7 @@ public class Flipping : Minigame {
                     timers[i].GetComponent<TextMesh>().color = Color.green;
                     timers[i].GetComponent<TextMesh>().text = "Open";
                     time[i] = 15.0f;
+                    sfx.playWhistle();
                     break;
                 }
 
@@ -186,6 +188,7 @@ public class Flipping : Minigame {
                     timers[i].GetComponent<TextMesh>().color = Color.green;
                     timers[i].GetComponent<TextMesh>().text = "Open";
                     time[i] = 15.0f;
+                    sfx.playWhistle();
                 }
             }
         }

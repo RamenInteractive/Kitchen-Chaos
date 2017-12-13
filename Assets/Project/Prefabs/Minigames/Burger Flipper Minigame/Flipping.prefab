@@ -1069,10 +1069,11 @@ AudioSource:
   m_GameObject: {fileID: 1122349576142776}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243288068504731416, guid: 1d3de6db8d5481d46a56a65197099956,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1359,7 +1360,7 @@ MonoBehaviour:
   timer5: {fileID: 1139599726195598}
   slot6: {fileID: 4702300845335298}
   timer6: {fileID: 1565935350654064}
-  sizzle: {fileID: 8300000, guid: 61583cf7e3e74344483205c3e3af2d59, type: 3}
+  sizzle: {fileID: 8300000, guid: b7b7636874bff314ab932200a2f0ccaf, type: 3}
 --- !u!114 &114606379476715416
 MonoBehaviour:
   m_ObjectHideFlags: 1

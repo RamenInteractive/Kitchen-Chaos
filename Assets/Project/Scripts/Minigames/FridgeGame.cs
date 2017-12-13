@@ -86,6 +86,7 @@ public class FridgeGame : Minigame
         // Check selected object 
         if (controller.GetButtonDown("LeftHand") && player.GetComponent<Player>().lHand == null)
         {
+            sfx.playSelect();
             if (selectedObject.name == "UncutLettuce")
             {
                 GameObject copy = Instantiate(lettucePrefab);
@@ -125,6 +126,7 @@ public class FridgeGame : Minigame
         }
         else if (controller.GetButtonDown("RightHand") && player.GetComponent<Player>().rHand == null)
         {
+            sfx.playSelect();
             if (selectedObject.name == "UncutLettuce")
             {
                 GameObject copy = Instantiate(lettucePrefab);
@@ -251,5 +253,7 @@ public class FridgeGame : Minigame
         obj.transform.localPosition += new Vector3(0.4f, 0, 0);
 
         selectedObject = obj;
+
+        sfx.playScroll();
     }
 }

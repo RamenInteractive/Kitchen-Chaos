@@ -6,10 +6,14 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour {
 
     public int currentScreen;
+    public AudioClip titleBGM;
+
+    private AudioSource source;
     MenuScreen[] screens;
 
     // Use this for initialization
     void Start () {
+        source = GetComponent<AudioSource>();
         screens = GetComponentsInChildren<MenuScreen>(true);
         GameObject info = GameObject.Find("GameInfo");
         if (info != null) {
@@ -24,6 +28,7 @@ public class MenuController : MonoBehaviour {
         else {
             SetScreen(0);
         }
+        source.Play();
     }
 
     public void SetScreen(int id) {
@@ -32,9 +37,17 @@ public class MenuController : MonoBehaviour {
                 screens[i].gameObject.SetActive(i == id);
             }
         }
+        switch(id) {
+            case 0:
+                source.clip = titleBGM;
+                break;
+            default:
+                source.clip = titleBGM;
+                break;
+        }
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 	}
 }

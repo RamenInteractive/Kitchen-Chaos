@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class ControllerEntryScreen : MenuScreen {
     private List<int> players;
 
     public GameObject gameInfoPrefab;
+    public SoundEffectPlayer sfx;
 
     public Text player1Text;
     public Text player1ControllerName;
@@ -21,6 +23,7 @@ public class ControllerEntryScreen : MenuScreen {
     public Text player4ControllerName;
 
     public Text loadingText;
+    public Color fadeColour;
 
     private void Start() {
         players = new List<int>();
@@ -67,10 +70,11 @@ public class ControllerEntryScreen : MenuScreen {
                 players.Add(8);
             }
             UpdatePlayerTexts();
+            sfx.playPop();
         }
 
         if (GetAnyStart() && players.Count > 0) {
-            loadingText.gameObject.SetActive(true);
+            //loadingText.gameObject.SetActive(true);
             GameObject gameInfoObj = GameObject.Find("GameInfo");
             if (gameInfoObj == null) {
                 gameInfoObj = Instantiate(gameInfoPrefab);
@@ -103,7 +107,8 @@ public class ControllerEntryScreen : MenuScreen {
                         break;
                 }
             }
-            SceneManager.LoadScene("MainScene");
+            sfx.playMalletGliss();
+            Initiate.Fade("MainScene", fadeColour, 0.2f);
         }
     }
     private void UpdatePlayerTexts() {
