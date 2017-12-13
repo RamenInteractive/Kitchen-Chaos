@@ -454,6 +454,134 @@ InputManager:
     axis: 2
     joyNum: 8
   - serializedVersion: 3
+    m_Name: PS4C1_Horizontal2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: PS4C2_Horizontal2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: PS4C3_Horizontal2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 3
+  - serializedVersion: 3
+    m_Name: PS4C4_Horizontal2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 4
+  - serializedVersion: 3
+    m_Name: PS4C5_Horizontal2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 5
+  - serializedVersion: 3
+    m_Name: PS4C6_Horizontal2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 6
+  - serializedVersion: 3
+    m_Name: PS4C7_Horizontal2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 7
+  - serializedVersion: 3
+    m_Name: PS4C8_Horizontal2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 8
+  - serializedVersion: 3
     m_Name: Mouse Y
     descriptiveName: 
     descriptiveNegativeName: 
@@ -596,6 +724,134 @@ InputManager:
     invert: 1
     type: 2
     axis: 5
+    joyNum: 8
+  - serializedVersion: 3
+    m_Name: PS4C1_Vertical2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 4
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: PS4C2_Vertical2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 4
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: PS4C3_Vertical2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 4
+    joyNum: 3
+  - serializedVersion: 3
+    m_Name: PS4C4_Vertical2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 4
+    joyNum: 4
+  - serializedVersion: 3
+    m_Name: PS4C5_Vertical2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 4
+    joyNum: 5
+  - serializedVersion: 3
+    m_Name: PS4C6_Vertical2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 4
+    joyNum: 6
+  - serializedVersion: 3
+    m_Name: PS4C7_Vertical2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 4
+    joyNum: 7
+  - serializedVersion: 3
+    m_Name: PS4C8_Vertical2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 4
     joyNum: 8
   - serializedVersion: 3
     m_Name: Mouse ScrollWheel
