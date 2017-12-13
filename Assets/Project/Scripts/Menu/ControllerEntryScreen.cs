@@ -83,22 +83,22 @@ public class ControllerEntryScreen : MenuScreen {
                 switch(i) {
                     case 0:
                         info.player1Controller = players[i];
-                        if (player1ControllerName.text == "Keyboard")
+                        if (players[i] == 0)
                             info.keyboard[i] = true;
                         break;
                     case 1:
                         info.player2Controller = players[i];
-                        if (player2ControllerName.text == "Keyboard")
+                        if (players[i] == 0)
                             info.keyboard[i] = true;
                         break;
                     case 2:
                         info.player3Controller = players[i];
-                        if (player3ControllerName.text == "Keyboard")
+                        if (players[i] == 0)
                             info.keyboard[i] = true;
                         break;
                     case 3:
                         info.player4Controller = players[i];
-                        if (player4ControllerName.text == "Keyboard")
+                        if (players[i] == 0)
                             info.keyboard[i] = true;
                         break;
                 }
