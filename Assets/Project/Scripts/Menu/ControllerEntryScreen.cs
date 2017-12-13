@@ -20,6 +20,8 @@ public class ControllerEntryScreen : MenuScreen {
     public Text player4Text;
     public Text player4ControllerName;
 
+    public Text loadingText;
+
     private void Start() {
         players = new List<int>();
     }
@@ -29,34 +31,35 @@ public class ControllerEntryScreen : MenuScreen {
             if (Input.GetKeyDown(KeyCode.Mouse0) && !players.Contains(0)) {
                 players.Add(0);
             }
-            if (Input.GetKeyDown(KeyCode.Joystick1Button1) && !players.Contains(1)) {
+            if ((Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && !players.Contains(1)) {
                 players.Add(1);
             }
-            if (Input.GetKeyDown(KeyCode.Joystick2Button1) && !players.Contains(2)) {
+            if ((Input.GetKeyDown(KeyCode.Joystick2Button1) || Input.GetKeyDown(KeyCode.Joystick2Button0)) && !players.Contains(2)) {
                 players.Add(2);
             }
-            if (Input.GetKeyDown(KeyCode.Joystick3Button1) && !players.Contains(3)) {
+            if ((Input.GetKeyDown(KeyCode.Joystick3Button1) || Input.GetKeyDown(KeyCode.Joystick3Button0)) && !players.Contains(3)) {
                 players.Add(3);
             }
-            if (Input.GetKeyDown(KeyCode.Joystick4Button1) && !players.Contains(4)) {
+            if ((Input.GetKeyDown(KeyCode.Joystick4Button1) || Input.GetKeyDown(KeyCode.Joystick4Button0)) && !players.Contains(4)) {
                 players.Add(4);
             }
-            if (Input.GetKeyDown(KeyCode.Joystick5Button1) && !players.Contains(5)) {
+            if ((Input.GetKeyDown(KeyCode.Joystick5Button1) || Input.GetKeyDown(KeyCode.Joystick5Button0)) && !players.Contains(5)) {
                 players.Add(5);
             }
-            if (Input.GetKeyDown(KeyCode.Joystick6Button1) && !players.Contains(6)) {
+            if ((Input.GetKeyDown(KeyCode.Joystick6Button1) || Input.GetKeyDown(KeyCode.Joystick6Button0)) && !players.Contains(6)) {
                 players.Add(6);
             }
-            if (Input.GetKeyDown(KeyCode.Joystick7Button1) && !players.Contains(7)) {
+            if ((Input.GetKeyDown(KeyCode.Joystick7Button1) || Input.GetKeyDown(KeyCode.Joystick7Button0)) && !players.Contains(7)) {
                 players.Add(7);
             }
-            if (Input.GetKeyDown(KeyCode.Joystick8Button1) && !players.Contains(8)) {
+            if ((Input.GetKeyDown(KeyCode.Joystick8Button1) || Input.GetKeyDown(KeyCode.Joystick8Button0)) && !players.Contains(8)) {
                 players.Add(8);
             }
             UpdatePlayerTexts();
         }
 
         if (GetAnyStart() && players.Count > 0) {
+            loadingText.gameObject.SetActive(true);
             GameObject gameInfoObj = Instantiate(gameInfoPrefab);
             GameInfo info = gameInfoObj.GetComponent<GameInfo>();
             info.numPlayers = players.Count();
@@ -126,5 +129,29 @@ public class ControllerEntryScreen : MenuScreen {
                     break;
             }
         }
+    }
+    private bool GetAnyStart()
+    {
+        string[] controllerNames = Input.GetJoystickNames();
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (players[i] == 0)
+            {
+                return Input.GetKey(KeyCode.Return);
+            }
+            else
+            {
+                int offset = players[i] * 20;
+                if (controllerNames[players[i] - 1].Equals("Wireless Controller"))
+                {
+                    return Input.GetKey(KeyCode.JoystickButton9 + offset);
+                }
+                else
+                {
+                    return Input.GetKey(KeyCode.JoystickButton7 + offset);
+                }
+            }
+        }
+        return false;
     }
 }
