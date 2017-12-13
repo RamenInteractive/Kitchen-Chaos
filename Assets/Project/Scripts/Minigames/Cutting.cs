@@ -162,7 +162,7 @@ public class Cutting : Minigame {
         }
     }
         
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Uncut")
         {
