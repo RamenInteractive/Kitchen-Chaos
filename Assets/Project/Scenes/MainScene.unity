@@ -991,9 +991,145 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: downImage2
+      value: 
+      objectReference: {fileID: 938439987}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: leftImage2
+      value: 
+      objectReference: {fileID: 938439988}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: rightImage2
+      value: 
+      objectReference: {fileID: 938439989}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: upImage2
+      value: 
+      objectReference: {fileID: 938439990}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: rightImage1
+      value: 
+      objectReference: {fileID: 938439991}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: leftImage1
+      value: 
+      objectReference: {fileID: 938439993}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: upImage1
+      value: 
+      objectReference: {fileID: 938439994}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: downImage1
+      value: 
+      objectReference: {fileID: 938439992}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: downKeyboard
+      value: 
+      objectReference: {fileID: 21300000, guid: 6a322d07f2a4079498f1528b441eb5d9,
+        type: 3}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: rightKeyboard
+      value: 
+      objectReference: {fileID: 21300000, guid: a4fbb6d5dbdcb334c849a09592820c6b,
+        type: 3}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: leftKeyboard
+      value: 
+      objectReference: {fileID: 21300000, guid: 56a0fa003270d6e49b3ab8cf6375fbab,
+        type: 3}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: upKeyboard
+      value: 
+      objectReference: {fileID: 21300000, guid: ac7a6641bc14c1340a1a61db6eb6985e,
+        type: 3}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: rightController
+      value: 
+      objectReference: {fileID: 21300000, guid: 1ad707aaa7898d145827eadabc2fdc53,
+        type: 3}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: downController
+      value: 
+      objectReference: {fileID: 21300000, guid: a77da9d2568cdba4994ff98501e44992,
+        type: 3}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: leftController
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a6eb81f4cfa1cf4b85ad5e0e9649ab2,
+        type: 3}
+    - target: {fileID: 114513274624394026, guid: 85f1506180d1dcc4cb654df36f788566,
+        type: 2}
+      propertyPath: upController
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f27f090b39a1714780d3d9e4d625263,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85f1506180d1dcc4cb654df36f788566, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &938439987 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114461946243327530, guid: 85f1506180d1dcc4cb654df36f788566,
+    type: 2}
+  m_PrefabInternal: {fileID: 938439986}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &938439988 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114566172421419038, guid: 85f1506180d1dcc4cb654df36f788566,
+    type: 2}
+  m_PrefabInternal: {fileID: 938439986}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &938439989 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114381636277365784, guid: 85f1506180d1dcc4cb654df36f788566,
+    type: 2}
+  m_PrefabInternal: {fileID: 938439986}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &938439990 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114015983023998730, guid: 85f1506180d1dcc4cb654df36f788566,
+    type: 2}
+  m_PrefabInternal: {fileID: 938439986}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &938439991 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114175590740385136, guid: 85f1506180d1dcc4cb654df36f788566,
+    type: 2}
+  m_PrefabInternal: {fileID: 938439986}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &938439992 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114094833553345230, guid: 85f1506180d1dcc4cb654df36f788566,
+    type: 2}
+  m_PrefabInternal: {fileID: 938439986}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &938439993 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114651307692344020, guid: 85f1506180d1dcc4cb654df36f788566,
+    type: 2}
+  m_PrefabInternal: {fileID: 938439986}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &938439994 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114323523614014570, guid: 85f1506180d1dcc4cb654df36f788566,
+    type: 2}
+  m_PrefabInternal: {fileID: 938439986}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1026724671
 GameObject:
   m_ObjectHideFlags: 0
