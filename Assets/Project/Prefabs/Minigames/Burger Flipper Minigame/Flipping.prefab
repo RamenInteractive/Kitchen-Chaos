@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 23721753192404708}
   - component: {fileID: 114406270632624218}
   - component: {fileID: 82118313665762250}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1072,7 +1072,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1335,7 +1335,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 1940321593590420}
-  hovering: 0
   viewpoint: {fileID: 20020085572730362}
   HUD: {fileID: 1701899254869170}
   pattyPrefab: {fileID: 1488383715292482, guid: 31a32e806f4d396468f7f3e51c4ee0b2,

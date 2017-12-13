@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour {
-    public const float MINUTE_VALUE = 0.1f;
+    public const float MINUTE_VALUE = 0.75f;
 
     public static GameTime START_DAY = new GameTime("10:00");
     public static GameTime END_DAY = new GameTime("23:00");

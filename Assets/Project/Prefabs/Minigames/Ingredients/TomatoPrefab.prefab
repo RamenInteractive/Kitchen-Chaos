@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 223507113260715036}
   - component: {fileID: 114994442267825960}
   - component: {fileID: 114431801964058350}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 224334514885883170}
   - component: {fileID: 222082250156893556}
   - component: {fileID: 114118692882101942}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 54776052716132490}
   - component: {fileID: 65413405741813038}
   - component: {fileID: 114857767651708240}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TomatoPrefab
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224718358979787532}
   - component: {fileID: 225734456482998576}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 1996691212515956}
-  hovering: 0
 --- !u!114 &114994442267825960
 MonoBehaviour:
   m_ObjectHideFlags: 1

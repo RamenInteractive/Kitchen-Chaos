@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 54135876624612592}
   - component: {fileID: 65208825475172744}
   - component: {fileID: 114938863299565780}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TopBunPrefab
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 224503318244377102}
   - component: {fileID: 222500180310729784}
   - component: {fileID: 114913166930020112}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 223043378274056998}
   - component: {fileID: 114053349406276910}
   - component: {fileID: 114739104920008910}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224940710149718658}
   - component: {fileID: 225661324568427878}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverHUD: {fileID: 1911983379435568}
-  hovering: 0
 --- !u!222 &222500180310729784
 CanvasRenderer:
   m_ObjectHideFlags: 1
