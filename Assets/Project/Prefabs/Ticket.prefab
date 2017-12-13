@@ -469,7 +469,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 00448f54523ac64469a630d03134100f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -525,7 +525,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -702,7 +702,7 @@ MonoBehaviour:
     type: 2}
   paper: {fileID: 1643310252097926}
   fire: {fileID: 8300000, guid: 00448f54523ac64469a630d03134100f, type: 3}
-  bell: {fileID: 8300000, guid: e9deaaa44d203564c9dbcf2f7fe93212, type: 3}
+  bell: {fileID: 8300000, guid: 81656c205831e45439660cd08e4682cc, type: 3}
 --- !u!114 &114741902655589158
 MonoBehaviour:
   m_ObjectHideFlags: 1
