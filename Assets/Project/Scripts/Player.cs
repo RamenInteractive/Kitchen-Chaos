@@ -17,6 +17,7 @@ public class Player : MonoBehaviour {
     private Controller controller;
     private float lhCharge = -0.1f;
     private bool lhCharging = false;
+    private bool keyboard;
 
     float initFoV;
 
@@ -132,10 +133,11 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void setBounds(Rect rect)
+    public void setInfo(Rect rect, bool keyboard)
     {
         transform.GetChild(0).GetComponent<Camera>().rect = rect;
         bounds = rect;
+        this.keyboard = keyboard;
 
         centerUI();
     }
@@ -184,5 +186,10 @@ public class Player : MonoBehaviour {
     public void showCrosshair()
     {
         crosshair.alpha = 1f;
+    }
+
+    public bool getKeyboard()
+    {
+        return keyboard;
     }
 }

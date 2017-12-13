@@ -9,6 +9,7 @@
 =================
 #### Changed Features
 - Fixed the positions of the UI and crosshair in multiplayer
+- Made assembly table icons change for keyboard vs controller
 
 ### [0.2.1] 2017/12/08
 =================
