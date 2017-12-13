@@ -191,7 +191,7 @@ public class Flipping : Minigame {
         }
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Uncooked")
         {
