@@ -5,6 +5,11 @@
 - Colt King [ColtTheKing]
 
 # Developer Changelog
+### [0.2.2] 2017/12/12
+=================
+#### Changed Features
+- Fixed the positions of the UI and crosshair in multiplayer
+
 ### [0.2.1] 2017/12/08
 =================
 #### Changed Features
