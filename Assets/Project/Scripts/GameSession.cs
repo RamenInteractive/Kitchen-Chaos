@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameSession : MonoBehaviour {
     public const float MINUTE_VALUE = 0.75f;
@@ -66,6 +67,8 @@ public class GameSession : MonoBehaviour {
     public Text orderCompletionText;
     public Text clockText;
     public SoundEffectPlayer audioPlayer;
+
+    public GameObject gameInfoPrefab;
 
     public AudioClip bgm; 
 
@@ -161,7 +164,7 @@ public class GameSession : MonoBehaviour {
         lives -= 1;
         if(lives <= 0) {
             // lose life
-            StartCoroutine(displayMessage("You lost the game but we haven't coded the ending yet", 3f));
+            endGame();
         } else {
             StartCoroutine(displayMessage("You lost a life", 3f));
         }
@@ -205,22 +208,22 @@ public class GameSession : MonoBehaviour {
         switch(numPlayers)
         {
             case 1:
-                curPlayers[0].setBounds(new Rect(0, 0, 1, 1));
+                curPlayers[0].setInfo(new Rect(0, 0, 1, 1), info.keyboard[0]);
                 break;
             case 2:
-                curPlayers[0].setBounds(new Rect(0, 0.5f, 1, 0.5f));
-                curPlayers[1].setBounds(new Rect(0, 0, 1, 0.5f));
+                curPlayers[0].setInfo(new Rect(0, 0.5f, 1, 0.5f), info.keyboard[0]);
+                curPlayers[1].setInfo(new Rect(0, 0, 1, 0.5f), info.keyboard[1]);
                 break;
             case 3:
-                curPlayers[0].setBounds(new Rect(0, 0.5f, 0.5f, 0.5f));
-                curPlayers[1].setBounds(new Rect(0.5f, 0.5f, 0.5f, 0.5f));
-                curPlayers[2].setBounds(new Rect(0, 0, 0.5f, 0.5f));
+                curPlayers[0].setInfo(new Rect(0, 0.5f, 0.5f, 0.5f), info.keyboard[0]);
+                curPlayers[1].setInfo(new Rect(0.5f, 0.5f, 0.5f, 0.5f), info.keyboard[1]);
+                curPlayers[2].setInfo(new Rect(0, 0, 0.5f, 0.5f), info.keyboard[2]);
                 break;
             case 4:
-                curPlayers[0].setBounds(new Rect(0, 0.5f, 0.5f, 0.5f));
-                curPlayers[1].setBounds(new Rect(0.5f, 0.5f, 0.5f, 0.5f));
-                curPlayers[2].setBounds(new Rect(0, 0, 0.5f, 0.5f));
-                curPlayers[3].setBounds(new Rect(0.5f, 0, 0.5f, 0.5f));
+                curPlayers[0].setInfo(new Rect(0, 0.5f, 0.5f, 0.5f), info.keyboard[0]);
+                curPlayers[1].setInfo(new Rect(0.5f, 0.5f, 0.5f, 0.5f), info.keyboard[1]);
+                curPlayers[2].setInfo(new Rect(0, 0, 0.5f, 0.5f), info.keyboard[2]);
+                curPlayers[3].setInfo(new Rect(0.5f, 0, 0.5f, 0.5f), info.keyboard[3]);
                 break;
         }
     }
@@ -322,5 +325,18 @@ public class GameSession : MonoBehaviour {
     public GameTime getTime()
     {
         return new GameTime(dayTime);
+    }
+
+    private void endGame() {
+        GameObject gameInfoObj = GameObject.Find("GameInfo");
+        if (gameInfoObj == null) {
+            gameInfoObj = Instantiate(gameInfoPrefab);
+            gameInfoObj.GetComponent<GameInfo>().name = "GameInfo";
+        }
+        GameInfo info = gameInfoObj.GetComponent<GameInfo>();
+        info.score = score;
+        info.gameOver = true;
+
+        SceneManager.LoadScene("Menu");
     }
 }

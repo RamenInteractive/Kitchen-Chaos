@@ -25,10 +25,11 @@ public abstract class Minigame : Interactable {
 	// Update is called once per frame
 	protected void Update () {
         if(inUse) {
-            if (controller.GetButtonDown("Back")) {
+            activeUpdate();
+            if (controller.GetButtonDown("Back"))
+            {
                 exit();
             }
-            activeUpdate();
         }
     }
 

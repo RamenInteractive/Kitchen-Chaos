@@ -10,6 +10,22 @@ public class AssemblyGame : Minigame
     public static int SELECT_SLOTS = 4;
     public Vector3 dropLocation = new Vector3(0.2f, 0.5f, 0f);
     public Text buildText;
+    public Image upImage1;
+    public Image upImage2;
+    public Sprite upKeyboard;
+    public Sprite upController;
+    public Image downImage1;
+    public Image downImage2;
+    public Sprite downKeyboard;
+    public Sprite downController;
+    public Image leftImage1;
+    public Image leftImage2;
+    public Sprite leftKeyboard;
+    public Sprite leftController;
+    public Image rightImage1;
+    public Image rightImage2;
+    public Sprite rightKeyboard;
+    public Sprite rightController;
 
     private Ingredient[] ingredientSlots;
     private int[] ingredientsStored;
@@ -274,6 +290,36 @@ public class AssemblyGame : Minigame
         else //If you are holding something
         {
             handleItem(p, leftHand);
+        }
+    }
+
+    public override void enter(GameObject p)
+    {
+        base.enter(p);
+
+        Player player = p.GetComponent<Player>();
+
+        if (player.getKeyboard())
+        {
+            upImage1.sprite = upKeyboard;
+            downImage1.sprite = downKeyboard;
+            leftImage1.sprite = leftKeyboard;
+            rightImage1.sprite = rightKeyboard;
+            upImage2.sprite = upKeyboard;
+            downImage2.sprite = downKeyboard;
+            leftImage2.sprite = leftKeyboard;
+            rightImage2.sprite = rightKeyboard;
+        }
+        else
+        {
+            upImage1.sprite = upController;
+            downImage1.sprite = downController;
+            leftImage1.sprite = leftController;
+            rightImage1.sprite = rightController;
+            upImage2.sprite = upController;
+            downImage2.sprite = downController;
+            leftImage2.sprite = leftController;
+            rightImage2.sprite = rightController;
         }
     }
 }

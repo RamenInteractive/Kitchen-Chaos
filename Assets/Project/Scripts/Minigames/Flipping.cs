@@ -108,6 +108,8 @@ public class Flipping : Minigame {
                     GameObject burnt;
                     Destroy(cooking[i].GetChild(1).gameObject);
                     burnt = Instantiate(burntPrefab, GameObject.Find("Finish").transform);
+                    float angle = Random.Range(0, 360);
+                    burnt.GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
                     burnt.transform.localPosition = Vector3.zero;
                     burnt.transform.parent = GameObject.Find("GameController").transform;
                     burnt.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -152,6 +154,8 @@ public class Flipping : Minigame {
                     GameObject done;
                     Destroy(cooking[i].GetChild(1).gameObject);
                     done = Instantiate(pattyPrefab, GameObject.Find("Finish").transform);
+                    float angle = Random.Range(0, 360);
+                    done.GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
                     done.transform.localPosition = Vector3.zero;
                     done.transform.parent = GameObject.Find("GameController").transform;
                     done.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -170,6 +174,8 @@ public class Flipping : Minigame {
                     GameObject done;
                     Destroy(cooking[i].GetChild(1).gameObject);
                     done = Instantiate(friesPrefab, GameObject.Find("Finish").transform);
+                    float angle = Random.Range(0, 360);
+                    done.GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
                     done.transform.localPosition = Vector3.zero;
                     done.transform.parent = GameObject.Find("GameController").transform;
                     done.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
