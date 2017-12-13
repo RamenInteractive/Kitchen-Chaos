@@ -107,12 +107,13 @@ public class Flipping : Minigame {
                 {
                     GameObject burnt;
                     Destroy(cooking[i].GetChild(1).gameObject);
-                    burnt = Instantiate(burntPrefab, cooking[i]);
+                    burnt = Instantiate(burntPrefab, GameObject.Find("Finish").transform);
                     burnt.transform.localPosition = Vector3.zero;
                     burnt.transform.parent = GameObject.Find("GameController").transform;
                     burnt.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                     burnt.GetComponentInChildren<Rigidbody>().detectCollisions = true;
                     burnt.GetComponentInChildren<Rigidbody>().useGravity = true;occupied[i] = false;
+                    burnt.GetComponentInChildren<Rigidbody>().AddForce(Vector3.up * 200f);
                     flipped[i] = false;
                     timers[i].GetComponent<TextMesh>().text = "Burnt";
                     time[i] = 15.0f;
@@ -150,14 +151,12 @@ public class Flipping : Minigame {
                 {
                     GameObject done;
                     Destroy(cooking[i].GetChild(1).gameObject);
-                    done = Instantiate(pattyPrefab, cooking[i]);
+                    done = Instantiate(pattyPrefab, GameObject.Find("Finish").transform);
                     done.transform.localPosition = Vector3.zero;
                     done.transform.parent = GameObject.Find("GameController").transform;
                     done.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                     done.GetComponentInChildren<Rigidbody>().detectCollisions = true;
                     done.GetComponentInChildren<Rigidbody>().useGravity = true;
-                    float angle = Random.Range(0, 360);
-                    done.GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
                     occupied[i] = false;
                     flipped[i] = false;
                     timers[i].GetComponent<TextMesh>().color = Color.green;
@@ -170,14 +169,12 @@ public class Flipping : Minigame {
                 {
                     GameObject done;
                     Destroy(cooking[i].GetChild(1).gameObject);
-                    done = Instantiate(friesPrefab, cooking[i]);
+                    done = Instantiate(friesPrefab, GameObject.Find("Finish").transform);
                     done.transform.localPosition = Vector3.zero;
                     done.transform.parent = GameObject.Find("GameController").transform;
                     done.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                     done.GetComponentInChildren<Rigidbody>().detectCollisions = true;
                     done.GetComponentInChildren<Rigidbody>().useGravity = true;
-                    float angle = Random.Range(0, 360);
-                    done.GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
                     occupied[i] = false;
                     flipped[i] = false;
                     timers[i].GetComponent<TextMesh>().color = Color.green;
@@ -209,11 +206,9 @@ public class Flipping : Minigame {
                     break;
                 }
             }
-        } else
-        {
+        } else {
             float angle = Random.Range(0, 360);
             collision.gameObject.GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
-
         }
     }
 
@@ -240,7 +235,7 @@ public class Flipping : Minigame {
         GameObject hand = leftHand ? p.lHand : p.rHand;
         int i;
 
-        if (hand == null)
+        if (hand == null || hand.tag != "Uncooked")
             return;
 
         for (i = 0; i < 6; i++)
@@ -293,11 +288,7 @@ public class Flipping : Minigame {
         }
         else //If you are holding something
         {
-            //If it's an ingredient take it into the station
-            if (hand.tag == "Uncooked")
-            {
-                handleItem(p, leftHand);
-            }
+            handleItem(p, leftHand);
         }
     }
 }

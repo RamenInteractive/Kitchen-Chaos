@@ -7,13 +7,13 @@ public class TicketGen : MonoBehaviour
     public const int NUM_TICKETS = 12;
     public const int FOOD_TYPES = 1;
     public const int TICKET_DURATION = 150;
-    public static Vector3[] positions = { new Vector3(0.105f, 0.8f, -1.2f),  //top far left
-        new Vector3(0.105f, 0.8f, -0.4f), new Vector3(0.105f, 0.8f, 0.4f),   //top mid left, top mid right
-        new Vector3(0.105f, 0.8f, 1.2f), new Vector3(0.105f, 0f, -1.2f),     //top far right, middle far left
-        new Vector3(0.105f, 0f, -0.4f), new Vector3(0.105f, 0f, 0.4f),       //middle mid left, middle mid right
-        new Vector3(0.105f, 0f, 1.2f), new Vector3(0.105f, -0.8f, -1.2f),    //middle far right, bottom far left
-        new Vector3(0.105f, -0.8f, -0.4f), new Vector3(0.105f, -0.8f, 0.4f), //bottom mid left, bottom mid right
-        new Vector3(0.105f, -0.8f, 1.2f)};                                   //bottom far right
+    public static Vector3[] positions = { new Vector3(0.105f, 1.6f, -2.4f),  //top far left
+        new Vector3(0.105f, 1.6f, -0.8f), new Vector3(0.105f, 1.6f, 0.8f),   //top mid left, top mid right
+        new Vector3(0.105f, 1.6f, 2.4f), new Vector3(0.105f, 0f, -2.4f),     //top far right, middle far left
+        new Vector3(0.105f, 0f, -0.8f), new Vector3(0.105f, 0f, 0.8f),       //middle mid left, middle mid right
+        new Vector3(0.105f, 0f, 2.4f), new Vector3(0.105f, -1.6f, -2.4f),    //middle far right, bottom far left
+        new Vector3(0.105f, -1.6f, -0.8f), new Vector3(0.105f, -1.6f, 0.8f), //bottom mid left, bottom mid right
+        new Vector3(0.105f, -1.6f, 2.4f)};                                   //bottom far right
 
     public float diffModifier = 1;
     public GameObject ticket;
