@@ -66,10 +66,15 @@ public class GameSession : MonoBehaviour {
     public Text orderCompletionText;
     public Text clockText;
 
+    public AudioClip bgm; 
+
     public static Vector3[] spawnPoints = { new Vector3(5, 1, 2), new Vector3(5, 1, 7), new Vector3(5, 1, -2), new Vector3(5, 1, -7) };
 
 	// Use this for initialization
 	void Start () {
+        GetComponent<AudioSource>().clip = bgm;
+        GetComponent<AudioSource>().loop = true;
+        GetComponent<AudioSource>().Play();
         curPlayers = new List<Player>();
         GameObject infoObj = GameObject.Find("GameInfo");
         if (infoObj != null) {
