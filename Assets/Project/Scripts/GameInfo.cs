@@ -14,6 +14,7 @@ public class GameInfo : MonoBehaviour {
     public int score;
     public bool gameOver;
     private void Start() {
+        keyboard = new bool[4];
         DontDestroyOnLoad(gameObject);
     }
 }
