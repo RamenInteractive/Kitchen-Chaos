@@ -10,6 +10,8 @@ public abstract class Minigame : Interactable {
     protected GameObject player; // Player currently using minigame
     protected Controller controller; // Control scheme for the minigame
 
+    public SoundEffectPlayer sfx;
+
     private bool inUse = false;
     public Camera viewpoint;
     public GameObject HUD;
@@ -97,6 +99,8 @@ public abstract class Minigame : Interactable {
     public virtual void exit() {
         CustomFirstPersonController cfpc = player.GetComponent<CustomFirstPersonController>();
         Player playerScript = player.GetComponent<Player>();
+
+        sfx.playCancel();
 
         cfpc.enabled = true;
         playerScript.enabled = true;

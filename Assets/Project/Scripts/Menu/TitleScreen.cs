@@ -10,6 +10,7 @@ class TitleScreen : MenuScreen {
     public Text startGameText;
     public Text tutorialText;
     public Text exitGameText;
+    public SoundEffectPlayer sfx;
 
     private bool canMoveCursor = true;
 
@@ -45,6 +46,7 @@ class TitleScreen : MenuScreen {
     }
 
     public void HighlightMenuItem(int item) {
+        sfx.playScroll();
         SetAllMenuItemsInactive();
         switch(item) {
             case 0:
@@ -67,6 +69,7 @@ class TitleScreen : MenuScreen {
     }
 
     public void SelectMenuItem(int item) {
+        sfx.playSelect();
         MenuController c = this.GetComponentInParent<MenuController>();
         switch (item) {
             case 0:

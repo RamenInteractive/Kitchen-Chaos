@@ -59,6 +59,7 @@ public class AssemblyGame : Minigame
             t.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             t.gameObject.GetComponent<Rigidbody>().useGravity = false;
             t.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+            t.gameObject.layer = 0;
             t.localRotation = Quaternion.identity;
         }
         buildSpace.AddComponent<Rigidbody>();
@@ -66,6 +67,7 @@ public class AssemblyGame : Minigame
         buildSpace.AddComponent<FoodComponent>();
         buildSpace.GetComponent<FoodComponent>().food = new Burger(currentBuild);
         buildSpace.GetComponent<BoxCollider>().size = new Vector3(0.1f, 0.3f, 0.3f);
+        buildSpace.layer = 12;
         buildSpace.tag = "Food";
 
         Player p = player.GetComponent<Player>();
@@ -210,6 +212,7 @@ public class AssemblyGame : Minigame
             if(ingredientSlots[i] != null && ingredientSlots[i].GetType() == ingType)
             {
                 ingredientsStored[i]++;
+                sfx.playSelect();
                 return true;
             }
         }
@@ -222,6 +225,7 @@ public class AssemblyGame : Minigame
             ing.GetComponent<Rigidbody>().useGravity = true;
             ingredientSlots[firstNull] = ing;
             ingredientsStored[firstNull]++;
+            sfx.playSelect();
             return true;
         }
 
