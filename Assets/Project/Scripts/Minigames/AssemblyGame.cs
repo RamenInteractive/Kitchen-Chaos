@@ -43,7 +43,6 @@ public class AssemblyGame : Minigame
             t.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             t.gameObject.GetComponent<Rigidbody>().useGravity = false;
             t.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
-            t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
         }
         buildSpace.AddComponent<Rigidbody>();
@@ -106,7 +105,7 @@ public class AssemblyGame : Minigame
         {
             storeIngredient(collision.gameObject.GetComponent<Ingredient>());
             collision.gameObject.SetActive(false);
-        }
+        } 
     }
 
     private void selectSide(int side)
@@ -229,7 +228,7 @@ public class AssemblyGame : Minigame
 
         GameObject hand = leftHand ? p.lHand : p.rHand;
 
-        if (hand == null)
+        if (hand == null || hand.GetComponent<Ingredient>() == null || hand.tag != "Ingredient")
             return;
 
         Ingredient inHand = hand.GetComponent<Ingredient>();
@@ -274,11 +273,7 @@ public class AssemblyGame : Minigame
         }
         else //If you are holding something
         {
-            //If it's an ingredient take it into the station
-            if (hand.GetComponent<Ingredient>() != null)
-            {
-                handleItem(p, leftHand);
-            }
+            handleItem(p, leftHand);
         }
     }
 }

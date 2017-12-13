@@ -15,7 +15,7 @@ public class DestroyOnContact : MonoBehaviour {
 	}
 
     void OnCollisionEnter(Collision collision) {
-        if(collision.gameObject.transform.tag == "Item") {
+        if(collision.gameObject.transform.tag == "Food") {
             Destroy(collision.gameObject);
         }
     }

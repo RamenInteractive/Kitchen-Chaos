@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour {
-    public const float MINUTE_VALUE = 0.75f;
+    public const float MINUTE_VALUE = 0.1f;
 
     public static GameTime START_DAY = new GameTime("10:00");
     public static GameTime END_DAY = new GameTime("23:00");
@@ -17,6 +17,11 @@ public class GameSession : MonoBehaviour {
 
     public static GameTime DINNER_RUSH_START = new GameTime("17:30");
     public static GameTime DINNER_RUSH_END = new GameTime("20:00");
+
+    public static Color CORRECT_COLOUR = new Color(53, 231, 12);
+    public static Color INCORRECT_COLOUR = new Color(229, 23, 51);
+
+    public const int MAX_LIVES = 3;
 
     public const int MAX_TIME_BTWN_ORDERS = 150;
     public const int MIN_TIME_BTWN_ORDERS = 10;
@@ -41,6 +46,7 @@ public class GameSession : MonoBehaviour {
 
     private int daysCleared = 0;
     private int score = 0;
+    private int lives = MAX_LIVES;
     private GameTime dayTime = new GameTime();
 
     private int dayStatus = STATUS_NORMAL;
@@ -60,10 +66,15 @@ public class GameSession : MonoBehaviour {
     public Text orderCompletionText;
     public Text clockText;
 
+    public AudioClip bgm; 
+
     public static Vector3[] spawnPoints = { new Vector3(5, 1, 2), new Vector3(5, 1, 7), new Vector3(5, 1, -2), new Vector3(5, 1, -7) };
 
 	// Use this for initialization
 	void Start () {
+        GetComponent<AudioSource>().clip = bgm;
+        GetComponent<AudioSource>().loop = true;
+        GetComponent<AudioSource>().Play();
         curPlayers = new List<Player>();
         GameObject infoObj = GameObject.Find("GameInfo");
         if (infoObj != null) {
@@ -78,6 +89,7 @@ public class GameSession : MonoBehaviour {
             ControllerFactory.AddControllerToObj(curPlayers[0].gameObject, 0);
         }
 
+        lives = MAX_LIVES;
         bVal = Mathf.Pow(MAX_TIME_BTWN_ORDERS * Mathf.Pow(0.75f, numPlayers - 1), C_VAL);
         StartCoroutine("startDay");
     }
@@ -130,9 +142,27 @@ public class GameSession : MonoBehaviour {
         float timeRemaining = 1 - Mathf.Pow(1 - (float)timeSpent / TicketGen.TICKET_DURATION, 1.5f);
         int pointVal = Mathf.FloorToInt(100 + 100 * difficulty * difficultyMod * timeRemaining);
         score += pointVal;
+        orderCompletionText.color = CORRECT_COLOUR;
         orderCompletionText.text = "Order complete!\n+" + pointVal;
         yield return new WaitForSeconds(3f);
         orderCompletionText.text = "";
+    }
+
+    public IEnumerator failOrder() {
+        orderCompletionText.color = INCORRECT_COLOUR;
+        orderCompletionText.text = "Incorrect Order!";
+        yield return new WaitForSeconds(3f);
+        orderCompletionText.text = "";
+    }
+
+    public void loseLife() {
+        lives -= 1;
+        if(lives <= 0) {
+            // lose life
+            StartCoroutine(displayMessage("You lost the game but we haven't coded the ending yet", 3f));
+        } else {
+            StartCoroutine(displayMessage("You lost a life", 3f));
+        }
     }
 
     private void spawnOrder() {
