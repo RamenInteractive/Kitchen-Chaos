@@ -152,6 +152,8 @@ public class Cutting : Minigame {
                     cuts[i].GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                     cuts[i].GetComponentInChildren<Rigidbody>().detectCollisions = true;
                     cuts[i].GetComponentInChildren<Rigidbody>().useGravity = true;
+                    float angle = UnityEngine.Random.Range(0, 360);
+                    cuts[i].GetComponentInChildren<Rigidbody>().AddForce((new Vector3(Mathf.Cos(angle), 1, Mathf.Sin(angle))) * 250f);
 
                     cutting = false;
                 }
