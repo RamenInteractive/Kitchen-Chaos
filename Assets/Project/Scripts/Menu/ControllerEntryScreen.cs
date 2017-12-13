@@ -60,10 +60,14 @@ public class ControllerEntryScreen : MenuScreen {
 
         if (GetAnyStart() && players.Count > 0) {
             loadingText.gameObject.SetActive(true);
-            GameObject gameInfoObj = Instantiate(gameInfoPrefab);
+            GameObject gameInfoObj = GameObject.Find("GameInfo");
+            if (gameInfoObj == null) {
+                gameInfoObj = Instantiate(gameInfoPrefab);
+                gameInfoObj.GetComponent<GameInfo>().name = "GameInfo";
+            }
             GameInfo info = gameInfoObj.GetComponent<GameInfo>();
             info.numPlayers = players.Count();
-            info.name = "GameInfo";
+            info.gameOver = false;
             for (int i = 0; i < info.numPlayers; i++) {
                 switch(i) {
                     case 0:
