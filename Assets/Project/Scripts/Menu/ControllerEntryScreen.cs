@@ -26,33 +26,44 @@ public class ControllerEntryScreen : MenuScreen {
         players = new List<int>();
     }
 
-    private void Update() {
-        if (GetAnyAccept() && players.Count < 4) {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && !players.Contains(0)) {
+    private void Update()
+    {
+        if (GetAnyAccept() && players.Count < 4)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0) && !players.Contains(0))
+            {
                 players.Add(0);
             }
-            if ((Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && !players.Contains(1)) {
+            if (Input.GetKeyDown(KeyCode.Joystick1Button1) && !players.Contains(1))
+            {
                 players.Add(1);
             }
-            if ((Input.GetKeyDown(KeyCode.Joystick2Button1) || Input.GetKeyDown(KeyCode.Joystick2Button0)) && !players.Contains(2)) {
+            if (Input.GetKeyDown(KeyCode.Joystick2Button1) && !players.Contains(2))
+            {
                 players.Add(2);
             }
-            if ((Input.GetKeyDown(KeyCode.Joystick3Button1) || Input.GetKeyDown(KeyCode.Joystick3Button0)) && !players.Contains(3)) {
+            if (Input.GetKeyDown(KeyCode.Joystick3Button1) && !players.Contains(3))
+            {
                 players.Add(3);
             }
-            if ((Input.GetKeyDown(KeyCode.Joystick4Button1) || Input.GetKeyDown(KeyCode.Joystick4Button0)) && !players.Contains(4)) {
+            if (Input.GetKeyDown(KeyCode.Joystick4Button1) && !players.Contains(4))
+            {
                 players.Add(4);
             }
-            if ((Input.GetKeyDown(KeyCode.Joystick5Button1) || Input.GetKeyDown(KeyCode.Joystick5Button0)) && !players.Contains(5)) {
+            if (Input.GetKeyDown(KeyCode.Joystick5Button1) && !players.Contains(5))
+            {
                 players.Add(5);
             }
-            if ((Input.GetKeyDown(KeyCode.Joystick6Button1) || Input.GetKeyDown(KeyCode.Joystick6Button0)) && !players.Contains(6)) {
+            if (Input.GetKeyDown(KeyCode.Joystick6Button1) && !players.Contains(6))
+            {
                 players.Add(6);
             }
-            if ((Input.GetKeyDown(KeyCode.Joystick7Button1) || Input.GetKeyDown(KeyCode.Joystick7Button0)) && !players.Contains(7)) {
+            if (Input.GetKeyDown(KeyCode.Joystick7Button1) && !players.Contains(7))
+            {
                 players.Add(7);
             }
-            if ((Input.GetKeyDown(KeyCode.Joystick8Button1) || Input.GetKeyDown(KeyCode.Joystick8Button0)) && !players.Contains(8)) {
+            if (Input.GetKeyDown(KeyCode.Joystick8Button1) && !players.Contains(8))
+            {
                 players.Add(8);
             }
             UpdatePlayerTexts();
@@ -72,15 +83,23 @@ public class ControllerEntryScreen : MenuScreen {
                 switch(i) {
                     case 0:
                         info.player1Controller = players[i];
+                        if (player1ControllerName.text == "Keyboard")
+                            info.keyboard[i] = true;
                         break;
                     case 1:
                         info.player2Controller = players[i];
+                        if (player2ControllerName.text == "Keyboard")
+                            info.keyboard[i] = true;
                         break;
                     case 2:
                         info.player3Controller = players[i];
+                        if (player3ControllerName.text == "Keyboard")
+                            info.keyboard[i] = true;
                         break;
                     case 3:
                         info.player4Controller = players[i];
+                        if (player4ControllerName.text == "Keyboard")
+                            info.keyboard[i] = true;
                         break;
                 }
             }
