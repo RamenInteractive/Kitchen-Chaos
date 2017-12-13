@@ -183,7 +183,7 @@ public class Cutting : Minigame {
         GameObject hand = leftHand ? p.lHand : p.rHand;
         int i;
 
-        if (hand == null)
+        if (hand == null || hand.tag != "Uncut")
             return;
 
         for (i = 0; i < 4; i++)
@@ -232,11 +232,7 @@ public class Cutting : Minigame {
         }
         else //If you are holding something
         {
-            //If it's an ingredient take it into the station
-            if (hand.tag == "Uncut")
-            {
-                handleItem(p, leftHand);
-            }
+            handleItem(p, leftHand);
         }
     }
 }

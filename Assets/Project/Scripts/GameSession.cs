@@ -66,10 +66,15 @@ public class GameSession : MonoBehaviour {
     public Text orderCompletionText;
     public Text clockText;
 
+    public AudioClip bgm; 
+
     public static Vector3[] spawnPoints = { new Vector3(5, 1, 2), new Vector3(5, 1, 7), new Vector3(5, 1, -2), new Vector3(5, 1, -7) };
 
 	// Use this for initialization
 	void Start () {
+        GetComponent<AudioSource>().clip = bgm;
+        GetComponent<AudioSource>().loop = true;
+        GetComponent<AudioSource>().Play();
         curPlayers = new List<Player>();
         GameObject infoObj = GameObject.Find("GameInfo");
         if (infoObj != null) {
@@ -197,22 +202,23 @@ public class GameSession : MonoBehaviour {
 
         switch(numPlayers)
         {
+            case 1:
+                curPlayers[0].setBounds(new Rect(0, 0, 1, 1));
+                break;
             case 2:
-                curPlayers[0].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0.5f, 1, 0.5f);
-                curPlayers[1].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0, 1, 0.5f);
+                curPlayers[0].setBounds(new Rect(0, 0.5f, 1, 0.5f));
+                curPlayers[1].setBounds(new Rect(0, 0, 1, 0.5f));
                 break;
             case 3:
-                curPlayers[0].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0.5f, 0.5f, 0.5f);
-                curPlayers[1].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
-                curPlayers[2].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0, 0.5f, 0.5f);
+                curPlayers[0].setBounds(new Rect(0, 0.5f, 0.5f, 0.5f));
+                curPlayers[1].setBounds(new Rect(0.5f, 0.5f, 0.5f, 0.5f));
+                curPlayers[2].setBounds(new Rect(0, 0, 0.5f, 0.5f));
                 break;
             case 4:
-                curPlayers[0].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0.5f, 0.5f, 0.5f);
-                curPlayers[1].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
-                curPlayers[2].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0, 0.5f, 0.5f);
-                curPlayers[3].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0.5f, 0, 0.5f, 0.5f);
-                break;
-            default:
+                curPlayers[0].setBounds(new Rect(0, 0.5f, 0.5f, 0.5f));
+                curPlayers[1].setBounds(new Rect(0.5f, 0.5f, 0.5f, 0.5f));
+                curPlayers[2].setBounds(new Rect(0, 0, 0.5f, 0.5f));
+                curPlayers[3].setBounds(new Rect(0.5f, 0, 0.5f, 0.5f));
                 break;
         }
     }

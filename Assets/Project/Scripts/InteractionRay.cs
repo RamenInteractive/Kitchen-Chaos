@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractionRay : MonoBehaviour
 {
-    public float length = 4f;
+    public float length;
 
     private Interactable hover;
     private GameObject parent;
+    private InteractionRay ray;
     private Controller controller;
+    private Player player;
 
     // Use this for initialization
     void Start ()
@@ -14,6 +17,7 @@ public class InteractionRay : MonoBehaviour
         hover = null;
         parent = gameObject.transform.parent.gameObject;
         controller = parent.GetComponent<Controller>();
+        player = parent.GetComponent<Player>();
     }
 	
 	// Update is called once per frame
@@ -39,12 +43,11 @@ public class InteractionRay : MonoBehaviour
 
         if(objectHit != hover) {
             if (hover != null && hover.HoverHUD != null) {
-                hover.HoverHUD.GetComponent<CanvasGroup>().alpha = 0f;
-                hover.hovering = false;
+                player.stopHover();
             }
             if (objectHit != null && objectHit.HoverHUD != null) {
-                objectHit.HoverHUD.GetComponent<CanvasGroup>().alpha = 1f;
-                objectHit.hovering = true;
+                Transform t = objectHit.HoverHUD.transform.GetChild(0);
+                player.startHover(t.GetComponent<Text>().text);
             }
             hover = objectHit;
         } 
