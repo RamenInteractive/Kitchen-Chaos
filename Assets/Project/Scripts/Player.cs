@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
     public Camera pov;
+    public Rect bounds;
     public GameObject lHand, rHand;
-    public float dropForce = 1.0f;
+    public float dropForce;
+    public CanvasGroup myHUD;
+    public CanvasGroup crosshair;
     private float charge = -0.1f;
     private bool charging = false;
     private bool canLThrow = true;
@@ -65,7 +69,6 @@ public class Player : MonoBehaviour {
 
     private void Update()
     {
-        // controller.GetButton("LeftHand") && charge < 10f && lHand != null
         float tempFoV = initFoV;
         if (charging && !controller.GetButtonUp("RightHand") && charge < 4.5f)
         {
@@ -127,5 +130,59 @@ public class Player : MonoBehaviour {
         if (controller.GetButtonDown("LeftHand") && canLThrow && lHand != null) {
             lhCharging = true;
         }
+    }
+
+    public void setBounds(Rect rect)
+    {
+        transform.GetChild(0).GetComponent<Camera>().rect = rect;
+        bounds = rect;
+
+        centerUI();
+    }
+
+    public Rect getBounds()
+    {
+        return bounds;
+    }
+
+    public void stopHover()
+    {
+        myHUD.alpha = 0f;
+    }
+
+    public void startHover(string text)
+    {
+        myHUD.alpha = 1f;
+        myHUD.transform.GetChild(0).GetComponent<Text>().text = text;
+    }
+
+    private void centerUI()
+    {
+        Text t = myHUD.transform.GetChild(0).GetComponent<Text>();
+        Image c1 = crosshair.transform.GetChild(0).GetComponent<Image>();
+        Image c2 = crosshair.transform.GetChild(1).GetComponent<Image>();
+
+        Vector2 move = new Vector2(
+            (float)(0.5 * bounds.width + bounds.x - 0.5) * Screen.width,
+            (float)(0.01 * bounds.height + bounds.y - 0.5) * Screen.height);
+
+        t.rectTransform.anchoredPosition = move;
+
+        move = new Vector2(
+            (float)(0.5 * bounds.width + bounds.x - 0.5) * Screen.width,
+            (float)(0.5 * bounds.height + bounds.y - 0.5) * Screen.height);
+
+        c1.rectTransform.anchoredPosition = move;
+        c2.rectTransform.anchoredPosition = move;
+    }
+
+    public void hideCrosshair()
+    {
+        crosshair.alpha = 0f;
+    }
+
+    public void showCrosshair()
+    {
+        crosshair.alpha = 1f;
     }
 }

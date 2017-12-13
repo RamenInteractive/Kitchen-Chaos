@@ -49,10 +49,11 @@ public abstract class Minigame : Interactable {
             player.transform.Find("FirstPersonCharacter").gameObject.GetComponent<Camera>().enabled = false;
             viewpoint.GetComponent<Camera>().enabled = true;
             gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 0f;
-            GameObject.Find("CrossHair").GetComponent<CanvasGroup>().alpha = 0f;
             HUD.GetComponent<CanvasGroup>().alpha = 1f;
             controller = player.GetComponent<Controller>();
 
+            player.GetComponent<Player>().hideCrosshair();
+            
             CustomFirstPersonController cfpc = player.GetComponent<CustomFirstPersonController>();
             Player playerScript = player.GetComponent<Player>();
 
@@ -94,12 +95,11 @@ public abstract class Minigame : Interactable {
         cfpc.enabled = true;
         playerScript.enabled = true;
 
-        //player.SetActive(true);
+        player.GetComponent<Player>().showCrosshair();
         
         player.transform.Find("FirstPersonCharacter").gameObject.GetComponent<Camera>().enabled = true;
         viewpoint.GetComponent<Camera>().enabled = false;
         HUD.GetComponent<CanvasGroup>().alpha = 0f;
-        gameObject.GetComponent<Interactable>().HoverHUD.GetComponent<CanvasGroup>().alpha = 1f;
         GameObject.Find("CrossHair").GetComponent<CanvasGroup>().alpha = 1f;
         player = null;
         inUse = false;

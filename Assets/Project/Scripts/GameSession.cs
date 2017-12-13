@@ -78,7 +78,6 @@ public class GameSession : MonoBehaviour {
             ControllerFactory.AddControllerToObj(curPlayers[0].gameObject, 0);
         }
 
-
         bVal = Mathf.Pow(MAX_TIME_BTWN_ORDERS * Mathf.Pow(0.75f, numPlayers - 1), C_VAL);
         StartCoroutine("startDay");
     }
@@ -173,22 +172,23 @@ public class GameSession : MonoBehaviour {
 
         switch(numPlayers)
         {
+            case 1:
+                curPlayers[0].setBounds(new Rect(0, 0, 1, 1));
+                break;
             case 2:
-                curPlayers[0].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0.5f, 1, 0.5f);
-                curPlayers[1].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0, 1, 0.5f);
+                curPlayers[0].setBounds(new Rect(0, 0.5f, 1, 0.5f));
+                curPlayers[1].setBounds(new Rect(0, 0, 1, 0.5f));
                 break;
             case 3:
-                curPlayers[0].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0.5f, 0.5f, 0.5f);
-                curPlayers[1].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
-                curPlayers[2].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0, 0.5f, 0.5f);
+                curPlayers[0].setBounds(new Rect(0, 0.5f, 0.5f, 0.5f));
+                curPlayers[1].setBounds(new Rect(0.5f, 0.5f, 0.5f, 0.5f));
+                curPlayers[2].setBounds(new Rect(0, 0, 0.5f, 0.5f));
                 break;
             case 4:
-                curPlayers[0].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0.5f, 0.5f, 0.5f);
-                curPlayers[1].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
-                curPlayers[2].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0, 0.5f, 0.5f);
-                curPlayers[3].transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0.5f, 0, 0.5f, 0.5f);
-                break;
-            default:
+                curPlayers[0].setBounds(new Rect(0, 0.5f, 0.5f, 0.5f));
+                curPlayers[1].setBounds(new Rect(0.5f, 0.5f, 0.5f, 0.5f));
+                curPlayers[2].setBounds(new Rect(0, 0, 0.5f, 0.5f));
+                curPlayers[3].setBounds(new Rect(0.5f, 0, 0.5f, 0.5f));
                 break;
         }
     }
