@@ -8,7 +8,7 @@ public class Flipping : Minigame {
     public GameObject pattyPrefab;
     public GameObject burntPrefab;
     public GameObject friesPrefab;
-    private bool beingUsed;
+    public GameObject cookingSmoke;
     public List<Transform> cooking;
     public List<GameObject> timers;
     public List<bool> occupied;
@@ -98,11 +98,18 @@ public class Flipping : Minigame {
                 time[i] -= Time.deltaTime;
                 timers[i].GetComponent<TextMesh>().text = Mathf.Round(time[i]).ToString();
 
-                if (time[i] < 10f)
+                if (time[i] < 10f && !flipped[i])
+                {
+                    timers[i].GetComponent<TextMesh>().color = Color.yellow;
+                    Renderer r = cooking[i].GetChild(1).GetComponent<Renderer>();
+                    r.material.color = new Color(.44f, .32f, .05f);
+                }
+              
+                if (time[i] < 10f && flipped[i])
                 {
                     timers[i].GetComponent<TextMesh>().color = Color.red;
                 }
-
+                
                 if (time[i] < 0)
                 {
                     GameObject burnt;
@@ -201,7 +208,9 @@ public class Flipping : Minigame {
                 {
                     GetComponent<AudioSource>().Play();
                     collision.gameObject.transform.parent = cooking[i];
+                    GameObject smoke = Instantiate(cookingSmoke, cooking[i]);
                     collision.gameObject.transform.localPosition = Vector3.zero;
+                    smoke.transform.localPosition = Vector3.zero;
                     collision.gameObject.transform.rotation = Quaternion.identity;
                     collision.gameObject.GetComponent<Rigidbody>().useGravity = false;
                     collision.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
@@ -247,7 +256,9 @@ public class Flipping : Minigame {
             {
                 GetComponent<AudioSource>().Play();
                 hand.gameObject.transform.parent = cooking[i];
+                GameObject smoke = Instantiate(cookingSmoke, cooking[i]);
                 hand.gameObject.transform.localPosition = Vector3.zero;
+                smoke.transform.localPosition = Vector3.zero;
                 hand.gameObject.transform.rotation = Quaternion.identity;
                 hand.gameObject.GetComponent<Rigidbody>().useGravity = false;
                 hand.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
