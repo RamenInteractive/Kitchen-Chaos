@@ -25,10 +25,15 @@ public class InteractionRay : MonoBehaviour
         }
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
+        int itemLayer = 1 << 12;
+        int gameLayer = 1 << 13;
 
         Interactable objectHit = null;
 
-        if (Physics.Raycast(ray, out hit, length)) {
+        if (Physics.Raycast(ray, out hit, length, gameLayer)) {
+            objectHit = hit.collider.gameObject.GetComponent<Interactable>();
+        }
+        if (Physics.Raycast(ray, out hit, length, itemLayer)) {
             objectHit = hit.collider.gameObject.GetComponent<Interactable>();
         }
 
