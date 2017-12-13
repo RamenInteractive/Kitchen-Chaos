@@ -69,17 +69,18 @@ public class ControllerEntryScreen : MenuScreen {
             UpdatePlayerTexts();
         }
 
-        if (GetAnyStart() && players.Count > 0)
-        {
-            GameObject gameInfoObj = Instantiate(gameInfoPrefab);
+        if (GetAnyStart() && players.Count > 0) {
+            loadingText.gameObject.SetActive(true);
+            GameObject gameInfoObj = GameObject.Find("GameInfo");
+            if (gameInfoObj == null) {
+                gameInfoObj = Instantiate(gameInfoPrefab);
+                gameInfoObj.GetComponent<GameInfo>().name = "GameInfo";
+            }
             GameInfo info = gameInfoObj.GetComponent<GameInfo>();
             info.numPlayers = players.Count();
-            info.name = "GameInfo";
-            info.keyboard = new bool[info.numPlayers];
-            for (int i = 0; i < info.numPlayers; i++)
-            {
-                switch (i)
-                {
+            info.gameOver = false;
+            for (int i = 0; i < info.numPlayers; i++) {
+                switch(i) {
                     case 0:
                         info.player1Controller = players[i];
                         if (player1ControllerName.text == "Keyboard")

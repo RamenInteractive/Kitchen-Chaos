@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameSession : MonoBehaviour {
     public const float MINUTE_VALUE = 0.75f;
@@ -65,6 +66,8 @@ public class GameSession : MonoBehaviour {
     public Text displayText;
     public Text orderCompletionText;
     public Text clockText;
+
+    public GameObject gameInfoPrefab;
 
     public AudioClip bgm; 
 
@@ -159,7 +162,7 @@ public class GameSession : MonoBehaviour {
         lives -= 1;
         if(lives <= 0) {
             // lose life
-            StartCoroutine(displayMessage("You lost the game but we haven't coded the ending yet", 3f));
+            endGame();
         } else {
             StartCoroutine(displayMessage("You lost a life", 3f));
         }
@@ -320,5 +323,18 @@ public class GameSession : MonoBehaviour {
     public GameTime getTime()
     {
         return new GameTime(dayTime);
+    }
+
+    private void endGame() {
+        GameObject gameInfoObj = GameObject.Find("GameInfo");
+        if (gameInfoObj == null) {
+            gameInfoObj = Instantiate(gameInfoPrefab);
+            gameInfoObj.GetComponent<GameInfo>().name = "GameInfo";
+        }
+        GameInfo info = gameInfoObj.GetComponent<GameInfo>();
+        info.score = score;
+        info.gameOver = true;
+
+        SceneManager.LoadScene("Menu");
     }
 }
