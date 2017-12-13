@@ -10,8 +10,8 @@ public class GameInfo : MonoBehaviour {
     public int player2Controller;
     public int player3Controller;
     public int player4Controller;
-    public bool[] keyboard;
     public int score;
+    public bool[] keyboard;
     public bool gameOver;
     private void Start() {
         DontDestroyOnLoad(gameObject);
