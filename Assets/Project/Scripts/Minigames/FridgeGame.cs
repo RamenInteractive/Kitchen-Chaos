@@ -192,6 +192,7 @@ public class FridgeGame : Minigame
         {
             // just pick the first object in the list
             SelectObject(i.gameObject);
+            sfx.playScroll();
             break;
         }
     }
@@ -204,6 +205,7 @@ public class FridgeGame : Minigame
             {
                 // just pick the first object in the list
                 SelectObject(i.gameObject);
+                sfx.playScroll();
                 return;
             }
         }
@@ -237,6 +239,7 @@ public class FridgeGame : Minigame
         if (min != null)
         {
             SelectObject(min);
+            sfx.playScroll();
         }
     }
 
@@ -253,7 +256,5 @@ public class FridgeGame : Minigame
         obj.transform.localPosition += new Vector3(0.4f, 0, 0);
 
         selectedObject = obj;
-
-        sfx.playScroll();
     }
 }

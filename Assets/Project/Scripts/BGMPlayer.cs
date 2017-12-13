@@ -6,15 +6,16 @@ public class BGMPlayer : MonoBehaviour {
     public AudioClip startClip;
     public AudioClip loopClip;
 
-    private AudioSource starter;
-    private AudioSource looper;
+    public AudioSource starter;
+    public AudioSource looper;
+
+    private bool playing;
 
 	// Use this for initialization
 	void Start () {
-        starter = transform.Find("Start").GetComponent<AudioSource>();
-        looper = transform.Find("Loop").GetComponent<AudioSource>();
         starter.clip = startClip;
         looper.clip = loopClip;
+        playing = false;
     }
 	
 	// Update is called once per frame
@@ -23,8 +24,11 @@ public class BGMPlayer : MonoBehaviour {
 	}
 
     public void startMusic() {
-        starter.PlayDelayed(0.25f);
-        looper.PlayDelayed(2.53f);
+        if(!playing) {
+            starter.PlayDelayed(0.25f);
+            looper.PlayDelayed(2.53f);
+            playing = true;
+        }
     }
 
     public void pauseMusic() {

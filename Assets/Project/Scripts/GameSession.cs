@@ -66,6 +66,7 @@ public class GameSession : MonoBehaviour {
     public Text displayText;
     public Text orderCompletionText;
     public Text clockText;
+    public Text livesText;
     public SoundEffectPlayer audioPlayer;
     public BGMPlayer bgmPlayer;
 
@@ -77,7 +78,6 @@ public class GameSession : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        bgmPlayer.startMusic();
         curPlayers = new List<Player>();
         GameObject infoObj = GameObject.Find("GameInfo");
         if (infoObj != null) {
@@ -117,9 +117,10 @@ public class GameSession : MonoBehaviour {
     {
         dayTime = START_DAY;
         dayStatus = STATUS_NO_ORDERS;
-        lastOrder = START_DAY - MIN_TIME_BTWN_ORDERS;
+        lastOrder = START_DAY - Mathf.RoundToInt(MIN_TIME_BTWN_ORDERS / (difficulty * difficultyMod));
         minuteCount = 0;
         timeDiff = new List<int>();
+        bgmPlayer.startMusic();
         yield return displayMessage("Day " + (daysCleared + 1), 4f);
     }
 
@@ -168,6 +169,7 @@ public class GameSession : MonoBehaviour {
         } else {
             StartCoroutine(displayMessage("You lost a life", 3f));
         }
+        livesText.text = "Lives: " + lives;
     }
 
     private void spawnOrder() {
