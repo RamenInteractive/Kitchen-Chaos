@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Food
+  - Ingredient
+  - Minigame
+  - Uncut
+  - Uncooked
+  - Ticket
   layers:
   - Default
   - TransparentFX
@@ -14,12 +19,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player1
+  - Player2
+  - Player3
+  - Player4
+  - ItemLayer
+  - GameLayer
   - 
   - 
   - 
