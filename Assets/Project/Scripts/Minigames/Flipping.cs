@@ -113,6 +113,7 @@ public class Flipping : Minigame {
                 if (time[i] < 0)
                 {
                     GameObject burnt;
+                    Destroy(cooking[i].GetChild(2).gameObject);
                     Destroy(cooking[i].GetChild(1).gameObject);
                     burnt = Instantiate(burntPrefab, GameObject.Find("Finish").transform);
                     float angle = Random.Range(0, 360);
@@ -160,6 +161,7 @@ public class Flipping : Minigame {
                 if (time[i] < 10f && flipped[i] && cooking[i].GetChild(1).gameObject.name.Contains("UncookedPatty"))
                 {
                     GameObject done;
+                    Destroy(cooking[i].GetChild(2).gameObject);
                     Destroy(cooking[i].GetChild(1).gameObject);
                     done = Instantiate(pattyPrefab, GameObject.Find("Finish").transform);
                     float angle = Random.Range(0, 360);
@@ -181,6 +183,7 @@ public class Flipping : Minigame {
                 if (time[i] < 10f && cooking[i].GetChild(1).gameObject.name.Contains("CutPotato"))
                 {
                     GameObject done;
+                    Destroy(cooking[i].GetChild(2).gameObject);
                     Destroy(cooking[i].GetChild(1).gameObject);
                     done = Instantiate(friesPrefab, GameObject.Find("Finish").transform);
                     float angle = Random.Range(0, 360);

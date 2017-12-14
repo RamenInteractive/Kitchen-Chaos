@@ -41,6 +41,9 @@ public class MenuController : MonoBehaviour {
             case 0:
                 source.clip = titleBGM;
                 break;
+            case 2:
+                //Application.Quit();
+                break;
             default:
                 source.clip = titleBGM;
                 break;

@@ -8,7 +8,6 @@ using UnityEngine.UI;
 class TitleScreen : MenuScreen {
     public int selectedItem = 0;
     public Text startGameText;
-    public Text tutorialText;
     public Text exitGameText;
     public SoundEffectPlayer sfx;
 
@@ -22,7 +21,7 @@ class TitleScreen : MenuScreen {
         float vAxis = GetAnyAxis("Vertical");
         if (vAxis < -0.2 && canMoveCursor) {
             selectedItem++;
-            if (selectedItem >= 3) {
+            if (selectedItem >= 2) {
                 selectedItem = 0;
             }
             HighlightMenuItem(selectedItem);
@@ -31,7 +30,7 @@ class TitleScreen : MenuScreen {
         else if (vAxis > 0.2 && canMoveCursor) {
             selectedItem--;
             if (selectedItem < 0) {
-                selectedItem = 2;
+                selectedItem = 1;
             }
             HighlightMenuItem(selectedItem);
             canMoveCursor = false;
@@ -53,9 +52,6 @@ class TitleScreen : MenuScreen {
                 startGameText.color = new Color(0.6f, 0.35f, 0f);
                 break;
             case 1:
-                tutorialText.color = new Color(0.6f, 0.35f, 0f);
-                break;
-            case 2:
                 exitGameText.color = new Color(0.6f, 0.35f, 0f);
                 break;
         }
@@ -64,7 +60,6 @@ class TitleScreen : MenuScreen {
 
     private void SetAllMenuItemsInactive() {
         startGameText.color = new Color(0f, 0f, 0f);
-        tutorialText.color = new Color(0f, 0f, 0f);
         exitGameText.color = new Color(0f, 0f, 0f);
     }
 
@@ -76,6 +71,7 @@ class TitleScreen : MenuScreen {
                 c.SetScreen(1);
                 break;
             case 1:
+                Application.Quit();
                 break;
             case 2:
                 break;
