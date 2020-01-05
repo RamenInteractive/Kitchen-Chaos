@@ -56,6 +56,7 @@ static class ControllerFactory {
         KeyCode square = KeyCode.JoystickButton0 + offset;
         KeyCode circle = KeyCode.JoystickButton2 + offset;
         KeyCode x = KeyCode.JoystickButton1 + offset;
+        KeyCode triangle = KeyCode.JoystickButton3 + offset;
         KeyCode l1 = KeyCode.JoystickButton4 + offset;
         KeyCode l2 = KeyCode.JoystickButton6 + offset;
         KeyCode r1 = KeyCode.JoystickButton5 + offset;
@@ -65,18 +66,18 @@ static class ControllerFactory {
         c.SetAxis("MoveV", "C" + controllerID + "_Vertical");
         c.SetAxis("LookH", "C" + controllerID + "_Horizontal2");
         c.SetAxis("LookV", "C" + controllerID + "_Vertical2");
-        c.SetButton("Jump", circle);
+        c.SetButton("Jump", x);
 
         KeyCode[] leftHandKeys = { square, l1, l2 };
         c.SetButton("LeftHand", leftHandKeys);
 
-        KeyCode[] rightHandKeys = { x, r1, r2 };
+        KeyCode[] rightHandKeys = { circle, r1, r2 };
         c.SetButton("RightHand", rightHandKeys);
 
-        KeyCode[] acceptKeys = { square, x, l1, l2, r1, r2 };
+        KeyCode[] acceptKeys = { square, circle, l1, l2, r1, r2 };
         c.SetButton("Accept", acceptKeys);
 
-        c.SetButton("Back", circle);
+        c.SetButton("Back", triangle);
 
         c.deadZone = 0.3f;
     }
@@ -88,6 +89,7 @@ static class ControllerFactory {
         KeyCode x = KeyCode.JoystickButton0 + offset;
         KeyCode square = KeyCode.JoystickButton2 + offset;
         KeyCode circle = KeyCode.JoystickButton1 + offset;
+        KeyCode triangle = KeyCode.JoystickButton3 + offset;
         KeyCode l1 = KeyCode.JoystickButton4 + offset;
         KeyCode l2 = KeyCode.JoystickButton6 + offset;
         KeyCode r1 = KeyCode.JoystickButton5 + offset;
@@ -97,18 +99,18 @@ static class ControllerFactory {
         c.SetAxis("MoveV", "C" + controllerID + "_Vertical");
         c.SetAxis("LookH", "PS4C" + controllerID + "_Horizontal2");
         c.SetAxis("LookV", "PS4C" + controllerID + "_Vertical2");
-        c.SetButton("Jump", circle);
+        c.SetButton("Jump", x);
 
         KeyCode[] leftHandKeys = { square, l1, l2 };
         c.SetButton("LeftHand", leftHandKeys);
 
-        KeyCode[] rightHandKeys = { x, r1, r2 };
+        KeyCode[] rightHandKeys = { circle, r1, r2 };
         c.SetButton("RightHand", rightHandKeys);
 
-        KeyCode[] acceptKeys = { square, x, l1, l2, r1, r2 };
+        KeyCode[] acceptKeys = { square, circle, l1, l2, r1, r2 };
         c.SetButton("Accept", acceptKeys);
 
-        c.SetButton("Back", circle);
+        c.SetButton("Back", triangle);
 
         c.deadZone = 0.3f;
     }

@@ -8,10 +8,10 @@ public class GameSession : MonoBehaviour {
     public const float MINUTE_VALUE = 0.75f;
 
     public static GameTime START_DAY = new GameTime("10:00");
-    public static GameTime END_DAY = new GameTime("23:00");
+    public static GameTime END_DAY = new GameTime("22:00");
 
-    public static GameTime START_ORDERS = START_DAY + 30;
-    public static GameTime END_ORDERS = END_DAY - 30;
+    public static GameTime START_ORDERS = START_DAY + 60;
+    public static GameTime END_ORDERS = END_DAY - 60;
 
     public static GameTime LUNCH_RUSH_START = new GameTime("12:00");
     public static GameTime LUNCH_RUSH_END = new GameTime("14:00");
@@ -28,6 +28,7 @@ public class GameSession : MonoBehaviour {
     public const int MIN_TIME_BTWN_ORDERS = 10;
 
     public const float C_VAL = 3f;
+    public const float GAME_SPEED = 3f;
 
     private const int STATUS_NO_ORDERS = 0;
     private const int STATUS_NORMAL = 1;
@@ -61,6 +62,7 @@ public class GameSession : MonoBehaviour {
     private List<Player> curPlayers;
 
     public Player playerPrefab;
+    public Player playerPrefab1, playerPrefab2, playerPrefab3, playerPrefab4;
     public Light sun;
     public TicketGen ticketBoard;
     public Text displayText;
@@ -76,8 +78,8 @@ public class GameSession : MonoBehaviour {
 
     public static Vector3[] spawnPoints = { new Vector3(5, 1, 2), new Vector3(5, 1, 7), new Vector3(5, 1, -2), new Vector3(5, 1, -7) };
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    protected void Start () {
         curPlayers = new List<Player>();
         GameObject infoObj = GameObject.Find("GameInfo");
         if (infoObj != null) {
@@ -98,9 +100,9 @@ public class GameSession : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    protected void Update () {
         if(dayStatus != STATUS_END_DAY) {
-            minuteCount += Time.deltaTime;
+            minuteCount += Time.deltaTime * GAME_SPEED;
             if (minuteCount > MINUTE_VALUE) {
                 dayTime.addMinutes((int)(minuteCount / MINUTE_VALUE));
                 minuteCount %= MINUTE_VALUE;
@@ -113,7 +115,7 @@ public class GameSession : MonoBehaviour {
         }
     }
 
-    private IEnumerator startDay()
+    protected IEnumerator startDay()
     {
         dayTime = START_DAY;
         dayStatus = STATUS_NO_ORDERS;
@@ -124,7 +126,7 @@ public class GameSession : MonoBehaviour {
         yield return displayMessage("Day " + (daysCleared + 1), 4f);
     }
 
-    private IEnumerator endDay() {
+    protected IEnumerator endDay() {
         ticketBoard.resetTickets();
         daysCleared++;
         float sum = 0;
@@ -191,18 +193,21 @@ public class GameSession : MonoBehaviour {
             switch(i) {
                 case 0:
                     controllerID = info.player1Controller;
+                    curPlayers.Add(Instantiate(playerPrefab1) as Player);
                     break;
                 case 1:
                     controllerID = info.player2Controller;
+                    curPlayers.Add(Instantiate(playerPrefab2) as Player);
                     break;
                 case 2:
                     controllerID = info.player3Controller;
+                    curPlayers.Add(Instantiate(playerPrefab3) as Player);
                     break;
                 case 3:
                     controllerID = info.player4Controller;
+                    curPlayers.Add(Instantiate(playerPrefab4) as Player);
                     break;
             }
-            curPlayers.Add(Instantiate(playerPrefab) as Player);
             curPlayers[i].transform.Translate(spawnPoints[i]);
             ControllerFactory.AddControllerToObj(curPlayers[i].gameObject, controllerID);
         }

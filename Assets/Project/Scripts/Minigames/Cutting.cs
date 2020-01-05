@@ -23,7 +23,7 @@ public class Cutting : Minigame {
     public Transform slot4;
 
     // Use this for initialization
-    new void Start ()
+    new protected void Start ()
     {
         this.GetComponent<AudioSource>().playOnAwake = false;
         this.GetComponent<AudioSource>().clip = chop;
