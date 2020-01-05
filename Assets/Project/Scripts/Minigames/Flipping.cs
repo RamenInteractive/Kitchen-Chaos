@@ -32,7 +32,7 @@ public class Flipping : Minigame {
     private List<float> time;
 
     // Use this for initialization
-    new void Start ()
+    new protected void Start ()
     {
         this.GetComponent<AudioSource>().playOnAwake = false;
         this.GetComponent<AudioSource>().loop = true;

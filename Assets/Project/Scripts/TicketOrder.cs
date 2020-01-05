@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TicketOrder
 {
-    public const int TICKET_DURATION = 120;
+    public const int TICKET_DURATION = 240;
 
     private int orderNumber;
     private GameObject ticket;

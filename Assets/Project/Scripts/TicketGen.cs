@@ -6,7 +6,7 @@ public class TicketGen : MonoBehaviour
 {
     public const int NUM_TICKETS = 12;
     public const int FOOD_TYPES = 1;
-    public const int TICKET_DURATION = 150;
+    public const int TICKET_DURATION = 240;
     public static Vector3[] positions = { new Vector3(0.105f, 1.6f, -2.4f),  //top far left
         new Vector3(0.105f, 1.6f, -0.8f), new Vector3(0.105f, 1.6f, 0.8f),   //top mid left, top mid right
         new Vector3(0.105f, 1.6f, 2.4f), new Vector3(0.105f, 0f, -2.4f),     //top far right, middle far left
@@ -22,14 +22,14 @@ public class TicketGen : MonoBehaviour
     private GameSession myGame;
 
     // Use this for initialization
-    void Start()
+    protected void Start()
     {
         tickets = new TicketOrder[NUM_TICKETS];
         myGame = transform.parent.GetComponent<GameSession>();
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         if (Input.GetKeyDown("c"))
             newOrder();

@@ -36,7 +36,7 @@ public class AssemblyGame : Minigame
     private GameObject buildSpace;
 
     // Use this for initialization
-    new void Start()
+    new protected void Start()
     {
         base.Start();
 
